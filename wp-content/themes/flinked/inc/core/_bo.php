@@ -15,3 +15,13 @@ add_filter('admin_footer_text', 'remove_footer_admin');
 /*activer les image a la une*/
 
 add_theme_support( 'post-thumbnails' );
+
+
+/* option page */
+
+
+if( function_exists('acf_add_options_page') ) {
+
+	acf_add_options_page();
+
+}

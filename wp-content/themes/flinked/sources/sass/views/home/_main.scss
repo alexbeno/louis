@@ -1,3 +1,11 @@
-body {
-  background: $black;
+
+.homePage {
+  width: 100%;
+  height: 100vh;
+  padding-left: 15%;
+  @include flex($justify: space-between);
+}
+
+.home__name {
+  letter-spacing: 12px;
 }

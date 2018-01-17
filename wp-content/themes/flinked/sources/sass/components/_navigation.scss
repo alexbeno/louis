@@ -1,0 +1,49 @@
+.navigation {
+  @include flex($align: flex-start, $direction: column);
+}
+
+.navigation--vertical {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.navigation--turnLeft {
+  flex-direction: column-reverse;
+  transform: rotate(90deg);
+  position: fixed;
+  bottom: 55px;
+  right: -20px;
+
+  .navigation__subTexte,
+  .navigation__texte {
+    transform: rotate(180deg);
+  }
+}
+
+.navigation--turnRight {
+  flex-direction: column-reverse;
+  transform: rotate(-90deg);
+  position: fixed;
+  top: 55px;
+  left: -20px;
+}
+
+.navigation__texte {
+  font-size: em($size-nav);
+  color: $white;
+  font-weight: $semi-bold;
+}
+
+.navigation__subTexte {
+  font-size: em(14);
+  color: $white;
+  opacity: 0.45;
+  font-weight: $semi-bold;
+}
+
+.navigation__border {
+ @include border($bg: $white, $h: 1px, $w: 150px);
+ margin: 9px 0;
+}
