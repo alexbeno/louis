@@ -1,0 +1,51 @@
+
+/*
+* define document variable
+*/
+
+
+$sizelogo: 150px;
+$demilogo: calc(50% + 75px);
+
+/*
+* top navigation
+*/
+
+.topNav {
+  width: $demilogo;
+  position: fixed;
+  right: 0;
+  top: 0;
+  @include flex($justify: space-between);
+  padding-right: $leftRight;
+  padding-top: 45px;
+}
+
+.topNav-logo__img {
+  width: $sizelogo;
+  height: auto;
+}
+
+.topNav__about {
+  opacity: 0.7;
+}
+
+
+/*
+* bottom navigation
+*/
+
+.bottomNav {
+  width: 45%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  @include flex($justify: space-around);
+  padding-left: 91px;
+  padding-bottom: 45px;
+}
+
+.bottomNav__link {
+  font-size: em($size-social);
+  opacity: 0.8;
+}

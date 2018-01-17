@@ -28,3 +28,10 @@ p {
   font-weight: $weight-courant;
   color: $color-courant;
 }
+
+a {
+  color: $white;
+  font-size: em($size-nav);
+  text-decoration: none;
+  font-weight: $semi-bold;
+}
