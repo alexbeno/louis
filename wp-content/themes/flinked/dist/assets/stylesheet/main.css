@@ -1,0 +1,510 @@
+/*
+* variable and mixin
+*/
+/*
+* config files
+*/
+/*
+* list of break points
+*/
+/*
+* button A parameter
+* @param $buttonABackground  : background color
+* @param $buttonAColor       : color
+* @param $buttonAWith        : size of the button
+* @param $buttonATop         : padding top of the button
+* @param $buttonALeft        : padding left of the button
+*/
+/*
+* button B parameter
+* @param $buttonBBackground  : background color
+* @param $buttonBColor       : color
+* @param $buttonBWith        : size of the button
+* @param $buttonBTop         : padding top of the button
+* @param $buttonBLeft        : padding left of the button
+*/
+/*
+* button C parameter
+* @param $buttonCBackground  : background color
+* @param $buttonCColor       : color
+* @param $buttonCWith        : size of the button
+* @param $buttonCTop         : padding top of the button
+* @param $buttonCLeft        : padding left of the button
+*/
+/*
+* Color set
+* =======================
+* true for min-width query
+* false for max-width query
+*/
+/*
+* transition config
+*/
+/*
+* @ Outgoing Velocity: 40%
+* @ Incoming Velocity: 80%
+*/
+/*
+* @ Outgoing Velocity: 0%
+* @ Incoming Velocity: 80%
+*/
+/*
+* @ Outgoing Velocity: 40%
+* @ Incoming Velocity: 0%
+*/
+/*
+* @ Outgoing Velocity: 40%
+* @ Incoming Velocity: 40%
+*/
+/*
+* Font weight
+*/
+/*
+* TYPE OF MEDIA QUERY
+* =======================
+* min for min-width query
+* max for max-width query
+*/
+/*
+* Set of configuration
+* =======================
+* color set primary, secondary, terciary
+* font set title, courant
+*/
+/*
+* Color set
+*/
+/*
+* Font set
+*/
+/*
+* base configuration
+* =======================
+* font size set h1, h2, h3, h4, courant
+* font weight set h1, h2, h3, h4, courant
+* font color set h1, h2, h3, h4, courant
+*/
+/*
+* base font size
+*/
+/*
+* base font weight
+*/
+/*
+* base color
+*/
+/*
+* mixins files
+*/
+/*
+* Button A
+* @param $buttonABackground  : background color
+* @param $buttonAColor       : color
+* @param $buttonAWith        : size of the button
+* @param $buttonATop         : padding top of the button
+* @param $buttonALeft        : padding left of the button
+*/
+/*
+* Button B
+* @param $buttonBBackground  : background color
+* @param $buttonBColor       : color
+* @param $buttonBWith        : size of the button
+* @param $buttonBTop         : padding top of the button
+* @param $buttonBLeft        : padding left of the button
+*/
+/*
+* Button c
+* @param $buttonCBackground  : background color
+* @param $buttonCColor       : color
+* @param $buttonCWith        : size of the button
+* @param $buttonCTop         : padding top of the button
+* @param $buttonCLeft        : padding left of the button
+*/
+/*
+* flex mixin
+* ===========================================
+* @param $direction  : direction of the flexbox
+* @param $justify    : justify of the content
+* @param $align      : vertical align of the content
+* @param $wrap       : set a wrap or not
+*/
+/*
+* media query mixins
+*/
+/*
+* Animation Mixin
+* =====================
+* @param $animation-name : animation name
+*/
+/*
+* Font Em mixin
+* =====================
+* @param $pixels  : value to convert
+* @param $context : browser context
+*/
+/*
+* Font Rem mixin
+* =====================
+* @param $sizeValue  : value to convert
+*/
+/*
+* Border Mixin
+* =====================
+* @param $bg : background color
+* @param $h : height of the border
+* @param $w : width of the border
+*/
+/*
+* fade
+* =====================
+* @param $trans    : transition easing
+* @param $duration : transition duration
+* @param $out       : out or in animation
+* @include fadee(ease, 0.5s);
+*/
+/*
+* slide
+* =====================
+* @param $trans    : transition easing
+* @param $duration : transition duration
+* @include slide(ease, 0.5s, -50px, in, x);
+*/
+/*
+* slide fade
+* =====================
+* @param $trans    : transition easing
+* @param $duration : transition duration
+* @include slide-fade(ease, 0.5s, -50px, in, x);
+*/
+/*
+* base and reset
+*/
+h1 {
+  font-size: 1.5em;
+  font-weight: 900;
+  color: #000; }
+
+h2 {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: #141414; }
+
+h3 {
+  font-size: 1.125em;
+  font-weight: 500;
+  color: #080808; }
+
+h4 {
+  font-size: 1em;
+  font-weight: 400;
+  color: #000; }
+
+p {
+  font-size: 0.75em;
+  font-weight: 400;
+  color: #000; }
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* apply a natural box layout model to all elements */
+*, *::before, *::after, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* inputs */
+input, button, textarea, select {
+  color: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  -webkit-padding-start: 0;
+  align-items: flex-start;
+  text-index: 0;
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  width: auto;
+  height: auto;
+  line-height: 1em; }
+
+/* inputs appearance (not for every input)  */
+input[type=text], input[type=reset], input[type=password], input[type=search], input[type=email], input[type=tel], input[type=url], input[type=time], input[type=week], input[type=month], input[type=date], input[type=datetime], input[type=datetime-local], input[type=number],
+input[type=submit], input[type=reset], input[type=color], input[type=file],
+button, textarea, select {
+  height: 1em;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; }
+
+/* input color width */
+input[type=color] {
+  width: 1em; }
+
+/* IE clear cross */
+input::-ms-clear {
+  display: none; }
+
+/* details and summary */
+details, summary {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; }
+
+/* text size adjusting */
+body {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%; }
+
+/* mark */
+mark {
+  background: none; }
+
+/* Font smoothing */
+/**,*::before,*::after,*:before,*:after {
+     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}*/
+/* hr */
+hr {
+  height: 1px;
+  margin: 0;
+  padding: 0; }
+
+/* u */
+u {
+  text-decoration: none; }
+
+/* th */
+table th {
+  text-align: left; }
+
+/* a */
+a {
+  color: inherit;
+  outline: none; }
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* apply a natural box layout model to all elements */
+*, *::before, *::after, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* inputs */
+input, button, textarea, select {
+  color: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  -webkit-padding-start: 0;
+  align-items: flex-start;
+  text-index: 0;
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  width: auto;
+  height: auto;
+  line-height: 1em; }
+
+/* inputs appearance (not for every input)  */
+input[type=text], input[type=reset], input[type=password], input[type=search], input[type=email], input[type=tel], input[type=url], input[type=time], input[type=week], input[type=month], input[type=date], input[type=datetime], input[type=datetime-local], input[type=number],
+input[type=submit], input[type=reset], input[type=color], input[type=file],
+button, textarea, select {
+  height: 1em;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; }
+
+/* input color width */
+input[type=color] {
+  width: 1em; }
+
+/* IE clear cross */
+input::-ms-clear {
+  display: none; }
+
+/* details and summary */
+details, summary {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; }
+
+/* text size adjusting */
+body {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%; }
+
+/* mark */
+mark {
+  background: none; }
+
+/* Font smoothing */
+/**,*::before,*::after,*:before,*:after {
+     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}*/
+/* hr */
+hr {
+  height: 1px;
+  margin: 0;
+  padding: 0; }
+
+/* u */
+u {
+  text-decoration: none; }
+
+/* th */
+table th {
+  text-align: left; }
+
+/* a */
+a {
+  color: inherit;
+  outline: none; }
+
+h1 {
+  font-size: 1.5em;
+  font-weight: 900;
+  color: #000; }
+
+h2 {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: #141414; }
+
+h3 {
+  font-size: 1.125em;
+  font-weight: 500;
+  color: #080808; }
+
+h4 {
+  font-size: 1em;
+  font-weight: 400;
+  color: #000; }
+
+p {
+  font-size: 0.75em;
+  font-weight: 400;
+  color: #000; }
+
+/*
+* components
+*/
+/*
+* layout
+*/
+/*
+* layout
+*/
+body {
+  background: blue; }
+
+body {
+  background: blue; }
+
+body {
+  background: blue; }
+
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,12 @@
+{
+  "name": "alexbenoliel/wp",
+  "require": {
+    "vlucas/phpdotenv": "^2.2"
+  },
+  "authors": [
+    {
+      "name": "ALexis benoliel",
+      "email": "alexbenoliel@gmail.com"
+    }
+  ]
+}
