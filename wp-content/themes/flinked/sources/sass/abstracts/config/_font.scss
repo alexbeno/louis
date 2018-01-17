@@ -9,3 +9,63 @@ $semi-bold: 600;
 $medium: 500;
 $regular: 400;
 $light: 300;
+
+/*
+* register font
+*/
+
+@font-face {
+  font-family: 'greycliff';
+  src: url('../../../../dist/assets/font/greycliff/otf/greycliffCF-Heavy.otf'),
+      url('../../../../dist/assets/font/greycliff/woff/greycliffCF-Heavy.woff'),
+      url('../../../../dist/assets/font/greycliff/eot/greycliffCF-Heavy.eot');
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: 'greycliff';
+  src: url('../../../../dist/assets/font/greycliff/otf/GreycliffCF-Extrabold.otf'),
+      url('../../../../dist/assets/font/greycliff/woff/GreycliffCF-Extrabold.woff'),
+      url('../../../../dist/assets/font/greycliff/eot/GreycliffCF-Extrabold.eot');
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: 'greycliff';
+  src: url('../../../../dist/assets/font/greycliff/otf/GreycliffCF-bold.otf'),
+      url('../../../../dist/assets/font/greycliff/woff/GreycliffCF-bold.woff'),
+      url('../../../../dist/assets/font/greycliff/eot/GreycliffCF-bold.eot');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'greycliff';
+  src: url('../../../../dist/assets/font/greycliff/otf/GreycliffCF-DemiBold.otf'),
+      url('../../../../dist/assets/font/greycliff/woff/GreycliffCF-DemiBold.woff'),
+      url('../../../../dist/assets/font/greycliff/eot/GreycliffCF-DemiBold.eot');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'greycliff';
+  src: url('../../../../dist/assets/font/greycliff/otf/GreycliffCF-Medium.otf'),
+      url('../../../../dist/assets/font/greycliff/woff/GreycliffCF-Medium.woff'),
+      url('../../../../dist/assets/font/greycliff/eot/GreycliffCF-Medium.eot');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'greycliff';
+  src: url('../../../../dist/assets/font/greycliff/otf/GreycliffCF-Regular.otf'),
+      url('../../../../dist/assets/font/greycliff/woff/GreycliffCF-Regular.woff'),
+      url('../../../../dist/assets/font/greycliff/eot/GreycliffCF-Regular.eot');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'greycliff';
+  src: url('../../../../dist/assets/font/greycliff/otf/GreycliffCF-Light.otf'),
+      url('../../../../dist/assets/font/greycliff/woff/GreycliffCF-Light.woff'),
+      url('../../../../dist/assets/font/greycliff/eot/GreycliffCF-Light.eot');
+  font-weight: 300;
+}

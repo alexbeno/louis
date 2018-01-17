@@ -27,6 +27,5 @@
     "watchify": "^3.8.0"
   },
   "dependencies": {
-    "gulp-sass-bulk-import": "^1.0.1"
   }
 }
