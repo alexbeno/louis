@@ -7,8 +7,14 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = AjaxLoading;
 function AjaxLoading(url) {
     jQuery(document).ready(function ($) {
+
+        // start perfom ajax request function with url parameter
         perform_ajax_request(url);
 
+        /**
+         * construct ajax request
+         * @param {*} url
+         */
         function perform_ajax_request(url) {
             $.ajax({
                 url: url,
@@ -24,6 +30,10 @@ function AjaxLoading(url) {
             });
         }
 
+        /**
+         * replace current content
+         * @param {*} data
+         */
         function switch_content(data) {
             $('main').remove();
             $('body').append($(data));
@@ -58,6 +68,11 @@ var LinkNavigation = function () {
         this.linkAbout = document.querySelector('.topNav__about');
     }
 
+    /**
+     * event on about link for trigger ajax callback
+     */
+
+
     _createClass(LinkNavigation, [{
         key: 'clickAbout',
         value: function clickAbout() {
@@ -69,6 +84,10 @@ var LinkNavigation = function () {
                 (0, _AjaxLoading2.default)(url);
             });
         }
+        /**
+         * event on history API for trigger ajax callback
+         */
+
     }, {
         key: 'history',
         value: function history() {

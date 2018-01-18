@@ -1,7 +1,13 @@
 export default function AjaxLoading (url)  {
   jQuery(document).ready(function ($) {
+
+      // start perfom ajax request function with url parameter
       perform_ajax_request( url )
 
+      /**
+       * construct ajax request
+       * @param {*} url
+       */
       function perform_ajax_request( url ) {
           $.ajax({
               url    : url,
@@ -17,6 +23,10 @@ export default function AjaxLoading (url)  {
           });
       }
 
+      /**
+       * replace current content
+       * @param {*} data
+       */
       function switch_content( data ) {
           $('main').remove();
           $('body').append($(data));

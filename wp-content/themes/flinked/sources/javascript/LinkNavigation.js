@@ -10,6 +10,9 @@ class LinkNavigation
         this.linkAbout = document.querySelector('.topNav__about')
     }
 
+    /**
+     * event on about link for trigger ajax callback
+     */
     clickAbout() {
         this.linkAbout.addEventListener('click', (e) => {
             e.preventDefault()
@@ -17,7 +20,9 @@ class LinkNavigation
             AjaxLoading(url)
         })
     }
-
+    /**
+     * event on history API for trigger ajax callback
+     */
     history() {
         window.addEventListener( 'popstate', function(e) {
             e.preventDefault();
