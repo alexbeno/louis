@@ -23,7 +23,7 @@
         <!-- start top nav -->
         <div class="topNav">
             <a href="#" class="topNav__logo"><img src="<?php the_field('option--logo', 'option'); ?>" alt="louisJ" class="topNav-logo__img"></a>
-            <a href="#" class="topNav__about">À propos</a>
+            <a href="http://localhost:8888/louisj/a-propos/" data-title="A propos" class="topNav__about">À propos</a>
         </div>
         <!-- end top nav -->
 

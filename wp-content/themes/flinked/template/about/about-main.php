@@ -1,4 +1,9 @@
 <?php
+//option page
+$musicNav = get_field('option--musique', 'option');
+$galerieNav = get_field('option--galerie', 'option');
+$dragNav = get_field('option--drag', 'option');
+
 // description
 $description_title = get_field( "about--description--titre" );
 $description_description = get_field( "about--description--description" );
@@ -19,23 +24,29 @@ $event_link = get_field( "about--evenement--lien_vers_levenement" );
 
 <div class="about">
   <div class="about__description">
-    <p class="about__description__background">JE SUIS LOUIS J</p>
-    <h3 class="about__description__name">LOUIS J</h3>
-    <p class="about__description__explain">cingulis ipsis adnectunt nimia subtegminum tenuitate perflabiles, expandentes eas crebris agitationibus maximeque sinistra, ut longiores fimbriae tunicaeque.
-cingulis ipsis adnectunt nimia subtegminum tenuitate perflabiles, expandentes eas crebris agitationibus maximeque sinistra, ut longiores fimbriae tunicaeque.</p>
+    <p class="about__description__background"><?= $description_bg ?></p>
+    <h3 class="about__description__name"><?= $description_title ?></h3>
+    <p class="about__description__explain"><?= $description_description ?></p>
   </div>
 
   <div class="about__event">
-    <p class="about__event__background">EVENEMENT</p>
+    <p class="about__event__background"><?= $event_bg ?></p>
     <div class="about__event__flex">
-      <h3 class="about__event__title">CONCERT GIBUS</h3>
-      <p class="about__event__explain">cingulis ipsis adnectunt nimia subtegminum tenuitate perflabiles, expandentes eas crebris agitationibus maximeque sinistra, ut longiores fimbriae tunicaeque.cingulis ipsis adnectunt nimia subtegminum tenuitate perflabiles, expandentes eas crebris agitationibus maximeque sinistra, ut longiores fimbriae tunicaeque.</p>
+      <h3 class="about__event__title"><?= $event_title ?></h3>
+      <p class="about__event__explain"><?= $event_description ?></p>
       <div class="about__event__info">
-        <p class="about__eventInfo__text"><span class="about__eventInfo__light">Date</span>11 septembre 2018</p>
-        <p class="about__eventInfo__text"><span class="about__eventInfo__light">Lieu</span>Gibus paris</p>
-        <p class="about__eventInfo__text"><span class="about__eventInfo__light">Prix</span>15 euro</p>
+        <p class="about__eventInfo__text"><span class="about__eventInfo__light">Date</span><?= $event_date  ?></p>
+        <p class="about__eventInfo__text"><span class="about__eventInfo__light">Lieu</span><?= $event_lieu  ?></p>
+        <p class="about__eventInfo__text"><span class="about__eventInfo__light">Prix</span><?= $event_prix  ?></p>
       </div>
-      <a href="#" class="about__event__link">Reserver votre place</a>
+      <a href="<?= $event_link ?>" class="about__event__link">Reserver votre place</a>
     </div>
   </div>
+
+  <!-- start left naviagtion -->
+  <div class="navigation navigation--turnLeft aboutjdjdd__rightNavigation">
+    <p class="navigation__texte aboutjdjdd__rightNavigation__texte"><?= $galerieNav ?></p>
+    <div class="navigation__border aboutjdjdd__rightNavigation__border"></div>
+  </div>
+  <!-- end left naviagtion -->
 </div>
