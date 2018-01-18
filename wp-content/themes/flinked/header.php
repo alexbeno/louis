@@ -3,7 +3,7 @@
     <head>
         <meta charset="<?php bloginfo( 'charset' ); ?>" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <title><?php the_field('option--titre_de_site', 'option'); ?> | <?=the_title()?> </title>
+        <title><?php the_field('option--titre_de_site', 'option'); ?> </title>
         <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500|Open+Sans:300,400,600" rel="stylesheet">
         <!-- Execution de la fonction wp_head() obligatoire ! -->
         <?php wp_head(); ?>
@@ -23,7 +23,7 @@
         <!-- start top nav -->
         <div class="topNav">
             <a href="#" class="topNav__logo"><img src="<?php the_field('option--logo', 'option'); ?>" alt="louisJ" class="topNav-logo__img"></a>
-            <a href="http://localhost:8888/louisj/a-propos/" data-title="A propos" class="topNav__about">À propos</a>
+            <a href="http://localhost:8888/louisj/a-propos/" class="topNav__about">À propos</a>
         </div>
         <!-- end top nav -->
 

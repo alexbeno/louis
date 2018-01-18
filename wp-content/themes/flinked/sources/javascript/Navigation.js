@@ -2,19 +2,20 @@ var Navigation = () => {
 
     jQuery(document).ready(function ($) {
 
-        // j'écoute les clic de tous les liens, sauf de l'admin bar
         $( document ).on( 'click', 'a[href^="http://localhost:8888/louisj/a-propos/"]:not(.ab-item)', do_ajax_request );
-
-        // lors d'un clic, j'exécute une fonction qui prend le lien en paramètre
         function do_ajax_request( e ) {
             e.preventDefault();
             var url = $( this ).attr( 'href' );
-            var title = $( this ).attr( 'data-title' );
-            perform_ajax_request( url, title );
+            perform_ajax_request( url );
         }
 
-        // je fais une requête ajax vers le lien, en poussant BAWXMLHttpRequest dans les headers
-        function perform_ajax_request( url, title ) {
+        window.addEventListener( 'popstate', function(e) {
+            e.preventDefault();
+            var url = window.location.href;
+            perform_ajax_request( url )
+        } );
+
+        function perform_ajax_request( url ) {
 
             $.ajax({
                 url    : url,
@@ -24,17 +25,15 @@ var Navigation = () => {
                 }
             }).done( function( data ) {
                 // Do stuff
-                history.pushState(data, title, url);
+                history.pushState(data, 'louis J', url);
                 switch_content( data );
             }).error( function() {
                 // Error
             });
         }
 
-
-        //la fonction pour la bascule des contenus
         function switch_content( data ) {
-            $('.homePage').remove();
+            $('main').remove();
             $('body').append($(data));
         }
     });
