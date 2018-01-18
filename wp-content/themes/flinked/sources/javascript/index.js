@@ -1,11 +1,12 @@
 import Welcome from './Welcome.js'
-import Navigation from './Navigation.js'
+import LinkNavigation from './LinkNavigation.js'
 
-  
+
 function init() {
   let welcome = new Welcome()
 
-  Navigation();
+  let linkNavigation = new LinkNavigation();
+  linkNavigation.init();
 }
 
 window.onload = init;
