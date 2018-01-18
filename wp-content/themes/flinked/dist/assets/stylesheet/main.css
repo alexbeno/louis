@@ -8,6 +8,12 @@
 * list of break points
 */
 /*
+* Color set
+* =======================
+* true for min-width query
+* false for max-width query
+*/
+/*
 * button A parameter
 * @param $buttonABackground  : background color
 * @param $buttonAColor       : color
@@ -30,12 +36,6 @@
 * @param $buttonCWith        : size of the button
 * @param $buttonCTop         : padding top of the button
 * @param $buttonCLeft        : padding left of the button
-*/
-/*
-* Color set
-* =======================
-* true for min-width query
-* false for max-width query
 */
 /*
 * transition config
@@ -363,7 +363,7 @@ h2 {
 
 h3 {
   font-size: 3em;
-  font-weight: 500;
+  font-weight: 800;
   color: #fff; }
 
 h4 {
@@ -372,7 +372,7 @@ h4 {
   color: #fff; }
 
 p {
-  font-size: 1.125em;
+  font-size: 0.875em;
   font-weight: 400;
   color: #fff; }
 
@@ -482,6 +482,7 @@ body {
   height: auto; }
 
 .topNav__about {
+  font-size: 1.125em;
   opacity: 0.7;
   position: relative;
   transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
@@ -553,5 +554,82 @@ body {
 
 .home__name {
   letter-spacing: 12px; }
+
+.about {
+  width: 100%;
+  height: 100vh;
+  padding-top: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start; }
+
+.about__description {
+  position: relative;
+  padding-left: 15%; }
+
+.about__event {
+  position: relative;
+  padding-right: 8%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center; }
+
+.about__event__flex {
+  width: 600px; }
+
+.about__event__background,
+.about__description__background {
+  font-size: 288px;
+  width: 500%;
+  font-weight: 900;
+  letter-spacing: 30px;
+  transform: translateX(-70px);
+  position: absolute;
+  top: -35%;
+  left: 0;
+  z-index: -1;
+  opacity: 0.05; }
+
+.about__event__background {
+  top: -20%; }
+
+.about__event__explain,
+.about__description__explain {
+  line-height: 30px;
+  margin-top: 20px; }
+
+.about__description__explain {
+  width: 600px; }
+
+.about__event__info {
+  margin-top: 17px; }
+
+.about__eventInfo__text {
+  margin-top: 10px;
+  font-weight: 600; }
+
+.about__eventInfo__light {
+  margin-right: 25px;
+  font-weight: 300;
+  opacity: 0.6; }
+
+.about__event__link {
+  margin-top: 17px;
+  width: 220px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  padding: 20px 10px;
+  font-size: 0.9375em;
+  transition: all ease 0.3s; }
+  .about__event__link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all ease 0.3s; }
 
 /*# sourceMappingURL=main.css.map */

@@ -27,6 +27,7 @@ $demilogo: calc(50% + 50px);
 }
 
 .topNav__about {
+  font-size: em(18);
   opacity: 0.7;
   position: relative;
   transition: all $trans1 0.3s;

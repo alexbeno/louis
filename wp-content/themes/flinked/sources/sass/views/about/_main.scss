@@ -1,0 +1,72 @@
+.about {
+  width: 100%;
+  height: 100vh;
+  padding-top: 5%;
+  @include flex($direction: column, $align: flex-start, $justify: space-around);
+}
+
+.about__description {
+  position: relative;
+  padding-left: 15%;
+}
+
+.about__event {
+  position: relative;
+  padding-right: 8%;
+  width: 100%;
+  @include flex($justify: flex-end)
+}
+
+.about__event__flex {
+  width: 600px;
+}
+
+.about__event__background,
+.about__description__background {
+  font-size: 288px;
+  width: 500%;
+  font-weight: $heavy;
+  letter-spacing: 30px;
+  transform: translateX(-70px);
+  position: absolute;
+  top: -35%;
+  left: 0;
+  z-index: -1;
+  opacity: 0.05;
+}
+
+.about__event__background {
+  top: -20%;
+}
+
+.about__event__explain,
+.about__description__explain {
+  line-height: 30px;
+  margin-top: 20px;
+}
+
+.about__description__explain {
+  width: 600px;
+}
+
+.about__event__info {
+  margin-top: 17px;
+}
+
+.about__eventInfo__text {
+  margin-top: 10px;
+  font-weight: $semi-bold;
+}
+
+.about__eventInfo__light {
+  margin-right: 25px;
+  font-weight: $light;
+  opacity: 0.6;
+}
+
+
+.about__event__link{
+  margin-top: 17px;
+  width: 220px;
+  @include buttonA();
+}
