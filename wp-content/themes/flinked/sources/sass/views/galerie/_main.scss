@@ -1,0 +1,24 @@
+/*
+* instagrame style
+*/
+
+#sb_instagram #sbi_images {
+  width: 10000px;
+}
+
+#sb_instagram .sbi_photo {
+  height: 100vh !important;
+}
+
+#sb_instagram.sbi_col_4 #sbi_images .sbi_item {
+  width: 25vw !important;
+}
+
+/*
+* custome style
+*/
+
+.galerie {
+  width: 100%;
+  overflow: hidden;
+}
