@@ -4,6 +4,7 @@
 
 #sb_instagram #sbi_images {
   width: 10000px;
+  transition: all $trans1 0.3s;
 }
 
 #sb_instagram .sbi_photo {
@@ -12,6 +13,8 @@
 
 #sb_instagram.sbi_col_4 #sbi_images .sbi_item {
   width: 25vw !important;
+  opacity: 0.4;
+  transition: all $trans1 0.5s;
 }
 
 /*
@@ -21,4 +24,50 @@
 .galerie {
   width: 100%;
   overflow: hidden;
+}
+
+// .galerie__instagram {
+//   opacity: 0.4;
+// }
+
+//navigation
+
+.galerie__next,
+.galerie__prev {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 60px;
+  z-index: 5;
+  @include flex();
+}
+
+.galerie__prev {
+  left: 0;
+}
+
+.galerie__next {
+  right: 0;
+}
+
+.galerie__nextLink,
+.galerie__prevLink {
+  display: block;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.1)
+}
+
+.galerie__nextLink__image,
+.galerie__prevLink__image {
+  width: 30px;
+  height: auto;
+}
+
+#sb_instagram.sbi_col_4 #sbi_images .sbi_item.galerie__instaLittle {
+  width: 15vw !important;
+}
+
+#sb_instagram.sbi_col_4 #sbi_images .sbi_item.galerie__instaBig {
+  width: 70vw !important;
+  opacity: 1;
 }

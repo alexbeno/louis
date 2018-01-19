@@ -23,12 +23,16 @@ $event_link = get_field( "about--evenement--lien_vers_levenement" );
 ?>
 <main>
   <div class="about">
+
+    <!-- start about description part -->
     <div class="about__description">
       <p class="about__description__background"><?= $description_bg ?></p>
       <h3 class="about__description__name"><?= $description_title ?></h3>
       <p class="about__description__explain"><?= $description_description ?></p>
     </div>
+    <!-- start about description part -->
 
+    <!-- start about event part -->
     <div class="about__event">
       <p class="about__event__background"><?= $event_bg ?></p>
       <div class="about__event__flex">
@@ -42,6 +46,7 @@ $event_link = get_field( "about--evenement--lien_vers_levenement" );
         <a href="<?= $event_link ?>" class="about__event__link">Reserver votre place</a>
       </div>
     </div>
+    <!-- start about event part -->
 
     <!-- start left naviagtion -->
     <div class="navigation navigation--turnLeft aboutjdjdd__rightNavigation">
@@ -49,5 +54,6 @@ $event_link = get_field( "about--evenement--lien_vers_levenement" );
       <div class="navigation__border aboutjdjdd__rightNavigation__border"></div>
     </div>
     <!-- end left naviagtion -->
+
   </div>
 </main>
