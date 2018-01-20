@@ -4,6 +4,7 @@ $name = get_field( "home--nom" );
 $musicNav = get_field('option--musique', 'option');
 $galerieNav = get_field('option--galerie', 'option');
 $dragNav = get_field('option--drag', 'option');
+$galeriePage = get_field('option--galerie_page', 'option');
 ?>
 
 <main>
@@ -19,7 +20,7 @@ $dragNav = get_field('option--drag', 'option');
     <!-- end right naviagtion -->
 
     <!-- start left naviagtion -->
-    <div class="navigation navigation--turnLeft homePage__rightNavigation">
+    <div class="navigation navigation--turnLeft homePage__rightNavigation goToGalerie" data-galeriePage="<?= $galeriePage ?>">
       <p class="navigation__texte homePage__rightNavigation__texte"><?= $galerieNav ?></p>
       <div class="navigation__border homePage__rightNavigation__border"></div>
     </div>

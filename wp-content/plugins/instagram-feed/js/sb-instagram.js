@@ -331,12 +331,12 @@ if(!sbi_js_exists){
                 userFeed.run();
 
             }); //End User ID array loop
-        
+
         });
 
     }
 
-    jQuery( document ).ready(function() {
+    jQuery( document ).ready(function($) {
         sbi_init();
     });
 

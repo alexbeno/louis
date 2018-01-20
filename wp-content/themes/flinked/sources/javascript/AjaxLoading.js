@@ -29,7 +29,7 @@ export default function AjaxLoading (url)  {
        */
       function switch_content( data ) {
           $('main').remove();
-          $('body').append($(data));
+          $('.bottomNav').after($(data));
       }
   });
 }

@@ -87,9 +87,11 @@ class InstaSlider
     }
 
     init() {
-      this.prevClick()
-      this.nextClick()
-      this.clickImage()
+      if(this.mover != null) {
+        this.prevClick()
+        this.nextClick()
+        this.clickImage()
+      }
     }
 }
 

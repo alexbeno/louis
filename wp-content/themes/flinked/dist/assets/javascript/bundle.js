@@ -36,7 +36,7 @@ function AjaxLoading(url) {
          */
         function switch_content(data) {
             $('main').remove();
-            $('body').append($(data));
+            $('.bottomNav').after($(data));
         }
     });
 }
@@ -226,9 +226,11 @@ var InstaSlider = function () {
   }, {
     key: 'init',
     value: function init() {
-      this.prevClick();
-      this.nextClick();
-      this.clickImage();
+      if (this.mover != null) {
+        this.prevClick();
+        this.nextClick();
+        this.clickImage();
+      }
     }
   }]);
 
@@ -310,6 +312,134 @@ exports.default = LinkNavigation;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _AjaxLoading = require('./AjaxLoading.js');
+
+var _AjaxLoading2 = _interopRequireDefault(_AjaxLoading);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var ScrollLethargy = function () {
+  /**
+   * Constructor
+   */
+  function ScrollLethargy() {
+    _classCallCheck(this, ScrollLethargy);
+
+    this.content = document.querySelector('body');
+    // this.insta = true;
+    this.music = true;
+
+    // home parameter
+    this.home = true;
+    this.contentHome = document.querySelector('.homePage');
+    this.homeLink = document.querySelector('.goToGalerie');
+
+    //galerie parameter
+    this.insta = true;
+    this.instaLink = document.querySelector('.goToHome');
+  }
+
+  /**
+   * Send Ajax request
+   * @param url url of the page
+   */
+
+
+  _createClass(ScrollLethargy, [{
+    key: 'sendAjax',
+    value: function sendAjax(url) {
+      (0, _AjaxLoading2.default)(url);
+    }
+
+    /**
+     * lethargy event for Galerie
+     */
+
+  }, {
+    key: 'homePage',
+    value: function homePage() {
+      var _this = this;
+
+      var lethargy = new Lethargy();
+      var scroll = function scroll(e) {
+        if (_this.home === true) {
+          e.preventDefault();
+          e.stopPropagation();
+          if (lethargy.check(e) === -1) {
+
+            _this.home = false;
+            _this.sendAjax(_this.homeLink.getAttribute('data-galeriePage'));
+          }
+        }
+      };
+      this.contentHome.addEventListener('mousewheel', scroll);
+      this.contentHome.addEventListener('DOMMouseScroll', scroll);
+      this.contentHome.addEventListener('wheel', scroll);
+      this.contentHome.addEventListener('MozMousePixelScroll', scroll);
+    }
+
+    /**
+    * lethargy event for Galerie
+    */
+
+  }, {
+    key: 'scrolling',
+    value: function scrolling() {
+      var _this2 = this;
+
+      var lethargy = new Lethargy();
+      var scroll = function scroll(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (_this2.home === true) {
+          if (lethargy.check(e) === -1) {
+
+            _this2.homeLink = document.querySelector('.goToGalerie');
+            _this2.home = false;
+            _this2.insta = true;
+            _this2.sendAjax(_this2.homeLink.getAttribute('data-galeriePage'));
+          }
+        }
+        if (_this2.insta === true) {
+          if (lethargy.check(e) === 1) {
+
+            _this2.instaLink = document.querySelector('.goToHome');
+            _this2.insta = false;
+            _this2.home = true;
+            _this2.sendAjax(_this2.instaLink.getAttribute('data-homePage'));
+          }
+        }
+      };
+      this.content.addEventListener('mousewheel', scroll);
+      this.content.addEventListener('DOMMouseScroll', scroll);
+      this.content.addEventListener('wheel', scroll);
+      this.content.addEventListener('MozMousePixelScroll', scroll);
+    }
+  }, {
+    key: 'init',
+    value: function init() {
+
+      this.scrolling();
+    }
+  }]);
+
+  return ScrollLethargy;
+}();
+
+exports.default = ScrollLethargy;
+
+},{"./AjaxLoading.js":1}],5:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
@@ -328,7 +458,7 @@ function Welcome(options) {
 
 exports.default = Welcome;
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 'use strict';
 
 var _Welcome = require('./Welcome.js');
@@ -342,6 +472,10 @@ var _LinkNavigation2 = _interopRequireDefault(_LinkNavigation);
 var _InstaSlider = require('./InstaSlider.js');
 
 var _InstaSlider2 = _interopRequireDefault(_InstaSlider);
+
+var _ScrollLethargy = require('./ScrollLethargy.js');
+
+var _ScrollLethargy2 = _interopRequireDefault(_ScrollLethargy);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -363,10 +497,18 @@ function init() {
 
   var instaSlider = new _InstaSlider2.default();
   instaSlider.init();
+
+  /**
+   * ScrollLethargy.js
+   * add scroll event for home page and galerie page, and musique page
+   */
+
+  var scrollLethargy = new _ScrollLethargy2.default();
+  scrollLethargy.init();
 }
 
 window.onload = init;
 
-},{"./InstaSlider.js":2,"./LinkNavigation.js":3,"./Welcome.js":4}]},{},[5])
+},{"./InstaSlider.js":2,"./LinkNavigation.js":3,"./ScrollLethargy.js":4,"./Welcome.js":5}]},{},[6])
 
 //# sourceMappingURL=bundle.js.map

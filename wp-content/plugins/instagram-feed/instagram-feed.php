@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*
 Plugin Name: Instagram Feed
 Plugin URI: https://smashballoon.com/instagram-feed
@@ -37,7 +37,7 @@ function display_instagram($atts, $content = null) {
     /******************* SHORTCODE OPTIONS ********************/
 
     $options = get_option('sb_instagram_settings');
-    
+
     //Pass in shortcode attrbutes
     $atts = shortcode_atts(
     array(
@@ -205,7 +205,7 @@ function display_instagram($atts, $content = null) {
     if( $sb_instagram_show_follow_btn && !$sb_instagram_error ) $sb_instagram_content .= $sb_instagram_follow_btn_html;
 
     $sb_instagram_content .= '</div>'; //End #sbi_load
-    
+
     $sb_instagram_content .= '</div>'; //End #sb_instagram
 
     //If using an ajax theme then add the JS to the bottom of the feed
@@ -213,7 +213,7 @@ function display_instagram($atts, $content = null) {
         $sb_instagram_content .= '<script type="text/javascript">var sb_instagram_js_options = {"sb_instagram_at":"'.trim($options['sb_instagram_at']).'"};</script>';
         $sb_instagram_content .= "<script type='text/javascript' src='".plugins_url( '/js/sb-instagram.min.js?ver='.SBIVER , __FILE__ )."'></script>";
     }
- 
+
     //Return our feed HTML to display
     return $sb_instagram_content;
 
@@ -235,7 +235,7 @@ function sb_instagram_styles_enqueue() {
     if(isset($options['sb_instagram_disable_awesome'])){
         if( !$options['sb_instagram_disable_awesome'] || !isset($options['sb_instagram_disable_awesome']) ) wp_enqueue_style( 'sb-font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(), '4.7.0' );
     }
-    
+
 }
 
 //Enqueue scripts
@@ -268,7 +268,7 @@ function sb_instagram_scripts_enqueue() {
 add_action( 'wp_head', 'sb_instagram_custom_css' );
 function sb_instagram_custom_css() {
     $options = get_option('sb_instagram_settings');
-    
+
     isset($options[ 'sb_instagram_custom_css' ]) ? $sb_instagram_custom_css = trim($options['sb_instagram_custom_css']) : $sb_instagram_custom_css = '';
 
     //Show CSS if an admin (so can see Hide Photos link), if including Custom CSS or if hiding some photos
@@ -315,7 +315,7 @@ function sb_instagram_custom_js() {
     if( !empty($sb_instagram_custom_js) ) echo "});";
     if( !empty($sb_instagram_custom_js) ) echo "\r\n";
     if( !empty($sb_instagram_custom_js) ) echo '</script>';
-    if( !empty($sb_instagram_custom_js) ) echo "\r\n";    
+    if( !empty($sb_instagram_custom_js) ) echo "\r\n";
 }
 
 if ( ! function_exists( 'sb_remove_style_version' ) ) {
