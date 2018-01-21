@@ -32,7 +32,7 @@ export default function AjaxLoading (url)  {
         mainTransition.init();
         setTimeout(function(){
             switch_content( data );
-        }, 300);
+        }, 1000);
 
         setTimeout(function(){
             mainTransition.return();

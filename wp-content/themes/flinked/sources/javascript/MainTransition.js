@@ -8,7 +8,6 @@ class MainTransition
       this.cards = document.querySelectorAll('.trans__single');
       this.logo = document.querySelector('.trans__logo');
       this.main = document.querySelector('.trans');
-      this.mainContent = document.querySelector('main');
     }
 
     return() {
@@ -31,7 +30,6 @@ class MainTransition
 
     init() {
       this.main.classList.add('trans--active')
-      this.mainContent.classList.add('main--active')
       setTimeout( () => {
         for (const card of this.cards) {
           card.classList.add('trans__single--active')

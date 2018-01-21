@@ -91,13 +91,3 @@
   }
 }
 
-
-.main--active {
-  opacity: 0;
-  transition: all $trans1 0.3s;
-}
-
-.main--return {
-  opacity: 1;
-  transition: all $trans1 0.3s;
-}

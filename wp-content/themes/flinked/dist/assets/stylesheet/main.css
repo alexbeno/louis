@@ -527,14 +527,6 @@ a {
   background: #000000;
   transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s 0.3s; }
 
-.main--active {
-  opacity: 0;
-  transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
-
-.main--return {
-  opacity: 1;
-  transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
-
 /*
 * layout
 */

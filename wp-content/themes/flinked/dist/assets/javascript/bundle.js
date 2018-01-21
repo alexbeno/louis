@@ -46,7 +46,7 @@ function AjaxLoading(url) {
             mainTransition.init();
             setTimeout(function () {
                 switch_content(data);
-            }, 300);
+            }, 1000);
 
             setTimeout(function () {
                 mainTransition.return();
@@ -400,7 +400,6 @@ var MainTransition = function () {
     this.cards = document.querySelectorAll('.trans__single');
     this.logo = document.querySelector('.trans__logo');
     this.main = document.querySelector('.trans');
-    this.mainContent = document.querySelector('main');
   }
 
   _createClass(MainTransition, [{
@@ -473,7 +472,6 @@ var MainTransition = function () {
       var _this2 = this;
 
       this.main.classList.add('trans--active');
-      this.mainContent.classList.add('main--active');
       setTimeout(function () {
         var _iteratorNormalCompletion3 = true;
         var _didIteratorError3 = false;

@@ -3,6 +3,7 @@
 $musicNav = get_field('option--musique', 'option');
 $homeNav = get_field('option--accueil', 'option');
 $dragNav = get_field('option--drag', 'option');
+$scrollNav = get_field('option--scroll', 'option');
 $homePage = get_field('option---accueil_page', 'option');
 
 //content
@@ -30,6 +31,7 @@ $shortCode = get_field( "instragram_shortcode" );
     <div class="navigation navigation--turnRight galerie__rightNavigation goToHome" data-homePage =" <?= $homePage ?>">
       <p class="navigation__texte galerie__rightNavigation__texte"><?= $homeNav ?></p>
       <div class="navigation__border galerie__rightNavigation__border"></div>
+      <p class="navigation__subTexte homePage__rightNavigation__subTexte"><?= $scrollNav ?></p>
     </div>
     <!-- end left naviagtion -->
   </div>
