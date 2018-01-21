@@ -130,14 +130,16 @@ var Cursor = function () {
             var _this2 = this;
 
             window.addEventListener('mousedown', function () {
-                console.log('hey');
-                var dragCursor = _this2.image.getAttribute('data-drag');
-                console.log(dragCursor);
-                _this2.image.setAttribute('src', dragCursor);
+                if (document.querySelector('.home') !== null) {
+                    var dragCursor = _this2.image.getAttribute('data-drag');
+                    _this2.image.setAttribute('src', dragCursor);
+                }
             });
             window.addEventListener('mouseup', function () {
-                var dragCursor = _this2.image.getAttribute('data-normal');
-                _this2.image.setAttribute('src', dragCursor);
+                if (document.querySelector('.home') !== null) {
+                    var dragCursor = _this2.image.getAttribute('data-normal');
+                    _this2.image.setAttribute('src', dragCursor);
+                }
             });
         }
     }, {
@@ -287,34 +289,64 @@ var InstaSlider = function () {
           // console.log(single)
           single.addEventListener('click', function (e) {
             e.preventDefault();
-            var _iteratorNormalCompletion3 = true;
-            var _didIteratorError3 = false;
-            var _iteratorError3 = undefined;
 
-            try {
-              for (var _iterator3 = _this3.single[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-                var singleBis = _step3.value;
+            if (single.classList.contains('galerie__instaBig') === true) {
+              var _iteratorNormalCompletion3 = true;
+              var _didIteratorError3 = false;
+              var _iteratorError3 = undefined;
 
-                singleBis.classList.remove('galerie__instaLittle');
-                singleBis.classList.remove('galerie__instaBig');
-                singleBis.classList.add('galerie__instaLittle');
-              }
-            } catch (err) {
-              _didIteratorError3 = true;
-              _iteratorError3 = err;
-            } finally {
               try {
-                if (!_iteratorNormalCompletion3 && _iterator3.return) {
-                  _iterator3.return();
+                for (var _iterator3 = _this3.single[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                  var singleBis = _step3.value;
+
+                  singleBis.classList.remove('galerie__instaLittle');
+                  singleBis.classList.remove('galerie__instaLittle');
+                  singleBis.classList.remove('galerie__instaBig');
                 }
+              } catch (err) {
+                _didIteratorError3 = true;
+                _iteratorError3 = err;
               } finally {
-                if (_didIteratorError3) {
-                  throw _iteratorError3;
+                try {
+                  if (!_iteratorNormalCompletion3 && _iterator3.return) {
+                    _iterator3.return();
+                  }
+                } finally {
+                  if (_didIteratorError3) {
+                    throw _iteratorError3;
+                  }
                 }
               }
-            }
+            } else {
+              var _iteratorNormalCompletion4 = true;
+              var _didIteratorError4 = false;
+              var _iteratorError4 = undefined;
 
-            single.classList.add('galerie__instaBig');
+              try {
+                for (var _iterator4 = _this3.single[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+                  var _singleBis = _step4.value;
+
+                  _singleBis.classList.remove('galerie__instaLittle');
+                  _singleBis.classList.add('galerie__instaLittle');
+                  _singleBis.classList.remove('galerie__instaBig');
+                }
+              } catch (err) {
+                _didIteratorError4 = true;
+                _iteratorError4 = err;
+              } finally {
+                try {
+                  if (!_iteratorNormalCompletion4 && _iterator4.return) {
+                    _iterator4.return();
+                  }
+                } finally {
+                  if (_didIteratorError4) {
+                    throw _iteratorError4;
+                  }
+                }
+              }
+
+              single.classList.add('galerie__instaBig');
+            }
           });
         };
 

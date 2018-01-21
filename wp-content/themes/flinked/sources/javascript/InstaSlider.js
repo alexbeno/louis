@@ -77,12 +77,22 @@ class InstaSlider
         // console.log(single)
         single.addEventListener('click', (e) =>  {
           e.preventDefault()
-          for (let singleBis of this.single) {
-            singleBis.classList.remove('galerie__instaLittle')
-            singleBis.classList.remove('galerie__instaBig')
-            singleBis.classList.add('galerie__instaLittle')
+
+          if(single.classList.contains('galerie__instaBig') === true) {
+            for (let singleBis of this.single) {
+              singleBis.classList.remove('galerie__instaLittle')
+              singleBis.classList.remove('galerie__instaLittle')
+              singleBis.classList.remove('galerie__instaBig')
+            }
           }
-          single.classList.add('galerie__instaBig')
+          else {
+            for (let singleBis of this.single) {
+              singleBis.classList.remove('galerie__instaLittle')
+              singleBis.classList.add('galerie__instaLittle')
+              singleBis.classList.remove('galerie__instaBig')
+            }
+            single.classList.add('galerie__instaBig')
+          }
         })
       }
     }

@@ -27,14 +27,16 @@ class Cursor
 
     dragCursor () {
         window.addEventListener('mousedown', () => {
-            console.log('hey')
-            let dragCursor = this.image.getAttribute('data-drag');
-            console.log(dragCursor);
-            this.image.setAttribute('src', dragCursor)
+            if(document.querySelector('.home') !== null) {
+                let dragCursor = this.image.getAttribute('data-drag');
+                this.image.setAttribute('src', dragCursor)
+            }
         });
         window.addEventListener('mouseup', () => {
-            let dragCursor = this.image.getAttribute('data-normal');
-            this.image.setAttribute('src', dragCursor)
+            if(document.querySelector('.home') !== null) {
+                let dragCursor = this.image.getAttribute('data-normal');
+                this.image.setAttribute('src', dragCursor)
+            }
         });
     }
 
