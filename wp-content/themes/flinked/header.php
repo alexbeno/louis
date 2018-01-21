@@ -38,3 +38,15 @@
         <!-- end top nav -->
 
 
+        <!-- start trans -->
+        <div class="trans">
+            <div class="trans__single trans__single--1"></div>
+            <div class="trans__single trans__single--2"></div>
+            <div class="trans__single trans__single--3"></div>
+            <div class="trans__single trans__single--4"></div>
+            <div class="trans__logo">
+                <img src="<?php the_field('option--logo', 'option'); ?>" alt="" class="trans__logo__img">
+            </div>
+        </div>
+        <!-- end trans -->
+

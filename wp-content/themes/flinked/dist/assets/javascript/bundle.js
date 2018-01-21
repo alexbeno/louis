@@ -10,6 +10,10 @@ var _InstaSlider = require('./InstaSlider.js');
 
 var _InstaSlider2 = _interopRequireDefault(_InstaSlider);
 
+var _MainTransition = require('./MainTransition.js');
+
+var _MainTransition2 = _interopRequireDefault(_MainTransition);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function AjaxLoading(url) {
@@ -30,11 +34,23 @@ function AjaxLoading(url) {
                     'X-Requested-With': 'BAWXMLHttpRequest'
                 }
             }).done(function (data) {
+                mainTrans(data);
                 history.pushState(data, 'louis J', url);
-                switch_content(data);
             }).error(function () {
                 console.log("we can't load de page");
             });
+        }
+
+        function mainTrans(data) {
+            var mainTransition = new _MainTransition2.default();
+            mainTransition.init();
+            setTimeout(function () {
+                switch_content(data);
+            }, 300);
+
+            setTimeout(function () {
+                mainTransition.return();
+            }, 1200);
         }
 
         function loadScript() {
@@ -66,7 +82,7 @@ function AjaxLoading(url) {
     });
 }
 
-},{"./InstaSlider.js":2}],2:[function(require,module,exports){
+},{"./InstaSlider.js":2,"./MainTransition.js":4}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -372,6 +388,137 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var MainTransition = function () {
+  /**
+   * Constructor
+   */
+  function MainTransition() {
+    _classCallCheck(this, MainTransition);
+
+    this.cards = document.querySelectorAll('.trans__single');
+    this.logo = document.querySelector('.trans__logo');
+    this.main = document.querySelector('.trans');
+    this.mainContent = document.querySelector('main');
+  }
+
+  _createClass(MainTransition, [{
+    key: 'return',
+    value: function _return() {
+      var _this = this;
+
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = this.cards[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var card = _step.value;
+
+          card.classList.add('trans__single--return');
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+
+      this.logo.classList.add('trans__logo--return');
+      setTimeout(function () {
+        _this.main.classList.remove('trans--active');
+        setTimeout(function () {
+          var _iteratorNormalCompletion2 = true;
+          var _didIteratorError2 = false;
+          var _iteratorError2 = undefined;
+
+          try {
+            for (var _iterator2 = _this.cards[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+              var card = _step2.value;
+
+              card.classList.remove('trans__single--active');
+              card.classList.remove('trans__single--return');
+              _this.logo.classList.remove('trans__logo--active');
+              _this.logo.classList.remove('trans__logo--return');
+            }
+          } catch (err) {
+            _didIteratorError2 = true;
+            _iteratorError2 = err;
+          } finally {
+            try {
+              if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                _iterator2.return();
+              }
+            } finally {
+              if (_didIteratorError2) {
+                throw _iteratorError2;
+              }
+            }
+          }
+        }, 100);
+      }, 1100);
+    }
+  }, {
+    key: 'init',
+    value: function init() {
+      var _this2 = this;
+
+      this.main.classList.add('trans--active');
+      this.mainContent.classList.add('main--active');
+      setTimeout(function () {
+        var _iteratorNormalCompletion3 = true;
+        var _didIteratorError3 = false;
+        var _iteratorError3 = undefined;
+
+        try {
+          for (var _iterator3 = _this2.cards[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+            var card = _step3.value;
+
+            card.classList.add('trans__single--active');
+          }
+        } catch (err) {
+          _didIteratorError3 = true;
+          _iteratorError3 = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion3 && _iterator3.return) {
+              _iterator3.return();
+            }
+          } finally {
+            if (_didIteratorError3) {
+              throw _iteratorError3;
+            }
+          }
+        }
+
+        _this2.logo.classList.add('trans__logo--active');
+      }, 100);
+    }
+  }]);
+
+  return MainTransition;
+}();
+
+exports.default = MainTransition;
+
+},{}],5:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _AjaxLoading = require('./AjaxLoading.js');
 
 var _AjaxLoading2 = _interopRequireDefault(_AjaxLoading);
@@ -496,7 +643,7 @@ var ScrollLethargy = function () {
 
 exports.default = ScrollLethargy;
 
-},{"./AjaxLoading.js":1}],5:[function(require,module,exports){
+},{"./AjaxLoading.js":1}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -518,7 +665,7 @@ function Welcome(options) {
 
 exports.default = Welcome;
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 'use strict';
 
 var _Welcome = require('./Welcome.js');
@@ -538,6 +685,9 @@ var _ScrollLethargy = require('./ScrollLethargy.js');
 var _ScrollLethargy2 = _interopRequireDefault(_ScrollLethargy);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// import MainTransition from './MainTransition.js'
+
 
 function init() {
   var welcome = new _Welcome2.default();
@@ -565,10 +715,18 @@ function init() {
 
   var scrollLethargy = new _ScrollLethargy2.default();
   scrollLethargy.init();
+
+  /**
+   * MainTransition.js
+   * transition of the page
+   */
+
+  // let mainTransition = new MainTransition();
+  // mainTransition.init();
 }
 
 window.onload = init;
 
-},{"./InstaSlider.js":2,"./LinkNavigation.js":3,"./ScrollLethargy.js":4,"./Welcome.js":5}]},{},[6])
+},{"./InstaSlider.js":2,"./LinkNavigation.js":3,"./ScrollLethargy.js":5,"./Welcome.js":6}]},{},[7])
 
 //# sourceMappingURL=bundle.js.map

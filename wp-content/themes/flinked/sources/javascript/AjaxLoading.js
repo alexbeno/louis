@@ -1,4 +1,5 @@
 import InstaSlider from './InstaSlider.js'
+import MainTransition from './MainTransition.js'
 
 export default function AjaxLoading (url)  {
   jQuery(document).ready(function ($) {
@@ -18,11 +19,24 @@ export default function AjaxLoading (url)  {
                   'X-Requested-With':'BAWXMLHttpRequest'
               }
           }).done( function( data ) {
+              mainTrans(data);
               history.pushState(data, 'louis J', url);
-              switch_content( data );
+
           }).error( function() {
               console.log("we can't load de page")
           });
+      }
+
+      function mainTrans (data) {
+        let mainTransition = new MainTransition();
+        mainTransition.init();
+        setTimeout(function(){
+            switch_content( data );
+        }, 300);
+
+        setTimeout(function(){
+            mainTransition.return();
+        }, 1200);
       }
 
       function loadScript () {
