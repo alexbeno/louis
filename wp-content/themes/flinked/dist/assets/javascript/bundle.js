@@ -130,7 +130,7 @@ var Cursor = function () {
             var _this2 = this;
 
             window.addEventListener('mousedown', function () {
-                if (document.querySelector('.home') !== null) {
+                if (document.querySelector('.homePage') !== null) {
                     var dragCursor = _this2.image.getAttribute('data-drag');
                     _this2.image.setAttribute('src', dragCursor);
                 }
