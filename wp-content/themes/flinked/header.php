@@ -37,7 +37,6 @@
         </div>
         <!-- end top nav -->
 
-
         <!-- start trans -->
         <div class="trans">
             <div class="trans__single trans__single--1"></div>
@@ -50,3 +49,8 @@
         </div>
         <!-- end trans -->
 
+        <!-- start cursor -->
+        <div class="cursor">
+            <img src="<?= IMAGES_URL ?>/cursor/cursor.png" alt="" class="cursor__img" data-normal="<?= IMAGES_URL ?>/cursor/cursor.png" data-drag="<?= IMAGES_URL ?>/cursor/cursorActive.png" data-quit="<?= IMAGES_URL ?>/cursor/cursorQuit.png">
+        </div>
+        <!-- end cursor -->

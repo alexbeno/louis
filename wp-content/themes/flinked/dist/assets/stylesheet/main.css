@@ -482,6 +482,10 @@ a {
   opacity: 0;
   transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
 
+.trans__logo__img {
+  width: 180px;
+  height: auto; }
+
 .trans__single {
   position: relative;
   width: 25%;
@@ -526,6 +530,18 @@ a {
 .trans__single--4::after {
   background: #000000;
   transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s 0.3s; }
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  user-select: none; }
+
+.cursor__img {
+  width: 50px;
+  height: auto;
+  user-select: none; }
 
 /*
 * layout

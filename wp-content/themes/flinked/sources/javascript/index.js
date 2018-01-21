@@ -2,7 +2,7 @@ import Welcome from './Welcome.js'
 import LinkNavigation from './LinkNavigation.js'
 import InstaSlider from './InstaSlider.js'
 import ScrollLethargy from './ScrollLethargy.js'
-// import MainTransition from './MainTransition.js'
+import Cursor from './Cursor.js'
 
 
 function init() {
@@ -33,12 +33,12 @@ function init() {
   scrollLethargy.init();
 
   /**
-   * MainTransition.js
+   * Cursor.js
    * transition of the page
    */
 
-  // let mainTransition = new MainTransition();
-  // mainTransition.init();
+  let cursor = new Cursor();
+  cursor.init();
 }
 
 window.onload = init;

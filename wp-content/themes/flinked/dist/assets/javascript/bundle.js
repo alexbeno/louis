@@ -82,7 +82,78 @@ function AjaxLoading(url) {
     });
 }
 
-},{"./InstaSlider.js":2,"./MainTransition.js":4}],2:[function(require,module,exports){
+},{"./InstaSlider.js":3,"./MainTransition.js":5}],2:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Cursor = function () {
+    /**
+     * Constructor
+     */
+    function Cursor() {
+        _classCallCheck(this, Cursor);
+
+        this.cursor = document.querySelector('.cursor');
+        this.image = document.querySelector('.cursor__img');
+    }
+
+    _createClass(Cursor, [{
+        key: 'mouseEvent',
+        value: function mouseEvent() {
+            var _this = this;
+
+            var mouse = { x: 0.5, y: 1 };
+            window.addEventListener('mousemove', function (event) {
+                mouse.x = event.clientX;
+                mouse.y = event.clientY;
+                _this.moveCursor(mouse.x, mouse.y);
+            });
+        }
+    }, {
+        key: 'moveCursor',
+        value: function moveCursor(x, y) {
+            var top = y - this.cursor.offsetHeight / 2;
+            var left = x - this.cursor.offsetWidth / 2;
+            this.cursor.style.top = top + 'px';
+            this.cursor.style.left = left + 'px';
+        }
+    }, {
+        key: 'dragCursor',
+        value: function dragCursor() {
+            var _this2 = this;
+
+            window.addEventListener('mousedown', function () {
+                console.log('hey');
+                var dragCursor = _this2.image.getAttribute('data-drag');
+                console.log(dragCursor);
+                _this2.image.setAttribute('src', dragCursor);
+            });
+            window.addEventListener('mouseup', function () {
+                var dragCursor = _this2.image.getAttribute('data-normal');
+                _this2.image.setAttribute('src', dragCursor);
+            });
+        }
+    }, {
+        key: 'init',
+        value: function init() {
+            this.mouseEvent();
+            this.dragCursor();
+        }
+    }]);
+
+    return Cursor;
+}();
+
+exports.default = Cursor;
+
+},{}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -310,7 +381,7 @@ var InstaSlider = function () {
 
 exports.default = InstaSlider;
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -379,7 +450,7 @@ var LinkNavigation = function () {
 
 exports.default = LinkNavigation;
 
-},{"./AjaxLoading.js":1}],4:[function(require,module,exports){
+},{"./AjaxLoading.js":1}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -508,7 +579,7 @@ var MainTransition = function () {
 
 exports.default = MainTransition;
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -641,7 +712,7 @@ var ScrollLethargy = function () {
 
 exports.default = ScrollLethargy;
 
-},{"./AjaxLoading.js":1}],6:[function(require,module,exports){
+},{"./AjaxLoading.js":1}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -663,7 +734,7 @@ function Welcome(options) {
 
 exports.default = Welcome;
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 'use strict';
 
 var _Welcome = require('./Welcome.js');
@@ -682,10 +753,11 @@ var _ScrollLethargy = require('./ScrollLethargy.js');
 
 var _ScrollLethargy2 = _interopRequireDefault(_ScrollLethargy);
 
+var _Cursor = require('./Cursor.js');
+
+var _Cursor2 = _interopRequireDefault(_Cursor);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// import MainTransition from './MainTransition.js'
-
 
 function init() {
   var welcome = new _Welcome2.default();
@@ -715,16 +787,16 @@ function init() {
   scrollLethargy.init();
 
   /**
-   * MainTransition.js
+   * Cursor.js
    * transition of the page
    */
 
-  // let mainTransition = new MainTransition();
-  // mainTransition.init();
+  var cursor = new _Cursor2.default();
+  cursor.init();
 }
 
 window.onload = init;
 
-},{"./InstaSlider.js":2,"./LinkNavigation.js":3,"./ScrollLethargy.js":5,"./Welcome.js":6}]},{},[7])
+},{"./Cursor.js":2,"./InstaSlider.js":3,"./LinkNavigation.js":4,"./ScrollLethargy.js":6,"./Welcome.js":7}]},{},[8])
 
 //# sourceMappingURL=bundle.js.map
