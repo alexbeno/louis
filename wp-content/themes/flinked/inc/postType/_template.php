@@ -5,12 +5,15 @@
 
 add_action( 'init', 'create_post_type' );
 function create_post_type() {
-  register_post_type( 'work',
+  register_post_type( 'album',
     array(
       'labels' => array(
-        'name' => __( 'works' ),
-        'singular_name' => __( 'work' )
+        'name' => 'albums',
+        'singular_name' => 'album',
+        'add_new_item' => 'Ajouter une album',
+        'edit_item' => "Modifier l'album",
       ),
+      'menu_icon' => 'dashicons-megaphone',
       'public' => true,
         'supports' => array(
       	'title',
