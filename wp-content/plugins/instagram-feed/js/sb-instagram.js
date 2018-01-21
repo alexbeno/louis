@@ -336,8 +336,11 @@ if(!sbi_js_exists){
 
     }
 
-    jQuery( document ).ready(function($) {
-        sbi_init();
-    });
-
+    // jQuery( document ).ready(function($) {
+    //     sbi_init();
+    // });
 } // end sbi_js_exists check
+
+jQuery( document ).ready(function($) {
+    sbi_init();
+});

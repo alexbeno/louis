@@ -20,6 +20,7 @@ class ScrollLethargy
         //galerie parameter
         this.insta = true;
         this.instaLink = document.querySelector('.goToHome');
+        this.scriptA = document.querySelector('.insta-scriptA');
     }
 
     /**
@@ -78,6 +79,7 @@ class ScrollLethargy
             this.instaLink = document.querySelector('.goToHome');
             this.insta = false;
             this.home = true;
+            this.scriptA.remove();
             this.sendAjax(this.instaLink.getAttribute('data-homePage'))
           }
         }

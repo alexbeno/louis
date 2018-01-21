@@ -74,6 +74,7 @@ class InstaSlider
      */
     clickImage() {
       for (let single of this.single) {
+        // console.log(single)
         single.addEventListener('click', (e) =>  {
           e.preventDefault()
           for (let singleBis of this.single) {
@@ -86,11 +87,36 @@ class InstaSlider
       }
     }
 
+    /**
+     * watch for loading of instagram content
+     */
+
+    setVar() {
+      var watching = setInterval( () => {
+        if(document.querySelector('.sbi_item') !== null) {
+
+          //set variable
+          this.mover = document.querySelector('#sbi_images')
+          this.single = document.querySelectorAll('.sbi_item')
+          this.next = document.querySelector('.galerie__next')
+          this.prev = document.querySelector('.galerie__prev')
+          this.max = this.single.length - 4
+
+          //init function
+          this.prevClick()
+          this.nextClick()
+          this.clickImage()
+
+          //clear watching
+          clearInterval(watching);
+          return;
+        }
+      }, 10);
+    }
+
     init() {
       if(this.mover != null) {
-        this.prevClick()
-        this.nextClick()
-        this.clickImage()
+        this.setVar();
       }
     }
 }

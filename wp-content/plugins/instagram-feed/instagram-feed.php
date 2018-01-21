@@ -211,7 +211,19 @@ function display_instagram($atts, $content = null) {
     //If using an ajax theme then add the JS to the bottom of the feed
     if($sb_instagram_ajax_theme){
         $sb_instagram_content .= '<script type="text/javascript">var sb_instagram_js_options = {"sb_instagram_at":"'.trim($options['sb_instagram_at']).'"};</script>';
-        $sb_instagram_content .= "<script type='text/javascript' src='".plugins_url( '/js/sb-instagram.min.js?ver='.SBIVER , __FILE__ )."'></script>";
+        // $sb_instagram_content .= "<script type='text/javascript' src='".plugins_url( '/js/sb-instagram.min.js?ver='.SBIVER , __FILE__ )."'></script>";
+?>
+        <script>
+            var body = document.querySelector('body');
+            var scriptA = document.createElement('script');
+            var linkA = '<?= plugins_url( '/js/sb-instagram.min.js?ver='.SBIVER , __FILE__ ) ?>';
+
+            scriptA.src = linkA
+
+            scriptA.classList.add('insta-scriptA');
+            body.appendChild(scriptA);
+        </script>
+<?php
     }
 
     //Return our feed HTML to display

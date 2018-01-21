@@ -5,6 +5,13 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = AjaxLoading;
+
+var _InstaSlider = require('./InstaSlider.js');
+
+var _InstaSlider2 = _interopRequireDefault(_InstaSlider);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function AjaxLoading(url) {
     jQuery(document).ready(function ($) {
 
@@ -30,6 +37,23 @@ function AjaxLoading(url) {
             });
         }
 
+        function loadScript() {
+            var pathName = window.location.pathname;
+            pathName = pathName.split("/");
+            pathName = pathName[1];
+            if (pathName === "galerie") {
+                loadGalerieScript();
+            }
+        }
+
+        function loadGalerieScript() {
+
+            var instaSlider = null;
+
+            instaSlider = new _InstaSlider2.default();
+            instaSlider.init();
+        }
+
         /**
          * replace current content
          * @param {*} data
@@ -37,11 +61,12 @@ function AjaxLoading(url) {
         function switch_content(data) {
             $('main').remove();
             $('.bottomNav').after($(data));
+            loadScript();
         }
     });
 }
 
-},{}],2:[function(require,module,exports){
+},{"./InstaSlider.js":2}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -172,6 +197,7 @@ var InstaSlider = function () {
         var _loop = function _loop() {
           var single = _step2.value;
 
+          // console.log(single)
           single.addEventListener('click', function (e) {
             e.preventDefault();
             var _iteratorNormalCompletion3 = true;
@@ -223,13 +249,42 @@ var InstaSlider = function () {
         }
       }
     }
+
+    /**
+     * watch for loading of instagram content
+     */
+
+  }, {
+    key: 'setVar',
+    value: function setVar() {
+      var _this4 = this;
+
+      var watching = setInterval(function () {
+        if (document.querySelector('.sbi_item') !== null) {
+
+          //set variable
+          _this4.mover = document.querySelector('#sbi_images');
+          _this4.single = document.querySelectorAll('.sbi_item');
+          _this4.next = document.querySelector('.galerie__next');
+          _this4.prev = document.querySelector('.galerie__prev');
+          _this4.max = _this4.single.length - 4;
+
+          //init function
+          _this4.prevClick();
+          _this4.nextClick();
+          _this4.clickImage();
+
+          //clear watching
+          clearInterval(watching);
+          return;
+        }
+      }, 10);
+    }
   }, {
     key: 'init',
     value: function init() {
       if (this.mover != null) {
-        this.prevClick();
-        this.nextClick();
-        this.clickImage();
+        this.setVar();
       }
     }
   }]);
@@ -344,6 +399,7 @@ var ScrollLethargy = function () {
     //galerie parameter
     this.insta = true;
     this.instaLink = document.querySelector('.goToHome');
+    this.scriptA = document.querySelector('.insta-scriptA');
   }
 
   /**
@@ -414,6 +470,7 @@ var ScrollLethargy = function () {
             _this2.instaLink = document.querySelector('.goToHome');
             _this2.insta = false;
             _this2.home = true;
+            _this2.scriptA.remove();
             _this2.sendAjax(_this2.instaLink.getAttribute('data-homePage'));
           }
         }

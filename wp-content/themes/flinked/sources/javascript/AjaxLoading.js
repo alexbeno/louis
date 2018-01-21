@@ -1,3 +1,5 @@
+import InstaSlider from './InstaSlider.js'
+
 export default function AjaxLoading (url)  {
   jQuery(document).ready(function ($) {
 
@@ -23,6 +25,23 @@ export default function AjaxLoading (url)  {
           });
       }
 
+      function loadScript () {
+        var pathName = window.location.pathname;
+        pathName = pathName.split("/");
+        pathName = pathName[1];
+        if(pathName === "galerie") {
+            loadGalerieScript();
+        }
+      }
+
+      function loadGalerieScript() {
+
+        let instaSlider = null;
+
+        instaSlider = new InstaSlider();
+        instaSlider.init();
+      }
+
       /**
        * replace current content
        * @param {*} data
@@ -30,6 +49,7 @@ export default function AjaxLoading (url)  {
       function switch_content( data ) {
           $('main').remove();
           $('.bottomNav').after($(data));
+          loadScript();
       }
   });
 }
