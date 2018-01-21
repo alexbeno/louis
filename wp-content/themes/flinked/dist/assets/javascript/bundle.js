@@ -456,22 +456,25 @@ var ScrollLethargy = function () {
         e.stopPropagation();
 
         if (_this2.home === true) {
-          if (lethargy.check(e) === -1) {
+          if (document.querySelector('.goToGalerie') !== null) {
+            if (lethargy.check(e) === -1) {
 
-            _this2.homeLink = document.querySelector('.goToGalerie');
-            _this2.home = false;
-            _this2.insta = true;
-            _this2.sendAjax(_this2.homeLink.getAttribute('data-galeriePage'));
+              _this2.homeLink = document.querySelector('.goToGalerie');
+              _this2.home = false;
+              _this2.insta = true;
+              _this2.sendAjax(_this2.homeLink.getAttribute('data-galeriePage'));
+            }
           }
         }
         if (_this2.insta === true) {
-          if (lethargy.check(e) === 1) {
-
-            _this2.instaLink = document.querySelector('.goToHome');
-            _this2.insta = false;
-            _this2.home = true;
-            _this2.scriptA.remove();
-            _this2.sendAjax(_this2.instaLink.getAttribute('data-homePage'));
+          if (document.querySelector('.goToHome') !== null) {
+            if (lethargy.check(e) === 1) {
+              _this2.instaLink = document.querySelector('.goToHome');
+              _this2.insta = false;
+              _this2.home = true;
+              _this2.scriptA.remove();
+              _this2.sendAjax(_this2.instaLink.getAttribute('data-homePage'));
+            }
           }
         }
       };

@@ -64,23 +64,26 @@ class ScrollLethargy
         e.stopPropagation();
 
         if (this.home === true) {
-          if (lethargy.check(e) === -1) {
+          if(document.querySelector('.goToGalerie') !== null) {
+            if (lethargy.check(e) === -1) {
 
-            this.homeLink = document.querySelector('.goToGalerie');
-            this.home = false;
-            this.insta = true;
-            this.sendAjax(this.homeLink.getAttribute('data-galeriePage'))
+              this.homeLink = document.querySelector('.goToGalerie');
+              this.home = false;
+              this.insta = true;
+              this.sendAjax(this.homeLink.getAttribute('data-galeriePage'))
 
+            }
           }
         }
         if (this.insta === true) {
-          if (lethargy.check(e) === 1) {
-
-            this.instaLink = document.querySelector('.goToHome');
-            this.insta = false;
-            this.home = true;
-            this.scriptA.remove();
-            this.sendAjax(this.instaLink.getAttribute('data-homePage'))
+          if(document.querySelector('.goToHome') !== null) {
+            if (lethargy.check(e) === 1) {
+              this.instaLink = document.querySelector('.goToHome');
+              this.insta = false;
+              this.home = true;
+              this.scriptA.remove();
+              this.sendAjax(this.instaLink.getAttribute('data-homePage'))
+            }
           }
         }
       };
