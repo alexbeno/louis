@@ -10,7 +10,7 @@ function create_post_type() {
       'labels' => array(
         'name' => 'albums',
         'singular_name' => 'album',
-        'add_new_item' => 'Ajouter une album',
+        'add_new_item' => 'Ajouter un album',
         'edit_item' => "Modifier l'album",
       ),
       'menu_icon' => 'dashicons-megaphone',
