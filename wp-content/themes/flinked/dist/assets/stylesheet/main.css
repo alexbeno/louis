@@ -799,12 +799,19 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding-left: 10vw; }
+  padding-left: 15vw;
+  transition: padding cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
 
 .musiquePage__drag {
   text-align: center;
   position: relative;
-  width: 80vw; }
+  width: 70vw;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
 
 .musiquePage__drag__img {
   width: 400px;
@@ -812,7 +819,92 @@ body {
   user-select: none; }
 
 .musiquePage__drag__title {
-  margin-top: -100px;
-  user-select: none; }
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  user-select: none;
+  transition: padding cubic-bezier(0.4, 0, 0.2, 1) 0.5s; }
+
+.musiquePage__content {
+  width: 50%;
+  font-family: "greycliff", serif;
+  text-align: left;
+  margin-left: -50%;
+  opacity: 0; }
+
+.musiquePage__content__title {
+  font-size: 3em;
+  font-weight: 900;
+  letter-spacing: 13px;
+  margin-bottom: 26px; }
+
+.musiquePage__content__descriptions {
+  width: 80%;
+  font-size: 1.125em;
+  line-height: 30px; }
+
+.musiquePage__content__song {
+  margin-top: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center; }
+
+.musiquePage__content__songPlatform__single {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 5px;
+  font-size: 0.875em; }
+
+.musiquePage__content__songPlatform__singlePref {
+  margin-right: 15px;
+  font-weight: 300;
+  opacity: 0.65; }
+
+.musiquePage__content__songPlatform__singleName {
+  font-weight: 400;
+  position: relative; }
+  .musiquePage__content__songPlatform__singleName:after {
+    content: '';
+    position: absolute;
+    top: calc(50% + 2px);
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: #fff;
+    transform: scale(0);
+    transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
+  .musiquePage__content__songPlatform__singleName:hover {
+    opacity: 1;
+    transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.2s; }
+    .musiquePage__content__songPlatform__singleName:hover::after {
+      transform: scale(0.6);
+      transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.2s; }
+
+.musiquePage__content__songplay {
+  margin-right: 45px;
+  width: 52px;
+  height: auto;
+  cursor: pointer; }
+
+.musiquePage__content--active {
+  margin-left: 0%;
+  opacity: 1; }
+
+.musiquePage__drag__title--active {
+  bottom: -100px;
+  opacity: 0;
+  transition: cubic-bezier(0.4, 0, 0.2, 1) 0.5s; }
+
+.musiquePage__dragMover--active {
+  padding-left: 0vw;
+  transition: padding cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
+
+.musiquePage__drag--active {
+  width: 100vw;
+  transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
 
 /*# sourceMappingURL=main.css.map */

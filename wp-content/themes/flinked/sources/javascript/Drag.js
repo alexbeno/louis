@@ -7,7 +7,9 @@ class Drag
     {
         this.mover = document.querySelector('.musiquePage__dragMover');
         this.single = document.querySelectorAll('.musiquePage__drag');
+        this.pochette = document.querySelectorAll('.musiquePage__drag__img');
         this.singleOne = document.querySelector('.musiquePage__drag');
+        this.canDrag = true;
     }
 
     setMoverSize() {
@@ -43,26 +45,29 @@ class Drag
       })
 
       .on('dragmove', function (event) {
-        x += event.dx;
-        y = event.dy;
-        let size = (element.offsetWidth - element.offsetWidth * 2) + that.singleOne.offsetWidth
-        console.log(parseFloat(element.getAttribute('data-x')))
-        if( size < parseFloat(element.getAttribute('data-x')) && parseFloat(element.getAttribute('data-x')) < 1 )
-        {
-          that.dragMoveListener(element, event.dx)
-        }
-        else if( parseFloat(element.getAttribute('data-x')) > 0 ) {
-          x = -1
-          element.setAttribute('data-x', -1)
-          that.dragMoveListener(element, event.dx)
-        }
-        else {
-          x = size - 1
-          element.setAttribute('data-x', size - 1)
-          that.dragMoveListener(element, event.dx)
-        }
+        if(that.canDrag === true) {
 
+          x += event.dx;
+          y = event.dy;
+          let size = (element.offsetWidth - element.offsetWidth * 2) + that.singleOne.offsetWidth
+          console.log(parseFloat(element.getAttribute('data-x')))
+          if( size < parseFloat(element.getAttribute('data-x')) && parseFloat(element.getAttribute('data-x')) < 1 )
+          {
+            that.dragMoveListener(element, event.dx)
+          }
+          else if( parseFloat(element.getAttribute('data-x')) > 0 ) {
+            x = -1
+            element.setAttribute('data-x', -1)
+            that.dragMoveListener(element, event.dx)
+          }
+          else {
+            x = size - 1
+            element.setAttribute('data-x', size - 1)
+            that.dragMoveListener(element, event.dx)
+          }
+        }
       });
+
     }
 
     dragMoveListener (el, dx) {
@@ -79,9 +84,23 @@ class Drag
       target.setAttribute('data-x', x);
     }
 
+    clickEvent() {
+      for (const single of this.single) {
+        console.log(single.childNodes[1])
+        single.childNodes[3].addEventListener('click', (e) => {
+          single.classList.add('musiquePage__drag--active')
+          single.childNodes[1].classList.add('musiquePage__content--active')
+          single.childNodes[5].classList.add('musiquePage__drag__title--active')
+          this.mover.classList.add('musiquePage__dragMover--active')
+          this.canDrag = false;
+        })
+      }
+    }
+
     init() {
         this.dragEvent()
         this.setMoverSize();
+        this.clickEvent();
     }
 }
 

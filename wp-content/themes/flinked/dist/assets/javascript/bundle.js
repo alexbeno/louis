@@ -136,7 +136,7 @@ var Cursor = function () {
                 }
             });
             window.addEventListener('mouseup', function () {
-                if (document.querySelector('.home') !== null) {
+                if (document.querySelector('.home') !== null || document.querySelector('.musiquePage') !== null) {
                     var dragCursor = _this2.image.getAttribute('data-normal');
                     _this2.image.setAttribute('src', dragCursor);
                 }
@@ -175,7 +175,9 @@ var Drag = function () {
 
     this.mover = document.querySelector('.musiquePage__dragMover');
     this.single = document.querySelectorAll('.musiquePage__drag');
+    this.pochette = document.querySelectorAll('.musiquePage__drag__img');
     this.singleOne = document.querySelector('.musiquePage__drag');
+    this.canDrag = true;
   }
 
   _createClass(Drag, [{
@@ -211,20 +213,23 @@ var Drag = function () {
           endOnly: true
         }
       }).on('dragmove', function (event) {
-        x += event.dx;
-        y = event.dy;
-        var size = element.offsetWidth - element.offsetWidth * 2 + that.singleOne.offsetWidth;
-        console.log(parseFloat(element.getAttribute('data-x')));
-        if (size < parseFloat(element.getAttribute('data-x')) && parseFloat(element.getAttribute('data-x')) < 1) {
-          that.dragMoveListener(element, event.dx);
-        } else if (parseFloat(element.getAttribute('data-x')) > 0) {
-          x = -1;
-          element.setAttribute('data-x', -1);
-          that.dragMoveListener(element, event.dx);
-        } else {
-          x = size - 1;
-          element.setAttribute('data-x', size - 1);
-          that.dragMoveListener(element, event.dx);
+        if (that.canDrag === true) {
+
+          x += event.dx;
+          y = event.dy;
+          var size = element.offsetWidth - element.offsetWidth * 2 + that.singleOne.offsetWidth;
+          console.log(parseFloat(element.getAttribute('data-x')));
+          if (size < parseFloat(element.getAttribute('data-x')) && parseFloat(element.getAttribute('data-x')) < 1) {
+            that.dragMoveListener(element, event.dx);
+          } else if (parseFloat(element.getAttribute('data-x')) > 0) {
+            x = -1;
+            element.setAttribute('data-x', -1);
+            that.dragMoveListener(element, event.dx);
+          } else {
+            x = size - 1;
+            element.setAttribute('data-x', size - 1);
+            that.dragMoveListener(element, event.dx);
+          }
         }
       });
     }
@@ -243,10 +248,52 @@ var Drag = function () {
       target.setAttribute('data-x', x);
     }
   }, {
+    key: 'clickEvent',
+    value: function clickEvent() {
+      var _this = this;
+
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        var _loop = function _loop() {
+          var single = _step.value;
+
+          console.log(single.childNodes[1]);
+          single.childNodes[3].addEventListener('click', function (e) {
+            single.classList.add('musiquePage__drag--active');
+            single.childNodes[1].classList.add('musiquePage__content--active');
+            single.childNodes[5].classList.add('musiquePage__drag__title--active');
+            _this.mover.classList.add('musiquePage__dragMover--active');
+            _this.canDrag = false;
+          });
+        };
+
+        for (var _iterator = this.single[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          _loop();
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+    }
+  }, {
     key: 'init',
     value: function init() {
       this.dragEvent();
       this.setMoverSize();
+      this.clickEvent();
     }
   }]);
 

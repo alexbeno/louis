@@ -33,7 +33,7 @@ class Cursor
             }
         });
         window.addEventListener('mouseup', () => {
-            if(document.querySelector('.home') !== null) {
+            if(document.querySelector('.home') !== null || document.querySelector('.musiquePage') !== null) {
                 let dragCursor = this.image.getAttribute('data-normal');
                 this.image.setAttribute('src', dragCursor)
             }
