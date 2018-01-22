@@ -27,7 +27,7 @@ class Cursor
 
     dragCursor () {
         window.addEventListener('mousedown', () => {
-            if(document.querySelector('.homePage') !== null) {
+            if(document.querySelector('.homePage') !== null || document.querySelector('.musiquePage') !== null ) {
                 let dragCursor = this.image.getAttribute('data-drag');
                 this.image.setAttribute('src', dragCursor)
             }

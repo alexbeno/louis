@@ -82,7 +82,7 @@ function AjaxLoading(url) {
     });
 }
 
-},{"./InstaSlider.js":3,"./MainTransition.js":5}],2:[function(require,module,exports){
+},{"./InstaSlider.js":4,"./MainTransition.js":6}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -130,7 +130,7 @@ var Cursor = function () {
             var _this2 = this;
 
             window.addEventListener('mousedown', function () {
-                if (document.querySelector('.homePage') !== null) {
+                if (document.querySelector('.homePage') !== null || document.querySelector('.musiquePage') !== null) {
                     var dragCursor = _this2.image.getAttribute('data-drag');
                     _this2.image.setAttribute('src', dragCursor);
                 }
@@ -156,6 +156,93 @@ var Cursor = function () {
 exports.default = Cursor;
 
 },{}],3:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Drag = function () {
+  /**
+   * Constructor
+   */
+  function Drag() {
+    _classCallCheck(this, Drag);
+
+    this.mover = document.querySelector('.musiquePage__dragMover');
+  }
+
+  _createClass(Drag, [{
+    key: "changeAlbum",
+    value: function changeAlbum(x) {
+      this.mover.style.transform = "translateX(" + x + "px)";
+    }
+
+    /**
+     * event for detect the drag
+     * @function changeAlbum()
+     */
+
+  }, {
+    key: "dragEvent",
+    value: function dragEvent() {
+      var that = this;
+      var element = document.querySelector('.musiquePage__dragMover');
+      var x = 0;
+      var y = 0;
+      interact(element).draggable({
+        max: 1,
+        snap: {
+          targets: [interact.createSnapGrid({ x: 1, y: 1 })],
+          range: Infinity,
+          relativePoints: [{ x: 0, y: 0 }]
+        },
+        inertia: true,
+        restrict: {
+          restriction: element.parentNode,
+          elementRect: { top: 0, left: 0, bottom: 1, right: 1 },
+          endOnly: true
+        }
+      }).on('dragmove', function (event) {
+        x += event.dx;
+        y = event.dy;
+        // that.changeAlbum(x)
+        that.dragMoveListener(element, event.dx);
+        console.log(event.dx);
+      });
+    }
+  }, {
+    key: "dragMoveListener",
+    value: function dragMoveListener(el, dx) {
+      var target = el,
+
+      // keep the dragged position in the data-x/data-y attributes
+      x = parseFloat(target.getAttribute('data-x')) + dx;
+      console.log(dx);
+
+      // translate the element
+      target.style.webkitTransform = target.style.transform = 'translate(' + x + 'px)';
+
+      // update the posiion attributes
+      target.setAttribute('data-x', x);
+    }
+  }, {
+    key: "init",
+    value: function init() {
+      this.dragEvent();
+    }
+  }]);
+
+  return Drag;
+}();
+
+exports.default = Drag;
+
+},{}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -413,7 +500,7 @@ var InstaSlider = function () {
 
 exports.default = InstaSlider;
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -482,7 +569,7 @@ var LinkNavigation = function () {
 
 exports.default = LinkNavigation;
 
-},{"./AjaxLoading.js":1}],5:[function(require,module,exports){
+},{"./AjaxLoading.js":1}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -611,7 +698,7 @@ var MainTransition = function () {
 
 exports.default = MainTransition;
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -744,7 +831,7 @@ var ScrollLethargy = function () {
 
 exports.default = ScrollLethargy;
 
-},{"./AjaxLoading.js":1}],7:[function(require,module,exports){
+},{"./AjaxLoading.js":1}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -766,7 +853,7 @@ function Welcome(options) {
 
 exports.default = Welcome;
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 'use strict';
 
 var _Welcome = require('./Welcome.js');
@@ -788,6 +875,10 @@ var _ScrollLethargy2 = _interopRequireDefault(_ScrollLethargy);
 var _Cursor = require('./Cursor.js');
 
 var _Cursor2 = _interopRequireDefault(_Cursor);
+
+var _Drag = require('./Drag.js');
+
+var _Drag2 = _interopRequireDefault(_Drag);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -825,10 +916,18 @@ function init() {
 
   var cursor = new _Cursor2.default();
   cursor.init();
+
+  /**
+   * Drag.js
+   * drag musique page
+   */
+
+  var drag = new _Drag2.default();
+  drag.init();
 }
 
 window.onload = init;
 
-},{"./Cursor.js":2,"./InstaSlider.js":3,"./LinkNavigation.js":4,"./ScrollLethargy.js":6,"./Welcome.js":7}]},{},[8])
+},{"./Cursor.js":2,"./Drag.js":3,"./InstaSlider.js":4,"./LinkNavigation.js":5,"./ScrollLethargy.js":7,"./Welcome.js":8}]},{},[9])
 
 //# sourceMappingURL=bundle.js.map

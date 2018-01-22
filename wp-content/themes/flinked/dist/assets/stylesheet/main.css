@@ -784,4 +784,32 @@ body {
   width: 70vw !important;
   opacity: 1; }
 
+.musiquePage {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  justify-content: inherit; }
+
+.musiquePage__dragMover {
+  width: 200vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center; }
+
+.musiquePage__drag {
+  text-align: center;
+  position: relative;
+  width: 100vw; }
+
+.musiquePage__drag__img {
+  width: 400px;
+  height: auto; }
+
+.musiquePage__drag__title {
+  margin-top: -100px; }
+
 /*# sourceMappingURL=main.css.map */

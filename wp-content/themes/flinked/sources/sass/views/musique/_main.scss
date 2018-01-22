@@ -1,0 +1,28 @@
+
+.musiquePage {
+  width: 100%;
+  height: 100vh;
+  @include flex();
+  justify-content: inherit;
+}
+
+.musiquePage__dragMover {
+  width: 200vw;
+  @include flex($justify: space-between);
+  // transform: translateX(-100vw);
+}
+
+.musiquePage__drag {
+  text-align: center;
+  position: relative;
+  width: 100vw;
+}
+
+.musiquePage__drag__img {
+  width: 400px;
+  height: auto;
+}
+
+.musiquePage__drag__title {
+  margin-top: -100px;
+}

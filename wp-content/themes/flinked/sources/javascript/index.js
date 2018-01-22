@@ -3,6 +3,7 @@ import LinkNavigation from './LinkNavigation.js'
 import InstaSlider from './InstaSlider.js'
 import ScrollLethargy from './ScrollLethargy.js'
 import Cursor from './Cursor.js'
+import Drag from './Drag.js'
 
 
 function init() {
@@ -39,6 +40,14 @@ function init() {
 
   let cursor = new Cursor();
   cursor.init();
+
+  /**
+   * Drag.js
+   * drag musique page
+   */
+
+  let drag = new Drag();
+  drag.init();
 }
 
 window.onload = init;
