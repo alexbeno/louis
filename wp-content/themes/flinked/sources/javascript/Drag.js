@@ -6,10 +6,14 @@ class Drag
     constructor(  )
     {
         this.mover = document.querySelector('.musiquePage__dragMover');
+        this.single = document.querySelectorAll('.musiquePage__drag');
+        this.singleOne = document.querySelector('.musiquePage__drag');
     }
 
-    changeAlbum(x) {
-      this.mover.style.transform = "translateX("+ x + "px)"
+    setMoverSize() {
+      this.numberOfAlbum = this.single.length;
+      this.size = 80 * this.numberOfAlbum + 10;
+      this.mover.style.width = this.size + 'vw';
     }
 
     /**
@@ -41,7 +45,22 @@ class Drag
       .on('dragmove', function (event) {
         x += event.dx;
         y = event.dy;
-        that.dragMoveListener(element, event.dx)
+        let size = (element.offsetWidth - element.offsetWidth * 2) + that.singleOne.offsetWidth
+        console.log(parseFloat(element.getAttribute('data-x')))
+        if( size < parseFloat(element.getAttribute('data-x')) && parseFloat(element.getAttribute('data-x')) < 1 )
+        {
+          that.dragMoveListener(element, event.dx)
+        }
+        else if( parseFloat(element.getAttribute('data-x')) > 0 ) {
+          x = -1
+          element.setAttribute('data-x', -1)
+          that.dragMoveListener(element, event.dx)
+        }
+        else {
+          x = size - 1
+          element.setAttribute('data-x', size - 1)
+          that.dragMoveListener(element, event.dx)
+        }
 
       });
     }
@@ -62,6 +81,7 @@ class Drag
 
     init() {
         this.dragEvent()
+        this.setMoverSize();
     }
 }
 

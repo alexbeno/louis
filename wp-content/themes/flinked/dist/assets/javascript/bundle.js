@@ -156,7 +156,7 @@ var Cursor = function () {
 exports.default = Cursor;
 
 },{}],3:[function(require,module,exports){
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -174,12 +174,16 @@ var Drag = function () {
     _classCallCheck(this, Drag);
 
     this.mover = document.querySelector('.musiquePage__dragMover');
+    this.single = document.querySelectorAll('.musiquePage__drag');
+    this.singleOne = document.querySelector('.musiquePage__drag');
   }
 
   _createClass(Drag, [{
-    key: "changeAlbum",
-    value: function changeAlbum(x) {
-      this.mover.style.transform = "translateX(" + x + "px)";
+    key: 'setMoverSize',
+    value: function setMoverSize() {
+      this.numberOfAlbum = this.single.length;
+      this.size = 80 * this.numberOfAlbum + 10;
+      this.mover.style.width = this.size + 'vw';
     }
 
     /**
@@ -188,7 +192,7 @@ var Drag = function () {
      */
 
   }, {
-    key: "dragEvent",
+    key: 'dragEvent',
     value: function dragEvent() {
       var that = this;
       var element = document.querySelector('.musiquePage__dragMover');
@@ -209,11 +213,23 @@ var Drag = function () {
       }).on('dragmove', function (event) {
         x += event.dx;
         y = event.dy;
-        that.dragMoveListener(element, event.dx);
+        var size = element.offsetWidth - element.offsetWidth * 2 + that.singleOne.offsetWidth;
+        console.log(parseFloat(element.getAttribute('data-x')));
+        if (size < parseFloat(element.getAttribute('data-x')) && parseFloat(element.getAttribute('data-x')) < 1) {
+          that.dragMoveListener(element, event.dx);
+        } else if (parseFloat(element.getAttribute('data-x')) > 0) {
+          x = -1;
+          element.setAttribute('data-x', -1);
+          that.dragMoveListener(element, event.dx);
+        } else {
+          x = size - 1;
+          element.setAttribute('data-x', size - 1);
+          that.dragMoveListener(element, event.dx);
+        }
       });
     }
   }, {
-    key: "dragMoveListener",
+    key: 'dragMoveListener',
     value: function dragMoveListener(el, dx) {
       var target = el,
 
@@ -227,9 +243,10 @@ var Drag = function () {
       target.setAttribute('data-x', x);
     }
   }, {
-    key: "init",
+    key: 'init',
     value: function init() {
       this.dragEvent();
+      this.setMoverSize();
     }
   }]);
 
