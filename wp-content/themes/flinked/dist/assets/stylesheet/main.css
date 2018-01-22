@@ -797,7 +797,7 @@ body {
   width: 200vw;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center; }
 
 .musiquePage__drag {
@@ -807,9 +807,11 @@ body {
 
 .musiquePage__drag__img {
   width: 400px;
-  height: auto; }
+  height: auto;
+  user-select: none; }
 
 .musiquePage__drag__title {
-  margin-top: -100px; }
+  margin-top: -100px;
+  user-select: none; }
 
 /*# sourceMappingURL=main.css.map */

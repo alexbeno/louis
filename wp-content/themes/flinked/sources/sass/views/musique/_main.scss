@@ -8,8 +8,7 @@
 
 .musiquePage__dragMover {
   width: 200vw;
-  @include flex($justify: space-between);
-  // transform: translateX(-100vw);
+  @include flex($justify: center);
 }
 
 .musiquePage__drag {
@@ -21,8 +20,10 @@
 .musiquePage__drag__img {
   width: 400px;
   height: auto;
+  user-select: none;
 }
 
 .musiquePage__drag__title {
   margin-top: -100px;
+  user-select: none;
 }

@@ -29,11 +29,10 @@ class Drag
             interact.createSnapGrid({ x:1, y: 1 })
           ],
           range: Infinity,
-          relativePoints: [ { x: 0, y: 0 } ]
+          relativePoints: [ { x: 5, y: 5 } ]
         },
         inertia: true,
         restrict: {
-          restriction: element.parentNode,
           elementRect: { top: 0, left: 0, bottom: 1, right: 1 },
           endOnly: true
         },
@@ -42,18 +41,15 @@ class Drag
       .on('dragmove', function (event) {
         x += event.dx;
         y = event.dy;
-        // that.changeAlbum(x)
         that.dragMoveListener(element, event.dx)
-        console.log(event.dx);
 
       });
     }
 
     dragMoveListener (el, dx) {
       var target = el,
-          // keep the dragged position in the data-x/data-y attributes
-          x = (parseFloat(target.getAttribute('data-x'))) + dx;
-          console.log(dx)
+      // keep the dragged position in the data-x/data-y attributes
+      x = (parseFloat(target.getAttribute('data-x'))) + dx;
 
       // translate the element
       target.style.webkitTransform =
