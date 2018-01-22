@@ -164,6 +164,12 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _MainTransition = require('./MainTransition.js');
+
+var _MainTransition2 = _interopRequireDefault(_MainTransition);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Drag = function () {
@@ -178,6 +184,7 @@ var Drag = function () {
     this.pochette = document.querySelectorAll('.musiquePage__drag__img');
     this.singleOne = document.querySelector('.musiquePage__drag');
     this.canDrag = true;
+    this.active = false;
   }
 
   _createClass(Drag, [{
@@ -214,11 +221,10 @@ var Drag = function () {
         }
       }).on('dragmove', function (event) {
         if (that.canDrag === true) {
-
+          that.active = false;
           x += event.dx;
           y = event.dy;
           var size = element.offsetWidth - element.offsetWidth * 2 + that.singleOne.offsetWidth;
-          console.log(parseFloat(element.getAttribute('data-x')));
           if (size < parseFloat(element.getAttribute('data-x')) && parseFloat(element.getAttribute('data-x')) < 1) {
             that.dragMoveListener(element, event.dx);
           } else if (parseFloat(element.getAttribute('data-x')) > 0) {
@@ -230,6 +236,9 @@ var Drag = function () {
             element.setAttribute('data-x', size - 1);
             that.dragMoveListener(element, event.dx);
           }
+        }
+        if (that.active === false) {
+          // that.unshowAlbum();
         }
       });
     }
@@ -248,6 +257,19 @@ var Drag = function () {
       target.setAttribute('data-x', x);
     }
   }, {
+    key: 'unshowAlbum',
+    value: function unshowAlbum() {
+      var activeDrag = document.querySelector('.musiquePage__drag--active');
+      var activeContent = document.querySelector('.musiquePage__content--active');
+      var activeTitle = document.querySelector('.musiquePage__drag__title--active');
+      var activeMover = document.querySelector('.musiquePage__dragMover--active');
+
+      activeDrag.classList.remove('musiquePage__drag--active');
+      activeContent.classList.remove('musiquePage__content--active');
+      activeTitle.classList.remove('musiquePage__drag__title--active');
+      activeMover.classList.remove('musiquePage__dragMover--active');
+    }
+  }, {
     key: 'clickEvent',
     value: function clickEvent() {
       var _this = this;
@@ -260,13 +282,23 @@ var Drag = function () {
         var _loop = function _loop() {
           var single = _step.value;
 
-          console.log(single.childNodes[1]);
           single.childNodes[3].addEventListener('click', function (e) {
-            single.classList.add('musiquePage__drag--active');
-            single.childNodes[1].classList.add('musiquePage__content--active');
-            single.childNodes[5].classList.add('musiquePage__drag__title--active');
-            _this.mover.classList.add('musiquePage__dragMover--active');
+            var mainTransition = new _MainTransition2.default();
+            mainTransition.init();
             _this.canDrag = false;
+            _this.active = true;
+
+            setTimeout(function () {
+              single.classList.add('musiquePage__drag--active');
+              single.childNodes[1].classList.add('musiquePage__content--active');
+              single.childNodes[5].classList.add('musiquePage__drag__title--active');
+              _this.mover.classList.add('musiquePage__dragMover--active');
+            }, 1000);
+
+            setTimeout(function () {
+              mainTransition.return();
+              _this.canDrag = true;
+            }, 1200);
           });
         };
 
@@ -302,7 +334,7 @@ var Drag = function () {
 
 exports.default = Drag;
 
-},{}],4:[function(require,module,exports){
+},{"./MainTransition.js":6}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {

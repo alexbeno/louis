@@ -831,7 +831,9 @@ body {
   font-family: "greycliff", serif;
   text-align: left;
   margin-left: -50%;
-  opacity: 0; }
+  opacity: 0;
+  transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+  user-select: none; }
 
 .musiquePage__content__title {
   font-size: 3em;
@@ -892,7 +894,8 @@ body {
 
 .musiquePage__content--active {
   margin-left: 0%;
-  opacity: 1; }
+  opacity: 1;
+  transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
 
 .musiquePage__drag__title--active {
   bottom: -100px;

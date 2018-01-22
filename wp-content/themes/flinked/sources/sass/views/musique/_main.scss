@@ -47,6 +47,8 @@
   text-align: left;
   margin-left: -50%;
   opacity: 0;
+  transition: all $trans1 0.3s;
+  user-select: none;
 }
 
 .musiquePage__content__title {
@@ -113,6 +115,7 @@
 .musiquePage__content--active {
   margin-left: 0%;
   opacity: 1;
+  transition: all $trans1 0.3s;
 }
 
 .musiquePage__drag__title--active {

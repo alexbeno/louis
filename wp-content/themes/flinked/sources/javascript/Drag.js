@@ -1,3 +1,4 @@
+import MainTransition from './MainTransition.js'
 class Drag
 {
     /**
@@ -10,6 +11,7 @@ class Drag
         this.pochette = document.querySelectorAll('.musiquePage__drag__img');
         this.singleOne = document.querySelector('.musiquePage__drag');
         this.canDrag = true;
+        this.active = false;
     }
 
     setMoverSize() {
@@ -46,11 +48,10 @@ class Drag
 
       .on('dragmove', function (event) {
         if(that.canDrag === true) {
-
+          that.active = false;
           x += event.dx;
           y = event.dy;
           let size = (element.offsetWidth - element.offsetWidth * 2) + that.singleOne.offsetWidth
-          console.log(parseFloat(element.getAttribute('data-x')))
           if( size < parseFloat(element.getAttribute('data-x')) && parseFloat(element.getAttribute('data-x')) < 1 )
           {
             that.dragMoveListener(element, event.dx)
@@ -65,6 +66,9 @@ class Drag
             element.setAttribute('data-x', size - 1)
             that.dragMoveListener(element, event.dx)
           }
+        }
+        if(that.active === false) {
+          // that.unshowAlbum();
         }
       });
 
@@ -84,15 +88,37 @@ class Drag
       target.setAttribute('data-x', x);
     }
 
+    unshowAlbum () {
+      let activeDrag = document.querySelector('.musiquePage__drag--active')
+      let activeContent = document.querySelector('.musiquePage__content--active')
+      let activeTitle = document.querySelector('.musiquePage__drag__title--active')
+      let activeMover = document.querySelector('.musiquePage__dragMover--active')
+
+      activeDrag.classList.remove('musiquePage__drag--active')
+      activeContent.classList.remove('musiquePage__content--active')
+      activeTitle.classList.remove('musiquePage__drag__title--active')
+      activeMover.classList.remove('musiquePage__dragMover--active')
+
+    }
     clickEvent() {
       for (const single of this.single) {
-        console.log(single.childNodes[1])
         single.childNodes[3].addEventListener('click', (e) => {
-          single.classList.add('musiquePage__drag--active')
-          single.childNodes[1].classList.add('musiquePage__content--active')
-          single.childNodes[5].classList.add('musiquePage__drag__title--active')
-          this.mover.classList.add('musiquePage__dragMover--active')
+          let mainTransition = new MainTransition();
+          mainTransition.init();
           this.canDrag = false;
+          this.active = true;
+
+          setTimeout( () => {
+            single.classList.add('musiquePage__drag--active')
+            single.childNodes[1].classList.add('musiquePage__content--active')
+            single.childNodes[5].classList.add('musiquePage__drag__title--active')
+            this.mover.classList.add('musiquePage__dragMover--active')
+        }, 1000);
+
+        setTimeout(() => {
+            mainTransition.return();
+            this.canDrag = true;
+        }, 1200);
         })
       }
     }
