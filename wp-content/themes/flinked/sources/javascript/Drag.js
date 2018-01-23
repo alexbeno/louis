@@ -12,11 +12,39 @@ class Drag
         this.singleOne = document.querySelector('.musiquePage__drag');
         this.canDrag = true;
         this.active = false;
+        this.mainTransition = new MainTransition();
     }
 
     setMoverSize() {
       this.numberOfAlbum = this.single.length;
       this.size = 80 * this.numberOfAlbum + 10;
+      this.mover.style.width = this.size + 'vw';
+    }
+
+    unshowAlbum () {
+      let activeDrag = document.querySelector('.musiquePage__drag--active')
+      let activeContent = document.querySelector('.musiquePage__content--active')
+      let activeTitle = document.querySelector('.musiquePage__drag__title--active')
+      let activeMover = document.querySelector('.musiquePage__dragMover--active')
+
+      activeDrag.classList.remove('musiquePage__drag--active')
+      activeContent.classList.remove('musiquePage__content--active')
+      activeTitle.classList.remove('musiquePage__drag__title--active')
+      activeMover.classList.remove('musiquePage__dragMover--active')
+
+      this.setMoverSize();
+    }
+
+    centerScreen(index) {
+
+      let transScreen = 100 * index;
+
+      this.mover.style.webkitTransform =
+      this.mover.style.transform =
+        'translate(-' + transScreen + 'vw)';
+
+      this.numberOfAlbum = this.single.length;
+      this.size = 100 * this.numberOfAlbum;
       this.mover.style.width = this.size + 'vw';
     }
 
@@ -67,8 +95,8 @@ class Drag
             that.dragMoveListener(element, event.dx)
           }
         }
-        if(that.active === false) {
-          // that.unshowAlbum();
+        if(that.active === false && document.querySelector('.musiquePage__dragMover--active') !== null) {
+          that.unshowAlbum();
         }
       });
 
@@ -76,57 +104,44 @@ class Drag
 
     dragMoveListener (el, dx) {
       var target = el,
-      // keep the dragged position in the data-x/data-y attributes
       x = (parseFloat(target.getAttribute('data-x'))) + dx;
 
-      // translate the element
       target.style.webkitTransform =
       target.style.transform =
         'translate(' + x + 'px)';
 
-      // update the posiion attributes
       target.setAttribute('data-x', x);
     }
 
-    unshowAlbum () {
-      let activeDrag = document.querySelector('.musiquePage__drag--active')
-      let activeContent = document.querySelector('.musiquePage__content--active')
-      let activeTitle = document.querySelector('.musiquePage__drag__title--active')
-      let activeMover = document.querySelector('.musiquePage__dragMover--active')
-
-      activeDrag.classList.remove('musiquePage__drag--active')
-      activeContent.classList.remove('musiquePage__content--active')
-      activeTitle.classList.remove('musiquePage__drag__title--active')
-      activeMover.classList.remove('musiquePage__dragMover--active')
-
-    }
     clickEvent() {
-      for (const single of this.single) {
+      for (const [index, single ] of this.single.entries()) {
         single.childNodes[3].addEventListener('click', (e) => {
-          let mainTransition = new MainTransition();
-          mainTransition.init();
+          this.mainTransition.init();
           this.canDrag = false;
           this.active = true;
 
           setTimeout( () => {
+            this.centerScreen(index)
             single.classList.add('musiquePage__drag--active')
             single.childNodes[1].classList.add('musiquePage__content--active')
             single.childNodes[5].classList.add('musiquePage__drag__title--active')
             this.mover.classList.add('musiquePage__dragMover--active')
-        }, 1000);
+          }, 1000);
 
-        setTimeout(() => {
-            mainTransition.return();
-            this.canDrag = true;
-        }, 1200);
+          setTimeout(() => {
+              this.mainTransition.return();
+              this.canDrag = true;
+          }, 1200);
         })
       }
     }
 
     init() {
+      if(this.mover !== null) {
         this.dragEvent()
         this.setMoverSize();
-        this.clickEvent();
+        this.clickEvent();  
+      }
     }
 }
 

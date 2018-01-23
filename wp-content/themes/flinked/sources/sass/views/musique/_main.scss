@@ -8,6 +8,7 @@
 
 .musiquePage__dragMover {
   width: 200vw;
+  height: 100vh;
   @include flex($justify: center);
   padding-left: 15vw;
   transition: padding $trans1 0.3s;
@@ -132,4 +133,11 @@
 .musiquePage__drag--active {
   width: 100vw;
   transition: all $trans1 0.3s;
+}
+
+.musiquePage__dragMover--active {
+  .musiquePage__drag {
+    width: 100vw;
+    transition: all $trans1 0.3s;
+  }
 }

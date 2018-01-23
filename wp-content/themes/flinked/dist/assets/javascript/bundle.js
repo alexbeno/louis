@@ -82,7 +82,7 @@ function AjaxLoading(url) {
     });
 }
 
-},{"./InstaSlider.js":4,"./MainTransition.js":6}],2:[function(require,module,exports){
+},{"./InstaSlider.js":5,"./MainTransition.js":7}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -162,6 +162,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _MainTransition = require('./MainTransition.js');
@@ -185,6 +187,7 @@ var Drag = function () {
     this.singleOne = document.querySelector('.musiquePage__drag');
     this.canDrag = true;
     this.active = false;
+    this.mainTransition = new _MainTransition2.default();
   }
 
   _createClass(Drag, [{
@@ -192,6 +195,33 @@ var Drag = function () {
     value: function setMoverSize() {
       this.numberOfAlbum = this.single.length;
       this.size = 80 * this.numberOfAlbum + 10;
+      this.mover.style.width = this.size + 'vw';
+    }
+  }, {
+    key: 'unshowAlbum',
+    value: function unshowAlbum() {
+      var activeDrag = document.querySelector('.musiquePage__drag--active');
+      var activeContent = document.querySelector('.musiquePage__content--active');
+      var activeTitle = document.querySelector('.musiquePage__drag__title--active');
+      var activeMover = document.querySelector('.musiquePage__dragMover--active');
+
+      activeDrag.classList.remove('musiquePage__drag--active');
+      activeContent.classList.remove('musiquePage__content--active');
+      activeTitle.classList.remove('musiquePage__drag__title--active');
+      activeMover.classList.remove('musiquePage__dragMover--active');
+
+      this.setMoverSize();
+    }
+  }, {
+    key: 'centerScreen',
+    value: function centerScreen(index) {
+
+      var transScreen = 100 * index;
+
+      this.mover.style.webkitTransform = this.mover.style.transform = 'translate(-' + transScreen + 'vw)';
+
+      this.numberOfAlbum = this.single.length;
+      this.size = 100 * this.numberOfAlbum;
       this.mover.style.width = this.size + 'vw';
     }
 
@@ -237,8 +267,8 @@ var Drag = function () {
             that.dragMoveListener(element, event.dx);
           }
         }
-        if (that.active === false) {
-          // that.unshowAlbum();
+        if (that.active === false && document.querySelector('.musiquePage__dragMover--active') !== null) {
+          that.unshowAlbum();
         }
       });
     }
@@ -246,28 +276,11 @@ var Drag = function () {
     key: 'dragMoveListener',
     value: function dragMoveListener(el, dx) {
       var target = el,
+          x = parseFloat(target.getAttribute('data-x')) + dx;
 
-      // keep the dragged position in the data-x/data-y attributes
-      x = parseFloat(target.getAttribute('data-x')) + dx;
-
-      // translate the element
       target.style.webkitTransform = target.style.transform = 'translate(' + x + 'px)';
 
-      // update the posiion attributes
       target.setAttribute('data-x', x);
-    }
-  }, {
-    key: 'unshowAlbum',
-    value: function unshowAlbum() {
-      var activeDrag = document.querySelector('.musiquePage__drag--active');
-      var activeContent = document.querySelector('.musiquePage__content--active');
-      var activeTitle = document.querySelector('.musiquePage__drag__title--active');
-      var activeMover = document.querySelector('.musiquePage__dragMover--active');
-
-      activeDrag.classList.remove('musiquePage__drag--active');
-      activeContent.classList.remove('musiquePage__content--active');
-      activeTitle.classList.remove('musiquePage__drag__title--active');
-      activeMover.classList.remove('musiquePage__dragMover--active');
     }
   }, {
     key: 'clickEvent',
@@ -280,15 +293,17 @@ var Drag = function () {
 
       try {
         var _loop = function _loop() {
-          var single = _step.value;
+          var _step$value = _slicedToArray(_step.value, 2),
+              index = _step$value[0],
+              single = _step$value[1];
 
           single.childNodes[3].addEventListener('click', function (e) {
-            var mainTransition = new _MainTransition2.default();
-            mainTransition.init();
+            _this.mainTransition.init();
             _this.canDrag = false;
             _this.active = true;
 
             setTimeout(function () {
+              _this.centerScreen(index);
               single.classList.add('musiquePage__drag--active');
               single.childNodes[1].classList.add('musiquePage__content--active');
               single.childNodes[5].classList.add('musiquePage__drag__title--active');
@@ -296,13 +311,13 @@ var Drag = function () {
             }, 1000);
 
             setTimeout(function () {
-              mainTransition.return();
+              _this.mainTransition.return();
               _this.canDrag = true;
             }, 1200);
           });
         };
 
-        for (var _iterator = this.single[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        for (var _iterator = this.single.entries()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
           _loop();
         }
       } catch (err) {
@@ -323,9 +338,11 @@ var Drag = function () {
   }, {
     key: 'init',
     value: function init() {
-      this.dragEvent();
-      this.setMoverSize();
-      this.clickEvent();
+      if (this.mover !== null) {
+        this.dragEvent();
+        this.setMoverSize();
+        this.clickEvent();
+      }
     }
   }]);
 
@@ -334,7 +351,42 @@ var Drag = function () {
 
 exports.default = Drag;
 
-},{"./MainTransition.js":6}],4:[function(require,module,exports){
+},{"./MainTransition.js":7}],4:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var DragToMusique = function () {
+  /**
+   * Constructor
+   */
+  function DragToMusique() {
+    _classCallCheck(this, DragToMusique);
+
+    this.home = document.querySelector('.homePage');
+  }
+
+  _createClass(DragToMusique, [{
+    key: 'init',
+    value: function init() {
+      if (this.home !== null) {
+        console.log(this.home);
+      }
+    }
+  }]);
+
+  return DragToMusique;
+}();
+
+exports.default = DragToMusique;
+
+},{}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -592,7 +644,7 @@ var InstaSlider = function () {
 
 exports.default = InstaSlider;
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -661,7 +713,7 @@ var LinkNavigation = function () {
 
 exports.default = LinkNavigation;
 
-},{"./AjaxLoading.js":1}],6:[function(require,module,exports){
+},{"./AjaxLoading.js":1}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -790,7 +842,7 @@ var MainTransition = function () {
 
 exports.default = MainTransition;
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -923,7 +975,7 @@ var ScrollLethargy = function () {
 
 exports.default = ScrollLethargy;
 
-},{"./AjaxLoading.js":1}],8:[function(require,module,exports){
+},{"./AjaxLoading.js":1}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -945,7 +997,7 @@ function Welcome(options) {
 
 exports.default = Welcome;
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 'use strict';
 
 var _Welcome = require('./Welcome.js');
@@ -971,6 +1023,10 @@ var _Cursor2 = _interopRequireDefault(_Cursor);
 var _Drag = require('./Drag.js');
 
 var _Drag2 = _interopRequireDefault(_Drag);
+
+var _DragToMusique = require('./DragToMusique.js');
+
+var _DragToMusique2 = _interopRequireDefault(_DragToMusique);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1016,10 +1072,18 @@ function init() {
 
   var drag = new _Drag2.default();
   drag.init();
+
+  /**
+   * DragToMusique.js
+   * drag for show album
+   */
+
+  var dragToMusique = new _DragToMusique2.default();
+  dragToMusique.init();
 }
 
 window.onload = init;
 
-},{"./Cursor.js":2,"./Drag.js":3,"./InstaSlider.js":4,"./LinkNavigation.js":5,"./ScrollLethargy.js":7,"./Welcome.js":8}]},{},[9])
+},{"./Cursor.js":2,"./Drag.js":3,"./DragToMusique.js":4,"./InstaSlider.js":5,"./LinkNavigation.js":6,"./ScrollLethargy.js":8,"./Welcome.js":9}]},{},[10])
 
 //# sourceMappingURL=bundle.js.map

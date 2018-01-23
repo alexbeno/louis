@@ -4,6 +4,7 @@ import InstaSlider from './InstaSlider.js'
 import ScrollLethargy from './ScrollLethargy.js'
 import Cursor from './Cursor.js'
 import Drag from './Drag.js'
+import DragToMusique from './DragToMusique.js'
 
 
 function init() {
@@ -48,6 +49,14 @@ function init() {
 
   let drag = new Drag();
   drag.init();
+
+  /**
+   * DragToMusique.js
+   * drag for show album
+   */
+
+  let dragToMusique = new DragToMusique();
+  dragToMusique.init();
 }
 
 window.onload = init;
