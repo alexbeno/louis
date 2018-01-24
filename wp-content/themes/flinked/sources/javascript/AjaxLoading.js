@@ -37,6 +37,11 @@ export default function AjaxLoading (url, trans)  {
       function mainTrans (data) {
         let mainTransition = new MainTransition();
         mainTransition.init();
+
+        var image = document.querySelector('.cursor__img')
+        var dragCursor = image.getAttribute('data-normal');
+        image.setAttribute('src', dragCursor)
+
         setTimeout(function(){
             switch_content( data );
         }, 1000);
@@ -47,8 +52,31 @@ export default function AjaxLoading (url, trans)  {
       }
 
       function musiqueTrans (data) {
+        // var trans = document.querySelector('.album-trans');
+
+        // trans.style.display ="block";
+        // setTimeout( () => {
+        //   trans.classList.add('album-trans--active')
+        // }, 100);
+
+        // setTimeout(function(){
+
+        //     switch_content( data );
+        // }, 800);
+
+        // setTimeout(function(){
+        //     trans.classList.remove('album-trans--active')
+        //     setTimeout( () => {
+        //       trans.style.display ="none";
+        //     }, 800);
+        // }, 900);
         let mainTransition = new MainTransition();
         mainTransition.init();
+
+        var image = document.querySelector('.cursor__img')
+        var dragCursor = image.getAttribute('data-normal');
+        image.setAttribute('src', dragCursor)
+
         setTimeout(function(){
             switch_content( data );
         }, 1000);

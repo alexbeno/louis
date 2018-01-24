@@ -836,7 +836,8 @@ body {
 .musiquePage__drag__img {
   width: 400px;
   height: auto;
-  user-select: none; }
+  user-select: none;
+  cursor: pointer; }
 
 .musiquePage__drag__title {
   position: absolute;
