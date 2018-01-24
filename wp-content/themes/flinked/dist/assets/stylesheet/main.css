@@ -531,16 +531,34 @@ a {
   background: #000000;
   transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s 0.3s; }
 
+.album-trans {
+  width: 100vw;
+  height: 100vh;
+  background: #121315;
+  opacity: 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999999;
+  display: none;
+  transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.8s; }
+
+.album-trans--active {
+  opacity: 1;
+  transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.8s; }
+
 .cursor {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 99999;
+  user-select: none;
   pointer-events: none; }
 
 .cursor__img {
   width: 50px;
   height: auto;
+  user-select: none;
   pointer-events: none; }
 
 /*
@@ -902,7 +920,7 @@ body {
 .musiquePage__drag__title--active {
   bottom: -100px;
   opacity: 0;
-  transition: cubic-bezier(0.4, 0, 0.2, 1) 0.5s; }
+  transition: cubic-bezier(0.4, 0, 0.2, 1) 0.1s; }
 
 .musiquePage__dragMover--active {
   padding-left: 0vw;

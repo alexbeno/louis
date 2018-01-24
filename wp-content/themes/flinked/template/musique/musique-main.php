@@ -63,10 +63,10 @@ $galeriePage = get_field('option--galerie_page', 'option');
       <!-- end query  -->
       </div>
     <!-- start right naviagtion -->
-    <div class="navigation navigation--vertical homePage__rightNavigation">
-      <p class="navigation__texte homePage__rightNavigation__texte"><?= $musicNav ?></p>
-      <div class="navigation__border homePage__rightNavigation__border"></div>
-      <p class="navigation__subTexte homePage__rightNavigation__subTexte"><?= $dragNav ?></p>
+    <div class="navigation navigation--vertical musiquePage__rightNavigation">
+      <p class="navigation__texte musiquePage__rightNavigation__texte" data-text="<?= $musicNav ?>"><?= $musicNav ?></p>
+      <div class="navigation__border musiquePage__rightNavigation__border"></div>
+      <p class="navigation__subTexte musiquePage__rightNavigation__subTexte" data-text="<?= $dragNav ?>"><?= $dragNav ?></p>
     </div>
     <!-- end right naviagtion -->
 

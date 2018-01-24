@@ -172,13 +172,13 @@ var Cursor = function () {
             var _this2 = this;
 
             window.addEventListener('mousedown', function () {
-                if (document.querySelector('.homePage') !== null || document.querySelector('.musiquePage') !== null) {
+                if (document.querySelector('.homePage') !== null) {
                     var dragCursor = _this2.image.getAttribute('data-drag');
                     _this2.image.setAttribute('src', dragCursor);
                 }
             });
             window.addEventListener('mouseup', function () {
-                if (document.querySelector('.home') !== null || document.querySelector('.musiquePage') !== null) {
+                if (document.querySelector('.homePage') !== null) {
                     var dragCursor = _this2.image.getAttribute('data-normal');
                     _this2.image.setAttribute('src', dragCursor);
                 }
@@ -227,6 +227,11 @@ var Drag = function () {
     this.single = document.querySelectorAll('.musiquePage__drag');
     this.pochette = document.querySelectorAll('.musiquePage__drag__img');
     this.singleOne = document.querySelector('.musiquePage__drag');
+    this.trans = document.querySelector('.album-trans');
+    this.navText = document.querySelector('.musiquePage__rightNavigation__texte');
+    this.navSubText = document.querySelector('.musiquePage__rightNavigation__subTexte');
+    this.exit = document.querySelector('.musiquePage__rightNavigation');
+    this.image = document.querySelector('.cursor__img');
     this.canDrag = true;
     this.active = false;
     this.mainTransition = new _MainTransition2.default();
@@ -255,6 +260,17 @@ var Drag = function () {
       this.setMoverSize();
     }
   }, {
+    key: 'dragInAlbum',
+    value: function dragInAlbum() {
+      var current = document.querySelector('.active-album');
+      var index = parseInt(current.getAttribute('data-index'));
+      var next = index + 1;
+      var translate = next * 100;
+      if (next <= this.single.length) {
+        this.mover.style.transform = "translateX(-" + translate + "vw)";
+      }
+    }
+  }, {
     key: 'centerScreen',
     value: function centerScreen(index) {
 
@@ -265,6 +281,50 @@ var Drag = function () {
       this.numberOfAlbum = this.single.length;
       this.size = 100 * this.numberOfAlbum;
       this.mover.style.width = this.size + 'vw';
+    }
+  }, {
+    key: 'transitions',
+    value: function transitions() {
+      var _this = this;
+
+      this.trans.style.display = "block";
+      setTimeout(function () {
+        _this.trans.classList.add('album-trans--active');
+        var dragCursor = _this.image.getAttribute('data-normal');
+        _this.image.setAttribute('src', dragCursor);
+      }, 100);
+    }
+  }, {
+    key: 'transitionsReturn',
+    value: function transitionsReturn() {
+      var _this2 = this;
+
+      this.setExit();
+      this.trans.classList.remove('album-trans--active');
+      setTimeout(function () {
+        _this2.trans.style.display = "none";
+      }, 800);
+    }
+  }, {
+    key: 'setExit',
+    value: function setExit() {
+      var _this3 = this;
+
+      this.navText.innerText = "Fermer";
+      this.navSubText.innerText = "click";
+      this.exit.style.cursor = "pointer";
+
+      this.exit.addEventListener('click', function () {
+        if (_this3.active === true) {
+          _this3.exit.style.cursor = "initial";
+          _this3.navText.innerText = _this3.navText.getAttribute('data-text');
+          _this3.navSubText.innerText = _this3.navSubText.getAttribute('data-text');
+          _this3.unshowAlbum();
+          var dragCursor = _this3.image.getAttribute('data-drag');
+          _this3.image.setAttribute('src', dragCursor);
+          _this3.canDrag = true;
+        }
+      });
     }
 
     /**
@@ -309,9 +369,6 @@ var Drag = function () {
             that.dragMoveListener(element, event.dx);
           }
         }
-        if (that.active === false && document.querySelector('.musiquePage__dragMover--active') !== null) {
-          that.unshowAlbum();
-        }
       });
     }
   }, {
@@ -327,7 +384,7 @@ var Drag = function () {
   }, {
     key: 'clickEvent',
     value: function clickEvent() {
-      var _this = this;
+      var _this4 = this;
 
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
@@ -339,23 +396,24 @@ var Drag = function () {
               index = _step$value[0],
               single = _step$value[1];
 
+          single.setAttribute('data-index', index);
           single.childNodes[3].addEventListener('click', function (e) {
-            _this.mainTransition.init();
-            _this.canDrag = false;
-            _this.active = true;
+            _this4.transitions();
+            _this4.canDrag = false;
+            _this4.active = true;
+            single.classList.add('active-album');
 
             setTimeout(function () {
-              _this.centerScreen(index);
+              _this4.centerScreen(index);
               single.classList.add('musiquePage__drag--active');
               single.childNodes[1].classList.add('musiquePage__content--active');
               single.childNodes[5].classList.add('musiquePage__drag__title--active');
-              _this.mover.classList.add('musiquePage__dragMover--active');
-            }, 1000);
+              _this4.mover.classList.add('musiquePage__dragMover--active');
+            }, 800);
 
             setTimeout(function () {
-              _this.mainTransition.return();
-              _this.canDrag = true;
-            }, 1200);
+              _this4.transitionsReturn();
+            }, 1000);
           });
         };
 
@@ -381,6 +439,8 @@ var Drag = function () {
     key: 'init',
     value: function init() {
       if (this.mover !== null) {
+        var dragCursor = this.image.getAttribute('data-drag');
+        this.image.setAttribute('src', dragCursor);
         this.dragEvent();
         this.setMoverSize();
         this.clickEvent();
@@ -965,7 +1025,7 @@ var ScrollLethargy = function () {
     //galerie parameter
     this.insta = true;
     this.instaLink = document.querySelector('.goToHome');
-    this.scriptA = document.querySelector('.insta-scriptA');
+    this.scriptA;
   }
 
   /**
@@ -1038,6 +1098,7 @@ var ScrollLethargy = function () {
               _this2.instaLink = document.querySelector('.goToHome');
               _this2.insta = false;
               _this2.home = true;
+              _this2.scriptA = document.querySelector('.insta-scriptA');
               _this2.scriptA.remove();
               _this2.sendAjax(_this2.instaLink.getAttribute('data-homePage'));
             }

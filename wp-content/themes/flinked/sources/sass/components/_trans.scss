@@ -96,3 +96,21 @@
   }
 }
 
+
+.album-trans {
+  width: 100vw;
+  height: 100vh;
+  background: $black;
+  opacity: 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999999;
+  display: none;
+  transition: all $trans1 0.8s;
+}
+
+.album-trans--active {
+  opacity: 1;
+  transition: all $trans1 0.8s;
+}

@@ -122,7 +122,7 @@
 .musiquePage__drag__title--active {
   bottom: -100px;
   opacity: 0;
-  transition: $trans1 0.5s;
+  transition: $trans1 0.1s;
 }
 
 .musiquePage__dragMover--active {
@@ -141,3 +141,23 @@
     transition: all $trans1 0.3s;
   }
 }
+
+// .musiquePage__rightNavigation__subTexte {
+//   animation: drag $trans1 3s infinite;
+//   @include keyframes(drag) {
+//     0% {
+//         opacity: 1;
+//         transform: translateX(0);
+//     }
+
+//     90% {
+//       opacity: 0;
+//       transform: translateX(200%)
+//     }
+
+//     100% {
+//         opacity: 0;
+//         transform: translateX(0)
+//     }
+//   }
+// }

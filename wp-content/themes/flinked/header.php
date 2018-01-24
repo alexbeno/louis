@@ -49,6 +49,8 @@
         </div>
         <!-- end trans -->
 
+        <div class="album-trans"></div>
+
         <!-- start cursor -->
         <div class="cursor" onselectstart="return false;" ondragstart="return false;"   >
             <img onselectstart="return false;" ondragstart="return false;" src="<?= IMAGES_URL ?>/cursor/cursor.png" alt="" class="cursor__img" data-normal="<?= IMAGES_URL ?>/cursor/cursor.png" data-drag="<?= IMAGES_URL ?>/cursor/cursorActive.png" data-quit="<?= IMAGES_URL ?>/cursor/cursorQuit.png">
