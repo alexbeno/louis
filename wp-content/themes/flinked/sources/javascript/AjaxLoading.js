@@ -1,7 +1,9 @@
 import InstaSlider from './InstaSlider.js'
 import MainTransition from './MainTransition.js'
+import DragToMusique from './DragToMusique.js'
+import Drag from './Drag.js'
 
-export default function AjaxLoading (url)  {
+export default function AjaxLoading (url, trans)  {
   jQuery(document).ready(function ($) {
 
       // start perfom ajax request function with url parameter
@@ -19,7 +21,12 @@ export default function AjaxLoading (url)  {
                   'X-Requested-With':'BAWXMLHttpRequest'
               }
           }).done( function( data ) {
-              mainTrans(data);
+              if(trans != null && trans === "musiqueTrans") {
+                  musiqueTrans(data);
+              }
+              else {
+                mainTrans(data);
+              }
               history.pushState(data, 'louis J', url);
 
           }).error( function() {
@@ -39,12 +46,30 @@ export default function AjaxLoading (url)  {
         }, 1200);
       }
 
+      function musiqueTrans (data) {
+        let mainTransition = new MainTransition();
+        mainTransition.init();
+        setTimeout(function(){
+            switch_content( data );
+        }, 1000);
+
+        setTimeout(function(){
+            mainTransition.return();
+        }, 1200);
+      }
+
       function loadScript () {
         var pathName = window.location.pathname;
         pathName = pathName.split("/");
         pathName = pathName[1];
         if(pathName === "galerie") {
             loadGalerieScript();
+        }
+        if(pathName === "") {
+            loadHomeScript();
+        }
+        if(pathName === "musique") {
+            loadMusiqueScript();
         }
       }
 
@@ -54,6 +79,18 @@ export default function AjaxLoading (url)  {
 
         instaSlider = new InstaSlider();
         instaSlider.init();
+      }
+
+      function loadHomeScript() {
+        let dragToMusique = null
+        dragToMusique = new DragToMusique();
+        dragToMusique.init();
+      }
+
+      function loadMusiqueScript() {
+        let drag = null;
+        drag = new Drag();
+        drag.init();
       }
 
       /**

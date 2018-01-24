@@ -4,6 +4,7 @@
   height: 100vh;
   padding-left: 15%;
   @include flex($justify: space-between);
+  user-select: none;
 }
 
 .home__name {
