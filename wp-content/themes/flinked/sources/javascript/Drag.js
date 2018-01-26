@@ -22,7 +22,7 @@ class Drag
 
     setMoverSize() {
       this.numberOfAlbum = this.single.length;
-      this.size = 80 * this.numberOfAlbum + 10;
+      this.size = 70 * this.numberOfAlbum + 10;
       this.mover.style.width = this.size + 'vw';
     }
 
@@ -82,6 +82,7 @@ class Drag
     }
 
     setExit() {
+      this.exit.style.opacity ="1";
       this.navText.innerText = "Fermer"
       this.navSubText.innerText = "click"
       this.exit.style.cursor="pointer"
@@ -94,6 +95,7 @@ class Drag
           this.unshowAlbum();
           let dragCursor = this.image.getAttribute('data-drag');
           this.image.setAttribute('src', dragCursor)
+          this.exit.style.opacity ="0";
           this.canDrag = true;
         }
       })

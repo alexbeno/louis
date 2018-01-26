@@ -269,7 +269,7 @@ var Drag = function () {
     key: 'setMoverSize',
     value: function setMoverSize() {
       this.numberOfAlbum = this.single.length;
-      this.size = 80 * this.numberOfAlbum + 10;
+      this.size = 70 * this.numberOfAlbum + 10;
       this.mover.style.width = this.size + 'vw';
     }
   }, {
@@ -338,6 +338,7 @@ var Drag = function () {
     value: function setExit() {
       var _this3 = this;
 
+      this.exit.style.opacity = "1";
       this.navText.innerText = "Fermer";
       this.navSubText.innerText = "click";
       this.exit.style.cursor = "pointer";
@@ -350,6 +351,7 @@ var Drag = function () {
           _this3.unshowAlbum();
           var dragCursor = _this3.image.getAttribute('data-drag');
           _this3.image.setAttribute('src', dragCursor);
+          _this3.exit.style.opacity = "0";
           _this3.canDrag = true;
         }
       });
@@ -844,6 +846,7 @@ var LinkNavigation = function () {
         _classCallCheck(this, LinkNavigation);
 
         this.linkAbout = document.querySelector('.topNav__about');
+        this.linkHome = document.querySelector('.topNav__logo');
     }
 
     /**
@@ -859,6 +862,22 @@ var LinkNavigation = function () {
             this.linkAbout.addEventListener('click', function (e) {
                 e.preventDefault();
                 var url = _this.linkAbout.getAttribute('href');
+                (0, _AjaxLoading2.default)(url);
+            });
+        }
+
+        /**
+         * event on about link for trigger ajax callback
+         */
+
+    }, {
+        key: 'clickHome',
+        value: function clickHome() {
+            var _this2 = this;
+
+            this.linkHome.addEventListener('click', function (e) {
+                e.preventDefault();
+                var url = _this2.linkHome.getAttribute('href');
                 (0, _AjaxLoading2.default)(url);
             });
         }
@@ -879,6 +898,7 @@ var LinkNavigation = function () {
         key: 'init',
         value: function init() {
             this.clickAbout();
+            this.clickHome();
             this.history();
         }
     }]);
