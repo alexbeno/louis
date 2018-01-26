@@ -4,6 +4,7 @@
   height: 100vh;
   @include flex();
   justify-content: inherit;
+  overflow: scroll;
 }
 
 .musiquePage__dragMover {

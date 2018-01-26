@@ -60,13 +60,12 @@ class ScrollLethargy
     scrolling() {
       let lethargy = new Lethargy();
       var scroll =  (e) =>  {
-        e.preventDefault();
-        e.stopPropagation();
 
         if (this.home === true) {
           if(document.querySelector('.goToGalerie') !== null) {
+            e.preventDefault();
+            e.stopPropagation();
             if (lethargy.check(e) === -1) {
-
               this.homeLink = document.querySelector('.goToGalerie');
               this.home = false;
               this.insta = true;
@@ -77,6 +76,8 @@ class ScrollLethargy
         }
         if (this.insta === true) {
           if(document.querySelector('.goToHome') !== null) {
+            e.preventDefault();
+            e.stopPropagation();
             if (lethargy.check(e) === 1) {
               this.instaLink = document.querySelector('.goToHome');
               this.insta = false;

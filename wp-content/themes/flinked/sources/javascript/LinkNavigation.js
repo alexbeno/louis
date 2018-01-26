@@ -9,6 +9,8 @@ class LinkNavigation
     {
         this.linkAbout = document.querySelector('.topNav__about')
         this.linkHome = document.querySelector('.topNav__logo')
+        this.linkMusique = document.querySelector('.goToMusique');
+        this.linkGalerie = document.querySelector('.goToGalerie');
     }
 
     /**
@@ -32,6 +34,28 @@ class LinkNavigation
             AjaxLoading(url)
         })
     }
+
+    /**
+     * event on musique link for trigger ajax callback
+     */
+    clickMusique() {
+        this.linkMusique.addEventListener('click', (e) => {
+            e.preventDefault()
+            let url = this.linkMusique.getAttribute( 'data-musiquePage' )
+            AjaxLoading(url)
+        })
+    }
+
+    /**
+     * event on Galerie link for trigger ajax callback
+     */
+    clickGalerie() {
+        this.linkGalerie.addEventListener('click', (e) => {
+            e.preventDefault()
+            let url = this.linkGalerie.getAttribute( 'data-galeriePage' )
+            AjaxLoading(url)
+        })
+    }
     /**
      * event on history API for trigger ajax callback
      */
@@ -45,6 +69,8 @@ class LinkNavigation
     init() {
         this.clickAbout()
         this.clickHome()
+        this.clickMusique()
+        this.clickGalerie()
         this.history()
     }
 }

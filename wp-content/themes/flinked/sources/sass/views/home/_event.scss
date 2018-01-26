@@ -1,0 +1,55 @@
+.homePage__event {
+  position: relative;
+  width: 100%;
+  margin-top: 55px;
+  @include flex($justify: flex-start)
+}
+
+.homePage__sortie,
+.homePage__description {
+  width: 100%;
+  margin-top: 55px;
+}
+
+.homePage__event__title {
+  font-size: em(48);
+  letter-spacing: 13px;
+  opacity: 0.6;
+}
+
+.homePage__sortie__title {
+  font-size: em(45);
+  letter-spacing: 10px;
+  opacity: 0.6;
+}
+
+.homePage__sortie__explain,
+.homePage__description__explain,
+.homePage__event__explain {
+  line-height: 27px;
+  margin-top: 20px;
+  width: 600px;
+}
+
+.homePage__event__info {
+  margin-top: 17px;
+}
+
+.homePage__eventInfo__text {
+  margin-top: 10px;
+  font-weight: $semi-bold;
+}
+
+.homePage__eventInfo__light {
+  margin-right: 25px;
+  font-weight: $light;
+  opacity: 0.6;
+}
+
+
+.homePage__sortie__link,
+.homePage__event__link{
+  margin-top: 17px;
+  width: 220px;
+  @include buttonA();
+}

@@ -23,7 +23,7 @@
         <!-- start top nav -->
         <div class="topNav">
             <a href="<?= get_home_url() ?>" class="topNav__logo"><img src="<?php the_field('option--logo', 'option'); ?>" alt="louisJ" class="topNav-logo__img"></a>
-            <a href="<?= get_home_url()."/a-propos" ?>" class="topNav__about">À propos</a>
+            <a href="<?= get_home_url()."/musique" ?>" class="topNav__about">Musique</a>
         </div>
         <!-- end top nav -->
 

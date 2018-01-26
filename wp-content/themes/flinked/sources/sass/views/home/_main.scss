@@ -3,10 +3,18 @@
   width: 100%;
   height: 100vh;
   padding-left: 15%;
-  @include flex($justify: space-between);
+  @include flex($direction: column, $justify: center, $align: flex-start);
   user-select: none;
 }
 
 .home__name {
   letter-spacing: 12px;
+}
+
+.goToMusique {
+  cursor: pointer;
+}
+
+.goToGalerie {
+  cursor: pointer;
 }

@@ -847,6 +847,8 @@ var LinkNavigation = function () {
 
         this.linkAbout = document.querySelector('.topNav__about');
         this.linkHome = document.querySelector('.topNav__logo');
+        this.linkMusique = document.querySelector('.goToMusique');
+        this.linkGalerie = document.querySelector('.goToGalerie');
     }
 
     /**
@@ -881,6 +883,38 @@ var LinkNavigation = function () {
                 (0, _AjaxLoading2.default)(url);
             });
         }
+
+        /**
+         * event on musique link for trigger ajax callback
+         */
+
+    }, {
+        key: 'clickMusique',
+        value: function clickMusique() {
+            var _this3 = this;
+
+            this.linkMusique.addEventListener('click', function (e) {
+                e.preventDefault();
+                var url = _this3.linkMusique.getAttribute('data-musiquePage');
+                (0, _AjaxLoading2.default)(url);
+            });
+        }
+
+        /**
+         * event on Galerie link for trigger ajax callback
+         */
+
+    }, {
+        key: 'clickGalerie',
+        value: function clickGalerie() {
+            var _this4 = this;
+
+            this.linkGalerie.addEventListener('click', function (e) {
+                e.preventDefault();
+                var url = _this4.linkGalerie.getAttribute('data-galeriePage');
+                (0, _AjaxLoading2.default)(url);
+            });
+        }
         /**
          * event on history API for trigger ajax callback
          */
@@ -899,6 +933,8 @@ var LinkNavigation = function () {
         value: function init() {
             this.clickAbout();
             this.clickHome();
+            this.clickMusique();
+            this.clickGalerie();
             this.history();
         }
     }]);
@@ -1126,13 +1162,12 @@ var ScrollLethargy = function () {
 
       var lethargy = new Lethargy();
       var scroll = function scroll(e) {
-        e.preventDefault();
-        e.stopPropagation();
 
         if (_this2.home === true) {
           if (document.querySelector('.goToGalerie') !== null) {
+            e.preventDefault();
+            e.stopPropagation();
             if (lethargy.check(e) === -1) {
-
               _this2.homeLink = document.querySelector('.goToGalerie');
               _this2.home = false;
               _this2.insta = true;
@@ -1142,6 +1177,8 @@ var ScrollLethargy = function () {
         }
         if (_this2.insta === true) {
           if (document.querySelector('.goToHome') !== null) {
+            e.preventDefault();
+            e.stopPropagation();
             if (lethargy.check(e) === 1) {
               _this2.instaLink = document.querySelector('.goToHome');
               _this2.insta = false;
