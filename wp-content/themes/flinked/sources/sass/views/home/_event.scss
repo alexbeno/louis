@@ -11,24 +11,42 @@
   margin-top: 55px;
 }
 
+.homePage__description {
+  @include small {
+    margin-top: 15px;
+  }
+}
+
 .homePage__event__title {
   font-size: em(48);
   letter-spacing: 13px;
   opacity: 0.6;
+  @include small {
+    font-size: em(28);
+    letter-spacing: 5px;
+  }
 }
 
 .homePage__sortie__title {
   font-size: em(45);
   letter-spacing: 10px;
   opacity: 0.6;
+  @include small {
+    font-size: em(28);
+    letter-spacing: 5px;
+  }
 }
 
 .homePage__sortie__explain,
 .homePage__description__explain,
 .homePage__event__explain {
-  line-height: 27px;
+  line-height: 30px;
   margin-top: 20px;
   width: 600px;
+
+  @include small {
+    width: 100%;
+  }
 }
 
 .homePage__event__info {

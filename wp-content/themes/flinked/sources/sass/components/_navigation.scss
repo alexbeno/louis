@@ -1,5 +1,8 @@
 .navigation {
   @include flex($align: flex-start, $direction: column);
+  @include small {
+    display: none;
+  }
 }
 
 .navigation--vertical {

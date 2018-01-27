@@ -5,6 +5,9 @@
   z-index: 99999;
   user-select: none;
   pointer-events: none;
+  @include small {
+    display: none;
+  }
 }
 
 .cursor__img {

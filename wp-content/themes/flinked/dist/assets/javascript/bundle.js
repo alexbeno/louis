@@ -1215,6 +1215,9 @@ var _Drag2 = _interopRequireDefault(_Drag);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var mobil = 380;
+var screen = window.innerWidth;
+
 function init() {
   var welcome = new _Welcome2.default();
 
@@ -1239,8 +1242,10 @@ function init() {
    * add scroll event for home page and galerie page, and musique page
    */
 
-  var scrollLethargy = new _ScrollLethargy2.default();
-  scrollLethargy.init();
+  if (screen > mobil) {
+    var scrollLethargy = new _ScrollLethargy2.default();
+    scrollLethargy.init();
+  }
 
   /**
    * Cursor.js

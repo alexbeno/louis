@@ -5,10 +5,16 @@
   padding-left: 15%;
   @include flex($direction: column, $justify: center, $align: flex-start);
   user-select: none;
+  @include small {
+    margin-top: -16px;
+  }
 }
 
-.home__name {
+.homePage__name {
   letter-spacing: 12px;
+  @include small {
+    font-size: em(65);
+  }
 }
 
 .goToMusique {

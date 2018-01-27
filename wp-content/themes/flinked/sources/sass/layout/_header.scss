@@ -20,6 +20,9 @@ $demilogo: calc(50% + 50px);
   padding-right: $leftRight;
   padding-top: 45px;
   z-index: 10;
+  @include small {
+    display: none;
+  }
 }
 
 .topNav-logo__img {
@@ -68,6 +71,9 @@ $demilogo: calc(50% + 50px);
   @include flex($justify: space-around);
   padding-left: 91px;
   padding-bottom: 45px;
+  @include small {
+    display: none;
+  }
 }
 
 .bottomNav__link {

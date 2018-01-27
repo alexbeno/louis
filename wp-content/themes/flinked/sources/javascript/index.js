@@ -5,6 +5,8 @@ import ScrollLethargy from './ScrollLethargy.js'
 import Cursor from './Cursor.js'
 import Drag from './Drag.js'
 
+var mobil = 380;
+var screen = window.innerWidth;
 
 function init() {
   let welcome = new Welcome()
@@ -30,8 +32,10 @@ function init() {
    * add scroll event for home page and galerie page, and musique page
    */
 
-  let scrollLethargy = new ScrollLethargy();
-  scrollLethargy.init();
+   if(screen > mobil) {
+    let scrollLethargy = new ScrollLethargy();
+    scrollLethargy.init();
+   }
 
   /**
    * Cursor.js

@@ -144,26 +144,6 @@
   }
 }
 
-// .musiquePage__rightNavigation__subTexte {
-//   animation: drag $trans1 3s infinite;
-//   @include keyframes(drag) {
-//     0% {
-//         opacity: 1;
-//         transform: translateX(0);
-//     }
-
-//     90% {
-//       opacity: 0;
-//       transform: translateX(200%)
-//     }
-
-//     100% {
-//         opacity: 0;
-//         transform: translateX(0)
-//     }
-//   }
-// }
-
 .musiquePage__rightNavigation {
   transition: all $trans1 0.3s;
 }
