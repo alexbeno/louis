@@ -41,16 +41,6 @@ class Drag
       this.setMoverSize();
     }
 
-    dragInAlbum() {
-      let current = document.querySelector('.active-album');
-      let index = parseInt(current.getAttribute('data-index'));
-      let next = index + 1;
-      let translate = next * 100
-      if(next <= this.single.length) {
-        this.mover.style.transform= "translateX(-" + translate + "vw)"
-      }
-    }
-
     centerScreen(index) {
 
       let transScreen = 100 * index;
@@ -102,69 +92,6 @@ class Drag
       })
     }
 
-    /**
-     * event for detect the drag
-     * @function changeAlbum()
-     * TODO: remove drag mecanisme
-     */
-    dragEvent () {
-      let that = this;
-      let element = document.querySelector('.musiquePage__dragMover');
-      let x = 0;
-      let y = 0;
-      interact(element)
-      .draggable({
-        max : 1,
-        snap: {
-          targets: [
-            interact.createSnapGrid({ x:1, y: 1 })
-          ],
-          range: Infinity,
-          relativePoints: [ { x: 5, y: 5 } ]
-        },
-        inertia: true,
-        restrict: {
-          elementRect: { top: 0, left: 0, bottom: 1, right: 1 },
-          endOnly: true
-        },
-      })
-
-      .on('dragmove', function (event) {
-        if(that.canDrag === true) {
-          that.active = false;
-          x += event.dx;
-          y = event.dy;
-          let size = (element.offsetWidth - element.offsetWidth * 2) + that.singleOne.offsetWidth
-          if( size < parseFloat(element.getAttribute('data-x')) && parseFloat(element.getAttribute('data-x')) < 1 )
-          {
-            that.dragMoveListener(element, event.dx)
-          }
-          else if( parseFloat(element.getAttribute('data-x')) > 0 ) {
-            x = -1
-            element.setAttribute('data-x', -1)
-            that.dragMoveListener(element, event.dx)
-          }
-          else {
-            x = size - 1
-            element.setAttribute('data-x', size - 1)
-            that.dragMoveListener(element, event.dx)
-          }
-        }
-      });
-
-    }
-
-    dragMoveListener (el, dx) {
-      var target = el,
-      x = (parseFloat(target.getAttribute('data-x'))) + dx;
-
-      target.style.webkitTransform =
-      target.style.transform =
-        'translate(' + x + 'px)';
-
-      target.setAttribute('data-x', x);
-    }
-
     clickEvent() {
       for (const [index, single ] of this.single.entries()) {
         single.setAttribute('data-index', index);
@@ -214,7 +141,6 @@ class Drag
       if(this.mover !== null) {
         let dragCursor = this.image.getAttribute('data-drag');
         this.image.setAttribute('src', dragCursor)
-        // this.dragEvent()
         this.setMoverSize();
         this.clickEvent();
       }

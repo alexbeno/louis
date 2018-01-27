@@ -64,9 +64,9 @@ $galeriePage = get_field('option--galerie_page', 'option');
       </div>
     <!-- start right naviagtion -->
     <div class="navigation navigation--vertical musiquePage__rightNavigation">
-      <p class="navigation__texte musiquePage__rightNavigation__texte" data-text="<?= $musicNav ?>"><?= $musicNav ?></p>
+      <p class="navigation__texte musiquePage__rightNavigation__texte" data-text="Découvrir">Découvrir</p>
       <div class="navigation__border musiquePage__rightNavigation__border"></div>
-      <p class="navigation__subTexte musiquePage__rightNavigation__subTexte" data-text="<?= $dragNav ?>"><?= $dragNav ?></p>
+      <p class="navigation__subTexte musiquePage__rightNavigation__subTexte" data-text="Scroll">Scroll</p>
     </div>
     <!-- end right naviagtion -->
 

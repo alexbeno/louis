@@ -1007,7 +1007,6 @@ body {
   transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
 
 .musiquePage__rightNavigation {
-  opacity: 0;
   transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
 
 /*# sourceMappingURL=main.css.map */

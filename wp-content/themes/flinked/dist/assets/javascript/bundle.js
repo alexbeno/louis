@@ -289,17 +289,6 @@ var Drag = function () {
       this.setMoverSize();
     }
   }, {
-    key: 'dragInAlbum',
-    value: function dragInAlbum() {
-      var current = document.querySelector('.active-album');
-      var index = parseInt(current.getAttribute('data-index'));
-      var next = index + 1;
-      var translate = next * 100;
-      if (next <= this.single.length) {
-        this.mover.style.transform = "translateX(-" + translate + "vw)";
-      }
-    }
-  }, {
     key: 'centerScreen',
     value: function centerScreen(index) {
 
@@ -356,62 +345,6 @@ var Drag = function () {
           _this3.canDrag = true;
         }
       });
-    }
-
-    /**
-     * event for detect the drag
-     * @function changeAlbum()
-     * TODO: remove drag mecanisme
-     */
-
-  }, {
-    key: 'dragEvent',
-    value: function dragEvent() {
-      var that = this;
-      var element = document.querySelector('.musiquePage__dragMover');
-      var x = 0;
-      var y = 0;
-      interact(element).draggable({
-        max: 1,
-        snap: {
-          targets: [interact.createSnapGrid({ x: 1, y: 1 })],
-          range: Infinity,
-          relativePoints: [{ x: 5, y: 5 }]
-        },
-        inertia: true,
-        restrict: {
-          elementRect: { top: 0, left: 0, bottom: 1, right: 1 },
-          endOnly: true
-        }
-      }).on('dragmove', function (event) {
-        if (that.canDrag === true) {
-          that.active = false;
-          x += event.dx;
-          y = event.dy;
-          var size = element.offsetWidth - element.offsetWidth * 2 + that.singleOne.offsetWidth;
-          if (size < parseFloat(element.getAttribute('data-x')) && parseFloat(element.getAttribute('data-x')) < 1) {
-            that.dragMoveListener(element, event.dx);
-          } else if (parseFloat(element.getAttribute('data-x')) > 0) {
-            x = -1;
-            element.setAttribute('data-x', -1);
-            that.dragMoveListener(element, event.dx);
-          } else {
-            x = size - 1;
-            element.setAttribute('data-x', size - 1);
-            that.dragMoveListener(element, event.dx);
-          }
-        }
-      });
-    }
-  }, {
-    key: 'dragMoveListener',
-    value: function dragMoveListener(el, dx) {
-      var target = el,
-          x = parseFloat(target.getAttribute('data-x')) + dx;
-
-      target.style.webkitTransform = target.style.transform = 'translate(' + x + 'px)';
-
-      target.setAttribute('data-x', x);
     }
   }, {
     key: 'clickEvent',
@@ -497,7 +430,6 @@ var Drag = function () {
       if (this.mover !== null) {
         var dragCursor = this.image.getAttribute('data-drag');
         this.image.setAttribute('src', dragCursor);
-        // this.dragEvent()
         this.setMoverSize();
         this.clickEvent();
       }
@@ -1281,10 +1213,6 @@ var _Drag = require('./Drag.js');
 
 var _Drag2 = _interopRequireDefault(_Drag);
 
-var _DragToMusique = require('./DragToMusique.js');
-
-var _DragToMusique2 = _interopRequireDefault(_DragToMusique);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function init() {
@@ -1329,18 +1257,10 @@ function init() {
 
   var drag = new _Drag2.default();
   drag.init();
-
-  /**
-   * DragToMusique.js
-   * drag for show album
-   */
-
-  var dragToMusique = new _DragToMusique2.default();
-  dragToMusique.init();
 }
 
 window.onload = init;
 
-},{"./Cursor.js":2,"./Drag.js":3,"./DragToMusique.js":4,"./InstaSlider.js":5,"./LinkNavigation.js":6,"./ScrollLethargy.js":8,"./Welcome.js":9}]},{},[10])
+},{"./Cursor.js":2,"./Drag.js":3,"./InstaSlider.js":5,"./LinkNavigation.js":6,"./ScrollLethargy.js":8,"./Welcome.js":9}]},{},[10])
 
 //# sourceMappingURL=bundle.js.map

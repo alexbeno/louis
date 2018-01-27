@@ -69,13 +69,6 @@ if($isEvent ==="concert") {
 <?php
 }
 ?>
-    <!-- start right naviagtion -->
-    <div class="navigation navigation--vertical homePage__rightNavigation goToMusique" data-musiquePage="<?= $musiquePage ?>">
-      <p class="navigation__texte homePage__rightNavigation__texte"><?= $musicNav ?></p>
-      <div class="navigation__border homePage__rightNavigation__border"></div>
-      <p class="navigation__subTexte homePage__rightNavigation__subTexte"><?= $dragNav ?></p>
-    </div>
-    <!-- end right naviagtion -->
 
     <!-- start left naviagtion -->
     <div class="navigation navigation--turnLeft homePage__rightNavigation goToGalerie" data-galeriePage="<?= $galeriePage ?>">
