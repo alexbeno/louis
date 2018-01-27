@@ -251,6 +251,7 @@ var Drag = function () {
   function Drag() {
     _classCallCheck(this, Drag);
 
+    this.page = document.querySelector('.musiquePage');
     this.mover = document.querySelector('.musiquePage__dragMover');
     this.single = document.querySelectorAll('.musiquePage__drag');
     this.pochette = document.querySelectorAll('.musiquePage__drag__img');
@@ -360,6 +361,7 @@ var Drag = function () {
     /**
      * event for detect the drag
      * @function changeAlbum()
+     * TODO: remove drag mecanisme
      */
 
   }, {
@@ -466,12 +468,36 @@ var Drag = function () {
       }
     }
   }, {
+    key: 'Inversescroll',
+    value: function Inversescroll() {
+      var _this5 = this;
+
+      var scrolling = 0;
+      var prevY = 0;
+      var prevX = 0;
+      var scroll = function scroll(event) {
+
+        if (event.deltaY !== 0) {
+          scrolling += event.deltaY;
+          _this5.page.scrollTo(scrolling, 0);
+        }
+
+        prevX = event.deltaX;
+        prevY = event.deltaY;
+      };
+
+      this.page.addEventListener('mousewheel', scroll);
+      this.page.addEventListener('DOMMouseScroll', scroll);
+      this.page.addEventListener('wheel', scroll);
+      this.page.addEventListener('MozMousePixelScroll', scroll);
+    }
+  }, {
     key: 'init',
     value: function init() {
       if (this.mover !== null) {
         var dragCursor = this.image.getAttribute('data-drag');
         this.image.setAttribute('src', dragCursor);
-        this.dragEvent();
+        // this.dragEvent()
         this.setMoverSize();
         this.clickEvent();
       }
@@ -886,35 +912,33 @@ var LinkNavigation = function () {
 
         /**
          * event on musique link for trigger ajax callback
+         * FIXME: LinkNavigation.js:42 Uncaught TypeError: Cannot read property 'addEventListener' of null at LinkNavigation.clickMusique
          */
 
     }, {
         key: 'clickMusique',
-        value: function clickMusique() {
-            var _this3 = this;
+        value: function clickMusique() {}
+        // this.linkMusique.addEventListener('click', (e) => {
+        //     e.preventDefault()
+        //     let url = this.linkMusique.getAttribute( 'data-musiquePage' )
+        //     AjaxLoading(url)
+        // })
 
-            this.linkMusique.addEventListener('click', function (e) {
-                e.preventDefault();
-                var url = _this3.linkMusique.getAttribute('data-musiquePage');
-                (0, _AjaxLoading2.default)(url);
-            });
-        }
 
         /**
          * event on Galerie link for trigger ajax callback
+         * FIXME: LinkNavigation.js:55 Uncaught TypeError: Cannot read property 'addEventListener' of null at LinkNavigation.clickGalerie
          */
 
     }, {
         key: 'clickGalerie',
-        value: function clickGalerie() {
-            var _this4 = this;
+        value: function clickGalerie() {}
+        // this.linkGalerie.addEventListener('click', (e) => {
+        //     e.preventDefault()
+        //     let url = this.linkGalerie.getAttribute( 'data-galeriePage' )
+        //     AjaxLoading(url)
+        // })
 
-            this.linkGalerie.addEventListener('click', function (e) {
-                e.preventDefault();
-                var url = _this4.linkGalerie.getAttribute('data-galeriePage');
-                (0, _AjaxLoading2.default)(url);
-            });
-        }
         /**
          * event on history API for trigger ajax callback
          */

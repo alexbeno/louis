@@ -6,6 +6,7 @@ class Drag
      */
     constructor(  )
     {
+        this.page = document.querySelector('.musiquePage');
         this.mover = document.querySelector('.musiquePage__dragMover');
         this.single = document.querySelectorAll('.musiquePage__drag');
         this.pochette = document.querySelectorAll('.musiquePage__drag__img');
@@ -104,6 +105,7 @@ class Drag
     /**
      * event for detect the drag
      * @function changeAlbum()
+     * TODO: remove drag mecanisme
      */
     dragEvent () {
       let that = this;
@@ -187,11 +189,32 @@ class Drag
       }
     }
 
+    Inversescroll() {
+      let scrolling = 0;
+      let prevY = 0;
+      let prevX = 0;
+      var scroll = (event) => {
+
+        if(event.deltaY !== 0) {
+          scrolling += event.deltaY;
+          this.page.scrollTo(scrolling, 0);
+        }
+
+        prevX = event.deltaX;
+        prevY = event.deltaY;
+      }
+
+      this.page.addEventListener('mousewheel', scroll);
+      this.page.addEventListener('DOMMouseScroll', scroll);
+      this.page.addEventListener('wheel', scroll);
+      this.page.addEventListener('MozMousePixelScroll', scroll);
+    }
+
     init() {
       if(this.mover !== null) {
         let dragCursor = this.image.getAttribute('data-drag');
         this.image.setAttribute('src', dragCursor)
-        this.dragEvent()
+        // this.dragEvent()
         this.setMoverSize();
         this.clickEvent();
       }
