@@ -13,6 +13,12 @@
   @include flex($justify: center);
   padding-left: 15vw;
   transition: padding $trans1 0.3s;
+  @include small {
+    width: 100vw !important;
+    padding: 0;
+    flex-direction: column;
+    display: block;
+  }
   // 10vw
 }
 
@@ -23,6 +29,12 @@
   padding-bottom: 50px;
   @include flex();
   transition: all $trans1 0.3s;
+  @include small {
+    padding: 0;
+    display: block;
+    width: 100vw;
+    margin-bottom: 50px;
+  }
   // 80vw
 }
 
@@ -32,6 +44,9 @@
   height: auto;
   user-select: none;
   cursor: pointer;
+  @include small {
+    width: 100%;
+  }
 }
 
 .musiquePage__drag__title {
@@ -41,6 +56,10 @@
   width: 100%;
   user-select: none;
   transition: padding $trans1 0.5s;
+  @include small {
+    font-size: em(70);
+    bottom: -20px;
+  }
 }
 
 
@@ -52,6 +71,9 @@
   opacity: 0;
   transition: all $trans1 0.3s;
   user-select: none;
+  @include small {
+    display: none;
+  }
 }
 
 .musiquePage__content__title {
@@ -65,11 +87,17 @@
   width: 80%;
   font-size: em(18);
   line-height: 30px;
+  @include small {
+    width: 100%;
+  }
 }
 
 .musiquePage__content__song {
   margin-top: 70px;
   @include flex($justify: flex-start);
+  @include small {
+    margin: 50px 0;
+  }
 }
 
 .musiquePage__content__songPlatform__single {
@@ -119,6 +147,10 @@
   margin-left: 0%;
   opacity: 1;
   transition: all $trans1 0.3s;
+  @include small {
+    width: 95%;
+    padding-left: 5%;
+  }
 }
 
 .musiquePage__drag__title--active {
@@ -135,6 +167,9 @@
 .musiquePage__drag--active {
   width: 100vw;
   transition: all $trans1 0.3s;
+  @include small {
+    padding-top: 30px;
+  }
 }
 
 .musiquePage__dragMover--active {

@@ -14,10 +14,6 @@ var _MainTransition = require('./MainTransition.js');
 
 var _MainTransition2 = _interopRequireDefault(_MainTransition);
 
-var _DragToMusique = require('./DragToMusique.js');
-
-var _DragToMusique2 = _interopRequireDefault(_DragToMusique);
-
 var _Drag = require('./Drag.js');
 
 var _Drag2 = _interopRequireDefault(_Drag);
@@ -71,24 +67,6 @@ function AjaxLoading(url, trans) {
         }
 
         function musiqueTrans(data) {
-            // var trans = document.querySelector('.album-trans');
-
-            // trans.style.display ="block";
-            // setTimeout( () => {
-            //   trans.classList.add('album-trans--active')
-            // }, 100);
-
-            // setTimeout(function(){
-
-            //     switch_content( data );
-            // }, 800);
-
-            // setTimeout(function(){
-            //     trans.classList.remove('album-trans--active')
-            //     setTimeout( () => {
-            //       trans.style.display ="none";
-            //     }, 800);
-            // }, 900);
             var mainTransition = new _MainTransition2.default();
             mainTransition.init();
 
@@ -129,9 +107,7 @@ function AjaxLoading(url, trans) {
         }
 
         function loadHomeScript() {
-            var dragToMusique = null;
-            dragToMusique = new _DragToMusique2.default();
-            dragToMusique.init();
+            // silence
         }
 
         function loadMusiqueScript() {
@@ -152,7 +128,7 @@ function AjaxLoading(url, trans) {
     });
 }
 
-},{"./Drag.js":3,"./DragToMusique.js":4,"./InstaSlider.js":5,"./MainTransition.js":7}],2:[function(require,module,exports){
+},{"./Drag.js":3,"./InstaSlider.js":4,"./MainTransition.js":6}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -441,87 +417,7 @@ var Drag = function () {
 
 exports.default = Drag;
 
-},{"./MainTransition.js":7}],4:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _AjaxLoading = require('./AjaxLoading.js');
-
-var _AjaxLoading2 = _interopRequireDefault(_AjaxLoading);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var DragToMusique = function () {
-  /**
-   * Constructor
-   */
-  function DragToMusique() {
-    _classCallCheck(this, DragToMusique);
-
-    this.home = document.querySelector('.homePage');
-    this.page = document.querySelector('.goToMusique');
-    this.canDrag = true;
-  }
-
-  _createClass(DragToMusique, [{
-    key: 'goToMusique',
-    value: function goToMusique() {
-      (0, _AjaxLoading2.default)(this.page.getAttribute('data-musiquePage'), 'musiqueTrans');
-    }
-
-    /**
-     * event for detect the drag
-     * @function changeAlbum()
-     */
-
-  }, {
-    key: 'dragEvent',
-    value: function dragEvent() {
-      var that = this;
-      var element = document.querySelector('.homePage');
-      var x = 0;
-      var y = 0;
-      interact(element).draggable({
-        max: 1,
-        snap: {
-          targets: [interact.createSnapGrid({ x: 1, y: 1 })],
-          range: Infinity,
-          relativePoints: [{ x: 5, y: 5 }]
-        },
-        inertia: true,
-        restrict: {
-          elementRect: { top: 0, left: 0, bottom: 1, right: 1 },
-          endOnly: true
-        }
-      }).on('dragmove', function (event) {
-        if (that.canDrag === true) {
-          that.canDrag = false;
-          that.goToMusique();
-        }
-      });
-    }
-  }, {
-    key: 'init',
-    value: function init() {
-      if (this.home !== null) {
-        this.dragEvent();
-      }
-    }
-  }]);
-
-  return DragToMusique;
-}();
-
-exports.default = DragToMusique;
-
-},{"./AjaxLoading.js":1}],5:[function(require,module,exports){
+},{"./MainTransition.js":6}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -779,7 +675,7 @@ var InstaSlider = function () {
 
 exports.default = InstaSlider;
 
-},{}],6:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -900,7 +796,7 @@ var LinkNavigation = function () {
 
 exports.default = LinkNavigation;
 
-},{"./AjaxLoading.js":1}],7:[function(require,module,exports){
+},{"./AjaxLoading.js":1}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1029,7 +925,7 @@ var MainTransition = function () {
 
 exports.default = MainTransition;
 
-},{}],8:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1164,7 +1060,7 @@ var ScrollLethargy = function () {
 
 exports.default = ScrollLethargy;
 
-},{"./AjaxLoading.js":1}],9:[function(require,module,exports){
+},{"./AjaxLoading.js":1}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1186,7 +1082,7 @@ function Welcome(options) {
 
 exports.default = Welcome;
 
-},{}],10:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 'use strict';
 
 var _Welcome = require('./Welcome.js');
@@ -1266,6 +1162,6 @@ function init() {
 
 window.onload = init;
 
-},{"./Cursor.js":2,"./Drag.js":3,"./InstaSlider.js":5,"./LinkNavigation.js":6,"./ScrollLethargy.js":8,"./Welcome.js":9}]},{},[10])
+},{"./Cursor.js":2,"./Drag.js":3,"./InstaSlider.js":4,"./LinkNavigation.js":5,"./ScrollLethargy.js":7,"./Welcome.js":8}]},{},[9])
 
 //# sourceMappingURL=bundle.js.map

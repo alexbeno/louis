@@ -1,6 +1,5 @@
 import InstaSlider from './InstaSlider.js'
 import MainTransition from './MainTransition.js'
-import DragToMusique from './DragToMusique.js'
 import Drag from './Drag.js'
 
 export default function AjaxLoading (url, trans)  {
@@ -52,24 +51,6 @@ export default function AjaxLoading (url, trans)  {
       }
 
       function musiqueTrans (data) {
-        // var trans = document.querySelector('.album-trans');
-
-        // trans.style.display ="block";
-        // setTimeout( () => {
-        //   trans.classList.add('album-trans--active')
-        // }, 100);
-
-        // setTimeout(function(){
-
-        //     switch_content( data );
-        // }, 800);
-
-        // setTimeout(function(){
-        //     trans.classList.remove('album-trans--active')
-        //     setTimeout( () => {
-        //       trans.style.display ="none";
-        //     }, 800);
-        // }, 900);
         let mainTransition = new MainTransition();
         mainTransition.init();
 
@@ -110,9 +91,7 @@ export default function AjaxLoading (url, trans)  {
       }
 
       function loadHomeScript() {
-        let dragToMusique = null
-        dragToMusique = new DragToMusique();
-        dragToMusique.init();
+        // silence
       }
 
       function loadMusiqueScript() {

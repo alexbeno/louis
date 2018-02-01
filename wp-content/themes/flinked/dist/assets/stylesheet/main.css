@@ -881,7 +881,8 @@ body {
   overflow: hidden; }
   @media (max-width: 450px) {
     .galerie {
-      overflow: scroll; } }
+      overflow: scroll;
+      height: 100vh; } }
 
 .galerie__next,
 .galerie__prev {
@@ -918,10 +919,18 @@ body {
 
 #sb_instagram.sbi_col_4 #sbi_images .sbi_item.galerie__instaLittle {
   width: 15vw !important; }
+  @media (max-width: 450px) {
+    #sb_instagram.sbi_col_4 #sbi_images .sbi_item.galerie__instaLittle {
+      height: 0;
+      width: 100vw !important; } }
 
 #sb_instagram.sbi_col_4 #sbi_images .sbi_item.galerie__instaBig {
   width: 70vw !important;
   opacity: 1; }
+  @media (max-width: 450px) {
+    #sb_instagram.sbi_col_4 #sbi_images .sbi_item.galerie__instaBig {
+      height: 100vh;
+      width: 100vw !important; } }
 
 .musiquePage {
   width: 100%;
@@ -942,6 +951,12 @@ body {
   align-items: center;
   padding-left: 15vw;
   transition: padding cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
+  @media (max-width: 450px) {
+    .musiquePage__dragMover {
+      width: 100vw !important;
+      padding: 0;
+      flex-direction: column;
+      display: block; } }
 
 .musiquePage__drag {
   text-align: center;
@@ -953,12 +968,21 @@ body {
   justify-content: center;
   align-items: center;
   transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
+  @media (max-width: 450px) {
+    .musiquePage__drag {
+      padding: 0;
+      display: block;
+      width: 100vw;
+      margin-bottom: 50px; } }
 
 .musiquePage__drag__img {
   width: 400px;
   height: auto;
   user-select: none;
   cursor: pointer; }
+  @media (max-width: 450px) {
+    .musiquePage__drag__img {
+      width: 100%; } }
 
 .musiquePage__drag__title {
   position: absolute;
@@ -967,6 +991,10 @@ body {
   width: 100%;
   user-select: none;
   transition: padding cubic-bezier(0.4, 0, 0.2, 1) 0.5s; }
+  @media (max-width: 450px) {
+    .musiquePage__drag__title {
+      font-size: 4.375em;
+      bottom: -20px; } }
 
 .musiquePage__content {
   width: 50%;
@@ -976,6 +1004,9 @@ body {
   opacity: 0;
   transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
   user-select: none; }
+  @media (max-width: 450px) {
+    .musiquePage__content {
+      display: none; } }
 
 .musiquePage__content__title {
   font-size: 3em;
@@ -987,6 +1018,9 @@ body {
   width: 80%;
   font-size: 1.125em;
   line-height: 30px; }
+  @media (max-width: 450px) {
+    .musiquePage__content__descriptions {
+      width: 100%; } }
 
 .musiquePage__content__song {
   margin-top: 70px;
@@ -994,6 +1028,9 @@ body {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center; }
+  @media (max-width: 450px) {
+    .musiquePage__content__song {
+      margin: 50px 0; } }
 
 .musiquePage__content__songPlatform__single {
   display: flex;
@@ -1038,6 +1075,10 @@ body {
   margin-left: 0%;
   opacity: 1;
   transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
+  @media (max-width: 450px) {
+    .musiquePage__content--active {
+      width: 95%;
+      padding-left: 5%; } }
 
 .musiquePage__drag__title--active {
   bottom: -100px;
@@ -1051,6 +1092,9 @@ body {
 .musiquePage__drag--active {
   width: 100vw;
   transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
+  @media (max-width: 450px) {
+    .musiquePage__drag--active {
+      padding-top: 30px; } }
 
 .musiquePage__dragMover--active .musiquePage__drag {
   width: 100vw;

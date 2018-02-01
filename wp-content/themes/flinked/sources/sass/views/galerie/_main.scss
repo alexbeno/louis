@@ -35,6 +35,7 @@
   overflow: hidden;
   @include small {
     overflow: scroll;
+    height: 100vh;
   }
 }
 
@@ -80,9 +81,17 @@
 
 #sb_instagram.sbi_col_4 #sbi_images .sbi_item.galerie__instaLittle {
   width: 15vw !important;
+  @include small() {
+    height: 0;
+    width: 100vw !important;
+  }
 }
 
 #sb_instagram.sbi_col_4 #sbi_images .sbi_item.galerie__instaBig {
   width: 70vw !important;
   opacity: 1;
+  @include small() {
+    height: 100vh;
+    width: 100vw !important;
+  }
 }
