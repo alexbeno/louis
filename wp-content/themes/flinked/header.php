@@ -63,5 +63,10 @@
                 <a href="<?= get_home_url() ?>" class="responsiveMenu__logo"><img src="<?php the_field('option--logo', 'option'); ?>" alt="louisJ" class="responsiveMenu__logo__img"></a>
                 <img class="responsiveMenu__icones" src="<?= IMAGES_URL ?>/menu.svg">
             </div>
+            <div class="responsiveMenu__content">
+                <a href="<?= get_home_url()."/" ?>" class="responsiveMenu__content__item">Accueil</a>
+                <a href="<?= get_home_url()."/musique" ?>" class="responsiveMenu__content__item">Musique</a>
+                <a href="<?= get_home_url()."/galerie" ?>" class="responsiveMenu__content__item">Galerie</a>
+            </div>
         </div>
         <!-- end responsive menu -->

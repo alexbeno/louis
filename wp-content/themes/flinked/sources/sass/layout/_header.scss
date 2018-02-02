@@ -110,6 +110,7 @@ $demilogo: calc(50% + 50px);
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 999999;
   display: none;
   @include small {
     display: block;
@@ -132,4 +133,68 @@ $demilogo: calc(50% + 50px);
 .responsiveMenu__icone {
   width: 35px;
   height: auto;
+  cursor: pointer;
+}
+
+.responsiveMenu__content {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  transform: translateX(100vw);
+  padding: 35% 0;
+  @include flex($direction: column, $justify: space-around);
+}
+
+.responsiveMenu__content__item {
+  font-size: em(36);
+  font-weight: $heavy;
+  color: $white;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all $trans1 0.2s;
+}
+
+.responsiveMenu--active {
+  .responsiveMenu__content {
+    transform: translateX(0);
+  }
+  .responsiveMenu__content__item:nth-child(1) {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all $trans1 0.3s 0.5s;
+  }
+  .responsiveMenu__content__item:nth-child(2) {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all $trans1 0.3s 0.6s;
+  }
+  .responsiveMenu__content__item:nth-child(3) {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all $trans1 0.3s 0.7s;
+  }
+}
+
+.responsiveMenu--return {
+  .responsiveMenu__content {
+    transform: translateX(0);
+    transition: all $trans1 1 0.5s;
+  }
+  .responsiveMenu__content__item:nth-child(1) {
+    opacity: 0;
+    transform: translateY(0);
+    transition: all $trans1 0.3s;
+  }
+  .responsiveMenu__content__item:nth-child(2) {
+    opacity: 0;
+    transform: translateY(0);
+    transition: all $trans1 0.3s 0.1s;
+  }
+  .responsiveMenu__content__item:nth-child(3) {
+    opacity: 0;
+    transform: translateY(0);
+    transition: all $trans1 0.3s 0.2s;
+  }
 }

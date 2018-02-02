@@ -23,6 +23,9 @@ export default function AjaxLoading (url, trans)  {
               if(trans != null && trans === "musiqueTrans") {
                   musiqueTrans(data);
               }
+              else if(trans != null && trans === "menuTrans") {
+                  menuTrans(data);
+              }
               else {
                 mainTrans(data);
               }
@@ -48,6 +51,10 @@ export default function AjaxLoading (url, trans)  {
         setTimeout(function(){
             mainTransition.return();
         }, 1200);
+      }
+
+      function menuTrans (data) {
+        switch_content( data );
       }
 
       function musiqueTrans (data) {

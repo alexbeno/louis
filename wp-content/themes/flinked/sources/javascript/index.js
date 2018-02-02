@@ -4,6 +4,7 @@ import InstaSlider from './InstaSlider.js'
 import ScrollLethargy from './ScrollLethargy.js'
 import Cursor from './Cursor.js'
 import Drag from './Drag.js'
+import ResponsiveNav from './ResponsiveNav.js'
 
 var mobil = 380;
 var screen = window.innerWidth;
@@ -52,6 +53,14 @@ function init() {
 
   let drag = new Drag();
   drag.init();
+
+  /**
+   * ResponsiveNav.js
+   * responsive menu
+   */
+
+  let responsiveNav = new ResponsiveNav();
+  responsiveNav.init();
 
 }
 
