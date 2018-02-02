@@ -101,3 +101,35 @@ $demilogo: calc(50% + 50px);
     }
   }
 }
+
+/*
+* responsive Menu
+*/
+
+.responsiveMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  @include small {
+    display: block;
+  }
+}
+
+.responsiveMenu__nav {
+  width: 100vw;
+  padding-left: calc(50% - 40px);
+  padding-right: 20px;
+  padding-top: 20px;
+  @include flex($justify: space-between);
+}
+
+.responsiveMenu__logo__img {
+  width: 80px;
+  height: auto;
+}
+
+.responsiveMenu__icone {
+  width: 35px;
+  height: auto;
+}

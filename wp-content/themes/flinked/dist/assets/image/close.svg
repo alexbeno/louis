@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="23px" viewBox="0 0 24 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47 (45396) - http://www.bohemiancoding.com/sketch -->
+    <title>menu</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="mobil" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="menu-mobile" transform="translate(-318.000000, -49.000000)" fill-rule="nonzero" fill="#FFFFFF">
+            <g id="Group-5" transform="translate(147.000000, 40.000000)">
+                <g id="menu" transform="translate(171.000000, 8.000000)">
+                    <path d="M25.7881641,11 L-1.78816406,11 C-2.45742188,11 -3,11.671526 -3,12.5 C-3,13.328474 -2.45742188,14 -1.78816406,14 L25.7881641,14 C26.4574805,14 27,13.328474 27,12.5 C27,11.6715985 26.4574805,11 25.7881641,11 Z" id="Shape" transform="translate(12.000000, 12.500000) rotate(-45.000000) translate(-12.000000, -12.500000) "></path>
+                    <path d="M25.7881641,11 L-1.78816406,11 C-2.45742188,11 -3,11.671526 -3,12.5 C-3,13.328474 -2.45742188,14 -1.78816406,14 L25.7881641,14 C26.4574805,14 27,13.328474 27,12.5 C27,11.671526 26.4574805,11 25.7881641,11 Z" id="Shape" transform="translate(12.000000, 12.500000) rotate(-315.000000) translate(-12.000000, -12.500000) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

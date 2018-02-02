@@ -56,3 +56,12 @@
             <img onselectstart="return false;" ondragstart="return false;" src="<?= IMAGES_URL ?>/cursor/cursor.png" alt="" class="cursor__img" data-normal="<?= IMAGES_URL ?>/cursor/cursor.png" data-drag="<?= IMAGES_URL ?>/cursor/cursorActive.png" data-quit="<?= IMAGES_URL ?>/cursor/cursorQuit.png">
         </div>
         <!-- end cursor -->
+
+        <!-- start responsive menu -->
+        <div class="responsiveMenu">
+            <div class="responsiveMenu__nav">
+                <a href="<?= get_home_url() ?>" class="responsiveMenu__logo"><img src="<?php the_field('option--logo', 'option'); ?>" alt="louisJ" class="responsiveMenu__logo__img"></a>
+                <img class="responsiveMenu__icones" src="<?= IMAGES_URL ?>/menu.svg">
+            </div>
+        </div>
+        <!-- end responsive menu -->
