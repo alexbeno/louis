@@ -259,8 +259,34 @@ var Drag = function () {
 
       activeDrag.classList.remove('musiquePage__drag--active');
       activeContent.classList.remove('musiquePage__content--active');
+      activeContent.classList.remove('musiquePage__content--block');
       activeTitle.classList.remove('musiquePage__drag__title--active');
       activeMover.classList.remove('musiquePage__dragMover--active');
+
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = this.single[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var single = _step.value;
+
+          single.classList.remove('musiquePage__drag--none');
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
 
       this.setMoverSize();
     }
@@ -268,13 +294,15 @@ var Drag = function () {
     key: 'centerScreen',
     value: function centerScreen(index) {
 
-      var transScreen = 100 * index;
+      if (window.innerWidth > 380) {
+        var transScreen = 100 * index;
 
-      this.mover.style.webkitTransform = this.mover.style.transform = 'translate(-' + transScreen + 'vw)';
+        this.mover.style.webkitTransform = this.mover.style.transform = 'translate(-' + transScreen + 'vw)';
 
-      this.numberOfAlbum = this.single.length;
-      this.size = 100 * this.numberOfAlbum;
-      this.mover.style.width = this.size + 'vw';
+        this.numberOfAlbum = this.single.length;
+        this.size = 100 * this.numberOfAlbum;
+        this.mover.style.width = this.size + 'vw';
+      }
     }
   }, {
     key: 'transitions',
@@ -327,29 +355,58 @@ var Drag = function () {
     value: function clickEvent() {
       var _this4 = this;
 
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
-      var _iteratorError = undefined;
+      var _iteratorNormalCompletion2 = true;
+      var _didIteratorError2 = false;
+      var _iteratorError2 = undefined;
 
       try {
         var _loop = function _loop() {
-          var _step$value = _slicedToArray(_step.value, 2),
-              index = _step$value[0],
-              single = _step$value[1];
+          var _step2$value = _slicedToArray(_step2.value, 2),
+              index = _step2$value[0],
+              single = _step2$value[1];
 
           single.setAttribute('data-index', index);
           single.childNodes[3].addEventListener('click', function (e) {
+            var _iteratorNormalCompletion3 = true;
+            var _didIteratorError3 = false;
+            var _iteratorError3 = undefined;
+
+            try {
+              for (var _iterator3 = _this4.single[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                var singleBis = _step3.value;
+
+                singleBis.classList.add('musiquePage__drag--none');
+              }
+            } catch (err) {
+              _didIteratorError3 = true;
+              _iteratorError3 = err;
+            } finally {
+              try {
+                if (!_iteratorNormalCompletion3 && _iterator3.return) {
+                  _iterator3.return();
+                }
+              } finally {
+                if (_didIteratorError3) {
+                  throw _iteratorError3;
+                }
+              }
+            }
+
+            single.classList.remove('musiquePage__drag--none');
             _this4.transitions();
             _this4.canDrag = false;
             _this4.active = true;
             single.classList.add('active-album');
 
             setTimeout(function () {
-              _this4.centerScreen(index);
-              single.classList.add('musiquePage__drag--active');
-              single.childNodes[1].classList.add('musiquePage__content--active');
-              single.childNodes[5].classList.add('musiquePage__drag__title--active');
-              _this4.mover.classList.add('musiquePage__dragMover--active');
+              single.childNodes[1].classList.add('musiquePage__content--block');
+              setTimeout(function () {
+                _this4.centerScreen(index);
+                single.classList.add('musiquePage__drag--active');
+                single.childNodes[1].classList.add('musiquePage__content--active');
+                single.childNodes[5].classList.add('musiquePage__drag__title--active');
+                _this4.mover.classList.add('musiquePage__dragMover--active');
+              }, 100);
             }, 800);
 
             setTimeout(function () {
@@ -358,20 +415,20 @@ var Drag = function () {
           });
         };
 
-        for (var _iterator = this.single.entries()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        for (var _iterator2 = this.single.entries()[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
           _loop();
         }
       } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion && _iterator.return) {
-            _iterator.return();
+          if (!_iteratorNormalCompletion2 && _iterator2.return) {
+            _iterator2.return();
           }
         } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
+          if (_didIteratorError2) {
+            throw _iteratorError2;
           }
         }
       }

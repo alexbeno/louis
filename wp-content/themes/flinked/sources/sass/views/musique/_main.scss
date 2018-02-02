@@ -5,6 +5,9 @@
   @include flex();
   justify-content: inherit;
   overflow: scroll;
+  @include small {
+    display: block;
+  }
 }
 
 .musiquePage__dragMover {
@@ -18,6 +21,8 @@
     padding: 0;
     flex-direction: column;
     display: block;
+    height: auto;
+    padding: 50px 0;
   }
   // 10vw
 }
@@ -32,8 +37,9 @@
   @include small {
     padding: 0;
     display: block;
-    width: 100vw;
+    width: 80vw;
     margin-bottom: 50px;
+    margin-left: 10vw;
   }
   // 80vw
 }
@@ -74,6 +80,10 @@
   @include small {
     display: none;
   }
+}
+
+.musiquePage__content--block {
+  display: block;
 }
 
 .musiquePage__content__title {
@@ -169,7 +179,12 @@
   transition: all $trans1 0.3s;
   @include small {
     padding-top: 30px;
+    margin-left: 0;
   }
+}
+
+.musiquePage__drag--none {
+  display: none;
 }
 
 .musiquePage__dragMover--active {
@@ -181,4 +196,15 @@
 
 .musiquePage__rightNavigation {
   transition: all $trans1 0.3s;
+  display: flex;
+  width: 100%;
+  background: $black;
+  transform: none;
+  top: calc(100% - 66px);
+  height: 66px;
+  text-align: center;
+  align-items: center;
+  @include small {
+    opacity: 1 !important;
+  }
 }

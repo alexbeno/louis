@@ -35,23 +35,30 @@ class Drag
 
       activeDrag.classList.remove('musiquePage__drag--active')
       activeContent.classList.remove('musiquePage__content--active')
+      activeContent.classList.remove('musiquePage__content--block')
       activeTitle.classList.remove('musiquePage__drag__title--active')
       activeMover.classList.remove('musiquePage__dragMover--active')
+
+      for (const single of this.single) {
+        single.classList.remove('musiquePage__drag--none');
+      }
 
       this.setMoverSize();
     }
 
     centerScreen(index) {
 
-      let transScreen = 100 * index;
+      if(window.innerWidth > 380) {
+        let transScreen = 100 * index;
 
-      this.mover.style.webkitTransform =
-      this.mover.style.transform =
-        'translate(-' + transScreen + 'vw)';
+        this.mover.style.webkitTransform =
+        this.mover.style.transform =
+          'translate(-' + transScreen + 'vw)';
 
-      this.numberOfAlbum = this.single.length;
-      this.size = 100 * this.numberOfAlbum;
-      this.mover.style.width = this.size + 'vw';
+        this.numberOfAlbum = this.single.length;
+        this.size = 100 * this.numberOfAlbum;
+        this.mover.style.width = this.size + 'vw';
+      }
     }
 
     transitions() {
@@ -96,17 +103,24 @@ class Drag
       for (const [index, single ] of this.single.entries()) {
         single.setAttribute('data-index', index);
         single.childNodes[3].addEventListener('click', (e) => {
+          for (const singleBis of this.single) {
+            singleBis.classList.add('musiquePage__drag--none');
+          }
+          single.classList.remove('musiquePage__drag--none');
           this.transitions()
           this.canDrag = false;
           this.active = true;
           single.classList.add('active-album');
 
           setTimeout( () => {
-            this.centerScreen(index)
-            single.classList.add('musiquePage__drag--active')
-            single.childNodes[1].classList.add('musiquePage__content--active')
-            single.childNodes[5].classList.add('musiquePage__drag__title--active')
-            this.mover.classList.add('musiquePage__dragMover--active')
+            single.childNodes[1].classList.add('musiquePage__content--block')
+            setTimeout( () => {
+              this.centerScreen(index)
+              single.classList.add('musiquePage__drag--active')
+              single.childNodes[1].classList.add('musiquePage__content--active')
+              single.childNodes[5].classList.add('musiquePage__drag__title--active')
+              this.mover.classList.add('musiquePage__dragMover--active')
+            }, 100);
           }, 800);
 
           setTimeout(() => {

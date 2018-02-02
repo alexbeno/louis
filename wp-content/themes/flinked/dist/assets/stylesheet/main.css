@@ -941,6 +941,9 @@ body {
   align-items: center;
   justify-content: inherit;
   overflow: scroll; }
+  @media (max-width: 450px) {
+    .musiquePage {
+      display: block; } }
 
 .musiquePage__dragMover {
   width: 200vw;
@@ -956,7 +959,9 @@ body {
       width: 100vw !important;
       padding: 0;
       flex-direction: column;
-      display: block; } }
+      display: block;
+      height: auto;
+      padding: 50px 0; } }
 
 .musiquePage__drag {
   text-align: center;
@@ -972,8 +977,9 @@ body {
     .musiquePage__drag {
       padding: 0;
       display: block;
-      width: 100vw;
-      margin-bottom: 50px; } }
+      width: 80vw;
+      margin-bottom: 50px;
+      margin-left: 10vw; } }
 
 .musiquePage__drag__img {
   width: 400px;
@@ -1007,6 +1013,9 @@ body {
   @media (max-width: 450px) {
     .musiquePage__content {
       display: none; } }
+
+.musiquePage__content--block {
+  display: block; }
 
 .musiquePage__content__title {
   font-size: 3em;
@@ -1094,13 +1103,28 @@ body {
   transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
   @media (max-width: 450px) {
     .musiquePage__drag--active {
-      padding-top: 30px; } }
+      padding-top: 30px;
+      margin-left: 0; } }
+
+.musiquePage__drag--none {
+  display: none; }
 
 .musiquePage__dragMover--active .musiquePage__drag {
   width: 100vw;
   transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
 
 .musiquePage__rightNavigation {
-  transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
+  transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+  display: flex;
+  width: 100%;
+  background: #121315;
+  transform: none;
+  top: calc(100% - 66px);
+  height: 66px;
+  text-align: center;
+  align-items: center; }
+  @media (max-width: 450px) {
+    .musiquePage__rightNavigation {
+      opacity: 1 !important; } }
 
 /*# sourceMappingURL=main.css.map */
