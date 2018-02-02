@@ -1017,6 +1017,7 @@ var ResponsiveNav = function () {
         this.transition = document.querySelectorAll('.trans__single');
         this.transContent = document.querySelector('.trans');
         this.link = document.querySelectorAll('.responsiveMenu__content__item');
+        this.closesButton = document.querySelector('.responsiveMenu__close');
     }
 
     _createClass(ResponsiveNav, [{
@@ -1072,36 +1073,36 @@ var ResponsiveNav = function () {
 
                     single.addEventListener('click', function (e) {
                         e.preventDefault();
-                        var _iteratorNormalCompletion3 = true;
-                        var _didIteratorError3 = false;
-                        var _iteratorError3 = undefined;
-
-                        try {
-                            for (var _iterator3 = _this2.transition[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-                                var singles = _step3.value;
-
-                                singles.classList.add('trans__single--return');
-                            }
-                        } catch (err) {
-                            _didIteratorError3 = true;
-                            _iteratorError3 = err;
-                        } finally {
-                            try {
-                                if (!_iteratorNormalCompletion3 && _iterator3.return) {
-                                    _iterator3.return();
-                                }
-                            } finally {
-                                if (_didIteratorError3) {
-                                    throw _iteratorError3;
-                                }
-                            }
-                        }
-
-                        _this2.nav.classList.add('responsiveMenu--return');
+                        var url = single.getAttribute('href');
+                        (0, _AjaxLoading2.default)(url, "menuTrans");
                         setTimeout(function () {
-                            var url = single.getAttribute('href');
-                            (0, _AjaxLoading2.default)(url, "menuTrans");
-                        }, 200);
+                            var _iteratorNormalCompletion3 = true;
+                            var _didIteratorError3 = false;
+                            var _iteratorError3 = undefined;
+
+                            try {
+                                for (var _iterator3 = _this2.transition[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                                    var singles = _step3.value;
+
+                                    singles.classList.add('trans__single--return');
+                                }
+                            } catch (err) {
+                                _didIteratorError3 = true;
+                                _iteratorError3 = err;
+                            } finally {
+                                try {
+                                    if (!_iteratorNormalCompletion3 && _iterator3.return) {
+                                        _iterator3.return();
+                                    }
+                                } finally {
+                                    if (_didIteratorError3) {
+                                        throw _iteratorError3;
+                                    }
+                                }
+                            }
+
+                            _this2.nav.classList.add('responsiveMenu--return');
+                        }, 300);
                         setTimeout(function () {
                             _this2.transContent.classList.add('trans--return');
                             setTimeout(function () {
@@ -1134,7 +1135,7 @@ var ResponsiveNav = function () {
                                     }
                                 }
                             }, 200);
-                        }, 800);
+                        }, 1200);
                     });
                 };
 
@@ -1157,10 +1158,79 @@ var ResponsiveNav = function () {
             }
         }
     }, {
+        key: 'closesMenu',
+        value: function closesMenu() {
+            var _this3 = this;
+
+            this.closesButton.addEventListener('click', function (e) {
+                e.preventDefault();
+                var _iteratorNormalCompletion5 = true;
+                var _didIteratorError5 = false;
+                var _iteratorError5 = undefined;
+
+                try {
+                    for (var _iterator5 = _this3.transition[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+                        var singles = _step5.value;
+
+                        singles.classList.add('trans__single--return');
+                    }
+                } catch (err) {
+                    _didIteratorError5 = true;
+                    _iteratorError5 = err;
+                } finally {
+                    try {
+                        if (!_iteratorNormalCompletion5 && _iterator5.return) {
+                            _iterator5.return();
+                        }
+                    } finally {
+                        if (_didIteratorError5) {
+                            throw _iteratorError5;
+                        }
+                    }
+                }
+
+                _this3.nav.classList.add('responsiveMenu--return');
+                setTimeout(function () {
+                    _this3.transContent.classList.add('trans--return');
+                    setTimeout(function () {
+                        _this3.transContent.classList.remove('trans--active');
+                        _this3.nav.classList.remove('responsiveMenu--active');
+                        _this3.nav.classList.remove('responsiveMenu--return');
+                        var _iteratorNormalCompletion6 = true;
+                        var _didIteratorError6 = false;
+                        var _iteratorError6 = undefined;
+
+                        try {
+                            for (var _iterator6 = _this3.transition[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
+                                var card = _step6.value;
+
+                                card.classList.remove('trans__single--active');
+                                card.classList.remove('trans__single--return');
+                            }
+                        } catch (err) {
+                            _didIteratorError6 = true;
+                            _iteratorError6 = err;
+                        } finally {
+                            try {
+                                if (!_iteratorNormalCompletion6 && _iterator6.return) {
+                                    _iterator6.return();
+                                }
+                            } finally {
+                                if (_didIteratorError6) {
+                                    throw _iteratorError6;
+                                }
+                            }
+                        }
+                    }, 200);
+                }, 800);
+            });
+        }
+    }, {
         key: 'init',
         value: function init() {
             this.opens();
             this.closes();
+            this.closesMenu();
         }
     }]);
 

@@ -130,10 +130,19 @@ $demilogo: calc(50% + 50px);
   height: auto;
 }
 
-.responsiveMenu__icone {
+.responsiveMenu__icones {
   width: 35px;
   height: auto;
   cursor: pointer;
+  z-index: 9999999;
+}
+
+.responsiveMenu__close {
+  display: none;
+  width: 35px;
+  height: auto;
+  cursor: pointer;
+  z-index: 9999999;
 }
 
 .responsiveMenu__content {
@@ -157,6 +166,12 @@ $demilogo: calc(50% + 50px);
 }
 
 .responsiveMenu--active {
+  .responsiveMenu__icones {
+    display: none;
+  }
+  .responsiveMenu__close {
+    display: block;
+  }
   .responsiveMenu__content {
     transform: translateX(0);
   }

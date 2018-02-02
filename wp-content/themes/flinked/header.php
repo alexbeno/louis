@@ -62,6 +62,7 @@
             <div class="responsiveMenu__nav">
                 <a href="<?= get_home_url() ?>" class="responsiveMenu__logo"><img src="<?php the_field('option--logo', 'option'); ?>" alt="louisJ" class="responsiveMenu__logo__img"></a>
                 <img class="responsiveMenu__icones" src="<?= IMAGES_URL ?>/menu.svg">
+                <img class="responsiveMenu__close" src="<?= IMAGES_URL ?>/close.svg">
             </div>
             <div class="responsiveMenu__content">
                 <a href="<?= get_home_url()."/" ?>" class="responsiveMenu__content__item">Accueil</a>

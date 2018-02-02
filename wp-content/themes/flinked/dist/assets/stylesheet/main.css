@@ -694,10 +694,18 @@ body {
   width: 80px;
   height: auto; }
 
-.responsiveMenu__icone {
+.responsiveMenu__icones {
   width: 35px;
   height: auto;
-  cursor: pointer; }
+  cursor: pointer;
+  z-index: 9999999; }
+
+.responsiveMenu__close {
+  display: none;
+  width: 35px;
+  height: auto;
+  cursor: pointer;
+  z-index: 9999999; }
 
 .responsiveMenu__content {
   position: fixed;
@@ -719,6 +727,12 @@ body {
   opacity: 0;
   transform: translateY(20px);
   transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.2s; }
+
+.responsiveMenu--active .responsiveMenu__icones {
+  display: none; }
+
+.responsiveMenu--active .responsiveMenu__close {
+  display: block; }
 
 .responsiveMenu--active .responsiveMenu__content {
   transform: translateX(0); }
