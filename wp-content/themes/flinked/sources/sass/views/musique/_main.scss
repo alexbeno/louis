@@ -5,7 +5,7 @@
   @include flex();
   justify-content: inherit;
   overflow: scroll;
-  @include small {
+  @include medium {
     display: block;
   }
 }
@@ -16,13 +16,13 @@
   @include flex($justify: center);
   padding-left: 15vw;
   transition: padding $trans1 0.3s;
-  @include small {
+  @include medium {
     width: 100vw !important;
     padding: 0;
     flex-direction: column;
     display: block;
     height: auto;
-    padding: 50px 0;
+    padding: 100px 0;
   }
   // 10vw
 }
@@ -34,6 +34,13 @@
   padding-bottom: 50px;
   @include flex();
   transition: all $trans1 0.3s;
+  @include medium {
+    padding: 0;
+    display: block;
+    width: 80vw;
+    margin-bottom: 100px;
+    margin-left: 10vw;
+  }
   @include small {
     padding: 0;
     display: block;
@@ -50,6 +57,9 @@
   height: auto;
   user-select: none;
   cursor: pointer;
+  @include medium {
+    width: 66%;
+  }
   @include small {
     width: 100%;
   }
@@ -62,6 +72,10 @@
   width: 100%;
   user-select: none;
   transition: padding $trans1 0.5s;
+  @include medium {
+    font-size: em(120);
+    bottom: -45px;
+  }
   @include small {
     font-size: em(70);
     bottom: -20px;
@@ -77,7 +91,7 @@
   opacity: 0;
   transition: all $trans1 0.3s;
   user-select: none;
-  @include small {
+  @include medium {
     display: none;
   }
 }
@@ -97,6 +111,10 @@
   width: 80%;
   font-size: em(18);
   line-height: 30px;
+  @include medium {
+    width: 80%;
+    margin: auto;
+  }
   @include small {
     width: 100%;
   }
@@ -105,6 +123,10 @@
 .musiquePage__content__song {
   margin-top: 70px;
   @include flex($justify: flex-start);
+  @include medium {
+    margin-left: 34%;
+    margin-bottom: 70px;
+  }
   @include small {
     margin: 50px 0;
   }
@@ -153,11 +175,18 @@
   cursor: pointer;
 }
 
+.musiquePage__content__general {
+  @include medium {
+    text-align: center;
+    width: 100%;
+  }
+}
+
 .musiquePage__content--active {
   margin-left: 0%;
   opacity: 1;
   transition: all $trans1 0.3s;
-  @include small {
+  @include medium {
     width: 95%;
     padding-left: 5%;
   }
@@ -177,7 +206,7 @@
 .musiquePage__drag--active {
   width: 100vw;
   transition: all $trans1 0.3s;
-  @include small {
+  @include medium {
     padding-top: 30px;
     margin-left: 0;
   }
@@ -196,15 +225,15 @@
 
 .musiquePage__rightNavigation {
   transition: all $trans1 0.3s;
-  display: flex;
-  width: 100%;
-  background: $black;
-  transform: none;
-  top: calc(100% - 66px);
-  height: 66px;
-  text-align: center;
-  align-items: center;
-  @include small {
+  @include medium {
+    display: flex;
+    width: 100%;
+    background: $black;
+    transform: none;
+    top: calc(100% - 66px);
+    height: 66px;
+    text-align: center;
+    align-items: center;
     opacity: 1 !important;
   }
 }

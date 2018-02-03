@@ -411,7 +411,7 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start; }
-  @media (max-width: 450px) {
+  @media (max-width: 800px) {
     .navigation {
       display: none; } }
 
@@ -557,7 +557,7 @@ a {
   z-index: 99999;
   user-select: none;
   pointer-events: none; }
-  @media (max-width: 450px) {
+  @media (max-width: 800px) {
     .cursor {
       display: none; } }
 
@@ -595,7 +595,7 @@ body {
   padding-right: 60px;
   padding-top: 45px;
   z-index: 10; }
-  @media (max-width: 450px) {
+  @media (max-width: 1024px) {
     .topNav {
       display: none; } }
 
@@ -676,7 +676,7 @@ body {
   left: 0;
   z-index: 999999;
   display: none; }
-  @media (max-width: 450px) {
+  @media (max-width: 1024px) {
     .responsiveMenu {
       display: block; } }
 
@@ -1045,7 +1045,7 @@ body {
   align-items: center;
   justify-content: inherit;
   overflow: scroll; }
-  @media (max-width: 450px) {
+  @media (max-width: 800px) {
     .musiquePage {
       display: block; } }
 
@@ -1058,14 +1058,14 @@ body {
   align-items: center;
   padding-left: 15vw;
   transition: padding cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
-  @media (max-width: 450px) {
+  @media (max-width: 800px) {
     .musiquePage__dragMover {
       width: 100vw !important;
       padding: 0;
       flex-direction: column;
       display: block;
       height: auto;
-      padding: 50px 0; } }
+      padding: 100px 0; } }
 
 .musiquePage__drag {
   text-align: center;
@@ -1077,6 +1077,13 @@ body {
   justify-content: center;
   align-items: center;
   transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
+  @media (max-width: 800px) {
+    .musiquePage__drag {
+      padding: 0;
+      display: block;
+      width: 80vw;
+      margin-bottom: 100px;
+      margin-left: 10vw; } }
   @media (max-width: 450px) {
     .musiquePage__drag {
       padding: 0;
@@ -1090,6 +1097,9 @@ body {
   height: auto;
   user-select: none;
   cursor: pointer; }
+  @media (max-width: 800px) {
+    .musiquePage__drag__img {
+      width: 66%; } }
   @media (max-width: 450px) {
     .musiquePage__drag__img {
       width: 100%; } }
@@ -1101,6 +1111,10 @@ body {
   width: 100%;
   user-select: none;
   transition: padding cubic-bezier(0.4, 0, 0.2, 1) 0.5s; }
+  @media (max-width: 800px) {
+    .musiquePage__drag__title {
+      font-size: 7.5em;
+      bottom: -45px; } }
   @media (max-width: 450px) {
     .musiquePage__drag__title {
       font-size: 4.375em;
@@ -1114,7 +1128,7 @@ body {
   opacity: 0;
   transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
   user-select: none; }
-  @media (max-width: 450px) {
+  @media (max-width: 800px) {
     .musiquePage__content {
       display: none; } }
 
@@ -1131,6 +1145,10 @@ body {
   width: 80%;
   font-size: 1.125em;
   line-height: 30px; }
+  @media (max-width: 800px) {
+    .musiquePage__content__descriptions {
+      width: 80%;
+      margin: auto; } }
   @media (max-width: 450px) {
     .musiquePage__content__descriptions {
       width: 100%; } }
@@ -1141,6 +1159,10 @@ body {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center; }
+  @media (max-width: 800px) {
+    .musiquePage__content__song {
+      margin-left: 34%;
+      margin-bottom: 70px; } }
   @media (max-width: 450px) {
     .musiquePage__content__song {
       margin: 50px 0; } }
@@ -1184,11 +1206,16 @@ body {
   height: auto;
   cursor: pointer; }
 
+@media (max-width: 800px) {
+  .musiquePage__content__general {
+    text-align: center;
+    width: 100%; } }
+
 .musiquePage__content--active {
   margin-left: 0%;
   opacity: 1;
   transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
-  @media (max-width: 450px) {
+  @media (max-width: 800px) {
     .musiquePage__content--active {
       width: 95%;
       padding-left: 5%; } }
@@ -1205,7 +1232,7 @@ body {
 .musiquePage__drag--active {
   width: 100vw;
   transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
-  @media (max-width: 450px) {
+  @media (max-width: 800px) {
     .musiquePage__drag--active {
       padding-top: 30px;
       margin-left: 0; } }
@@ -1218,17 +1245,17 @@ body {
   transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
 
 .musiquePage__rightNavigation {
-  transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
-  display: flex;
-  width: 100%;
-  background: #121315;
-  transform: none;
-  top: calc(100% - 66px);
-  height: 66px;
-  text-align: center;
-  align-items: center; }
-  @media (max-width: 450px) {
+  transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
+  @media (max-width: 800px) {
     .musiquePage__rightNavigation {
+      display: flex;
+      width: 100%;
+      background: #121315;
+      transform: none;
+      top: calc(100% - 66px);
+      height: 66px;
+      text-align: center;
+      align-items: center;
       opacity: 1 !important; } }
 
 /*# sourceMappingURL=main.css.map */

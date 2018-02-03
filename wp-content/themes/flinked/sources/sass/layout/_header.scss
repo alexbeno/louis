@@ -20,7 +20,7 @@ $demilogo: calc(50% + 50px);
   padding-right: $leftRight;
   padding-top: 45px;
   z-index: 10;
-  @include small {
+  @include large {
     display: none;
   }
 }
@@ -112,7 +112,7 @@ $demilogo: calc(50% + 50px);
   left: 0;
   z-index: 999999;
   display: none;
-  @include small {
+  @include large {
     display: block;
   }
 }

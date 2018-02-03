@@ -6,7 +6,7 @@ import Cursor from './Cursor.js'
 import Drag from './Drag.js'
 import ResponsiveNav from './ResponsiveNav.js'
 
-var mobil = 380;
+var mobil = 800;
 var screen = window.innerWidth;
 
 function init() {

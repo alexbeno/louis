@@ -16,14 +16,15 @@
   }
 }
 
+
 @mixin medium {
   @if($queryType == 'min') {
-    @media (min-width: #{$medium}) {
+    @media (min-width: #{$mediums}) {
       @content;
     }
   }
   @else {
-    @media (max-width: #{$medium}) {
+    @media (max-width: #{$mediums}) {
       @content;
     }
   }

@@ -69,7 +69,9 @@ function AjaxLoading(url, trans) {
         }
 
         function menuTrans(data) {
-            switch_content(data);
+            setTimeout(function () {
+                switch_content(data);
+            }, 300);
         }
 
         function musiqueTrans(data) {
@@ -1429,7 +1431,7 @@ var _ResponsiveNav2 = _interopRequireDefault(_ResponsiveNav);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var mobil = 380;
+var mobil = 800;
 var screen = window.innerWidth;
 
 function init() {

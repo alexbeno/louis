@@ -54,7 +54,9 @@ export default function AjaxLoading (url, trans)  {
       }
 
       function menuTrans (data) {
-        switch_content( data );
+        setTimeout(function(){
+            switch_content( data );
+        }, 300);
       }
 
       function musiqueTrans (data) {
