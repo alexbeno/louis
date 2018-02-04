@@ -1,6 +1,7 @@
 import InstaSlider from './InstaSlider.js'
 import MainTransition from './MainTransition.js'
 import Drag from './Drag.js'
+import Sound from './Sound.js'
 
 export default function AjaxLoading (url, trans)  {
   jQuery(document).ready(function ($) {
@@ -29,12 +30,16 @@ export default function AjaxLoading (url, trans)  {
               else {
                 mainTrans(data);
               }
-              history.pushState(data, 'louis J', url);
+              if(history.state != url) {
+                  history.pushState(url, 'louis J', url);
+              }
 
           }).error( function() {
               console.log("we can't load de page")
           });
       }
+
+
 
       function mainTrans (data) {
         let mainTransition = new MainTransition();
@@ -105,8 +110,11 @@ export default function AjaxLoading (url, trans)  {
 
       function loadMusiqueScript() {
         let drag = null;
+        let sound = null;
         drag = new Drag();
         drag.init();
+        sound = new Sound();
+        sound.init();
       }
 
       /**
@@ -115,7 +123,7 @@ export default function AjaxLoading (url, trans)  {
        */
       function switch_content( data ) {
           $('main').remove();
-          $('.bottomNav').after($(data));
+          $('.responsiveMenu ').after($(data));
           loadScript();
       }
   });

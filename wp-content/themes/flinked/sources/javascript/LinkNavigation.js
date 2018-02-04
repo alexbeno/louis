@@ -35,17 +35,6 @@ class LinkNavigation
         })
     }
 
-    /**
-     * event on musique link for trigger ajax callback
-     * FIXME: LinkNavigation.js:42 Uncaught TypeError: Cannot read property 'addEventListener' of null at LinkNavigation.clickMusique
-     */
-    clickMusique() {
-        // this.linkMusique.addEventListener('click', (e) => {
-        //     e.preventDefault()
-        //     let url = this.linkMusique.getAttribute( 'data-musiquePage' )
-        //     AjaxLoading(url)
-        // })
-    }
 
     /**
      * event on Galerie link for trigger ajax callback
@@ -62,16 +51,17 @@ class LinkNavigation
      * event on history API for trigger ajax callback
      */
     history() {
-        window.addEventListener( 'popstate', function(e) {
+        window.addEventListener( 'popstate', (e) => {
             e.preventDefault();
             var url = window.location.href;
+            // console.log(url)
+            // console.log(history.state)
             AjaxLoading(url)
         } );
     }
     init() {
         this.clickAbout()
         this.clickHome()
-        this.clickMusique()
         this.clickGalerie()
         this.history()
     }

@@ -18,6 +18,10 @@ var _Drag = require('./Drag.js');
 
 var _Drag2 = _interopRequireDefault(_Drag);
 
+var _Sound = require('./Sound.js');
+
+var _Sound2 = _interopRequireDefault(_Sound);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function AjaxLoading(url, trans) {
@@ -45,7 +49,9 @@ function AjaxLoading(url, trans) {
                 } else {
                     mainTrans(data);
                 }
-                history.pushState(data, 'louis J', url);
+                if (history.state != url) {
+                    history.pushState(url, 'louis J', url);
+                }
             }).error(function () {
                 console.log("we can't load de page");
             });
@@ -120,8 +126,11 @@ function AjaxLoading(url, trans) {
 
         function loadMusiqueScript() {
             var drag = null;
+            var sound = null;
             drag = new _Drag2.default();
             drag.init();
+            sound = new _Sound2.default();
+            sound.init();
         }
 
         /**
@@ -130,13 +139,13 @@ function AjaxLoading(url, trans) {
          */
         function switch_content(data) {
             $('main').remove();
-            $('.bottomNav').after($(data));
+            $('.responsiveMenu ').after($(data));
             loadScript();
         }
     });
 }
 
-},{"./Drag.js":3,"./InstaSlider.js":4,"./MainTransition.js":6}],2:[function(require,module,exports){
+},{"./Drag.js":3,"./InstaSlider.js":4,"./MainTransition.js":6,"./Sound.js":9}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -863,21 +872,6 @@ var LinkNavigation = function () {
         }
 
         /**
-         * event on musique link for trigger ajax callback
-         * FIXME: LinkNavigation.js:42 Uncaught TypeError: Cannot read property 'addEventListener' of null at LinkNavigation.clickMusique
-         */
-
-    }, {
-        key: 'clickMusique',
-        value: function clickMusique() {}
-        // this.linkMusique.addEventListener('click', (e) => {
-        //     e.preventDefault()
-        //     let url = this.linkMusique.getAttribute( 'data-musiquePage' )
-        //     AjaxLoading(url)
-        // })
-
-
-        /**
          * event on Galerie link for trigger ajax callback
          * FIXME: LinkNavigation.js:55 Uncaught TypeError: Cannot read property 'addEventListener' of null at LinkNavigation.clickGalerie
          */
@@ -901,6 +895,8 @@ var LinkNavigation = function () {
             window.addEventListener('popstate', function (e) {
                 e.preventDefault();
                 var url = window.location.href;
+                // console.log(url)
+                // console.log(history.state)
                 (0, _AjaxLoading2.default)(url);
             });
         }
@@ -909,7 +905,6 @@ var LinkNavigation = function () {
         value: function init() {
             this.clickAbout();
             this.clickHome();
-            this.clickMusique();
             this.clickGalerie();
             this.history();
         }
