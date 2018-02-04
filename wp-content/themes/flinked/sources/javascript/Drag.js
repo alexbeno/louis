@@ -19,6 +19,8 @@ class Drag
         this.canDrag = true;
         this.active = false;
         this.mainTransition = new MainTransition();
+        this.audio = document.querySelectorAll('.musiquePage__audio');
+        this.buttons = document.querySelectorAll('.musiquePage__content__songplay');
     }
 
     setMoverSize() {
@@ -33,22 +35,33 @@ class Drag
       let activeTitle = document.querySelector('.musiquePage__drag__title--active')
       let activeMover = document.querySelector('.musiquePage__dragMover--active')
 
-      activeDrag.classList.remove('musiquePage__drag--active')
-      activeContent.classList.remove('musiquePage__content--active')
-      activeContent.classList.remove('musiquePage__content--block')
-      activeTitle.classList.remove('musiquePage__drag__title--active')
-      activeMover.classList.remove('musiquePage__dragMover--active')
+      if(activeDrag !== null) {
+        activeDrag.classList.remove('musiquePage__drag--active')
+        activeContent.classList.remove('musiquePage__content--active')
+        activeContent.classList.remove('musiquePage__content--block')
+        activeTitle.classList.remove('musiquePage__drag__title--active')
+        activeMover.classList.remove('musiquePage__dragMover--active')
+      }
 
       for (const single of this.single) {
         single.classList.remove('musiquePage__drag--none');
+      }
+
+      for (const audios of this.audio) {
+        audios.pause();
+        audios.currentTime = 0;
+      }
+
+      for (const buttons of this.buttons) {
+        buttons.classList.remove('musiquePage__content__songplay--active')
       }
 
       this.setMoverSize();
     }
 
     centerScreen(index) {
-
-      if(window.innerWidth > 380) {
+      if(window.innerWidth > 800) {
+        console.log('inferieur')
         let transScreen = 100 * index;
 
         this.mover.style.webkitTransform =
@@ -68,7 +81,7 @@ class Drag
         let dragCursor = this.image.getAttribute('data-normal');
         this.image.setAttribute('src', dragCursor)
 
-      }, 100);
+      }, 30);
     }
 
     transitionsReturn() {
@@ -103,19 +116,23 @@ class Drag
       for (const [index, single ] of this.single.entries()) {
         single.setAttribute('data-index', index);
         single.childNodes[3].addEventListener('click', (e) => {
-          for (const singleBis of this.single) {
-            singleBis.classList.add('musiquePage__drag--none');
-          }
-          single.classList.remove('musiquePage__drag--none');
+
           this.transitions()
-          this.canDrag = false;
-          this.active = true;
-          single.classList.add('active-album');
+
+          setTimeout( () => {
+            for (const singleBis of this.single) {
+              singleBis.classList.add('musiquePage__drag--none');
+            }
+            single.classList.remove('musiquePage__drag--none');
+            this.canDrag = false;
+            this.active = true;
+            single.classList.add('active-album');
+          }, 700);
 
           setTimeout( () => {
             single.childNodes[1].classList.add('musiquePage__content--block')
             setTimeout( () => {
-              this.centerScreen(index)
+              // this.centerScreen(index)
               single.classList.add('musiquePage__drag--active')
               single.childNodes[1].classList.add('musiquePage__content--active')
               single.childNodes[5].classList.add('musiquePage__drag__title--active')

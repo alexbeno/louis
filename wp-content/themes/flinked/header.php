@@ -68,6 +68,13 @@
                 <a href="<?= get_home_url()."/" ?>" class="responsiveMenu__content__item">Accueil</a>
                 <a href="<?= get_home_url()."/musique" ?>" class="responsiveMenu__content__item">Musique</a>
                 <a href="<?= get_home_url()."/galerie" ?>" class="responsiveMenu__content__item">Galerie</a>
+                <div class="bottomNav bottomNav--responsive">
+                    <a href="<?php the_field('option--apple_musique', 'option'); ?>" class="bottomNav__link">Apple music</a>
+                    <a href="<?php the_field('option--deezer', 'option'); ?>" class="bottomNav__link">Deezer</a>
+                    <a href="<?php the_field('option--apple_musique', 'option'); ?>" class="bottomNav__link">Spotify</a>
+                    <a href="<?php the_field('option--facebook', 'option'); ?>" class="bottomNav__link">Facebook</a>
+                    <a href="<?php the_field('option--instagram', 'option'); ?>" class="bottomNav__link">Instagram</a>
+                </div>
             </div>
         </div>
         <!-- end responsive menu -->

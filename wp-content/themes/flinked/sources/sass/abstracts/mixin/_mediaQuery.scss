@@ -30,6 +30,19 @@
   }
 }
 
+@mixin mob {
+  @if($queryType == 'min') {
+    @media (min-width: #{$portrait}) {
+      @content;
+    }
+  }
+  @else {
+    @media (max-width: #{$portrait}) {
+      @content;
+    }
+  }
+}
+
 @mixin large {
   @if($queryType == 'min') {
     @media (min-width: #{$large}) {

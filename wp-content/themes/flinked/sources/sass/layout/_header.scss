@@ -71,8 +71,27 @@ $demilogo: calc(50% + 50px);
   @include flex($justify: space-around);
   padding-left: 91px;
   padding-bottom: 45px;
-  @include small {
+  @include medium {
     display: none;
+  }
+}
+
+.bottomNav--responsive {
+  width: 80%;
+  left: 10%;
+  padding-left: 0;
+  opacity: 0;
+  transition: all $trans1 0.3s;
+  @include medium {
+    display: flex;
+  }
+  @include mob {
+    width: 95%;
+    left: 2.5%;
+    padding-bottom: 18px;
+  }
+  @include small {
+    padding-bottom: 45px;
   }
 }
 
@@ -81,6 +100,12 @@ $demilogo: calc(50% + 50px);
   font-size: em($size-social);
   opacity: 0.8;
   transition: all $trans1 0.3s;
+  @include medium {
+    font-size: em(20);
+  }
+  @include mob {
+    font-size: em(14);
+  }
   &:after {
     content: '';
     position: absolute;
@@ -119,15 +144,22 @@ $demilogo: calc(50% + 50px);
 
 .responsiveMenu__nav {
   width: 100vw;
-  padding-left: calc(50% - 40px);
   padding-right: 20px;
   padding-top: 20px;
+  padding-left: calc(50% - 40px);
   @include flex($justify: space-between);
+  @include large {
+    padding-left: calc(50% - 50px);
+    padding-right: 50px;
+  }
 }
 
 .responsiveMenu__logo__img {
   width: 80px;
   height: auto;
+  @include large {
+    width: 100px;
+  }
 }
 
 .responsiveMenu__icones {
@@ -135,6 +167,9 @@ $demilogo: calc(50% + 50px);
   height: auto;
   cursor: pointer;
   z-index: 9999999;
+  @include large {
+    width: 45px;
+  }
 }
 
 .responsiveMenu__close {
@@ -143,6 +178,9 @@ $demilogo: calc(50% + 50px);
   height: auto;
   cursor: pointer;
   z-index: 9999999;
+  @include large {
+    width: 45px;
+  }
 }
 
 .responsiveMenu__content {
@@ -154,6 +192,18 @@ $demilogo: calc(50% + 50px);
   transform: translateX(100vw);
   padding: 35% 0;
   @include flex($direction: column, $justify: space-around);
+  @include large {
+    padding: 18% 0;
+  }
+  @include medium {
+    padding: 35% 0;
+  }
+  @include mob {
+    padding: 13% 0;
+  }
+  @include small {
+    padding: 35% 0;
+  }
 }
 
 .responsiveMenu__content__item {
@@ -190,6 +240,11 @@ $demilogo: calc(50% + 50px);
     transform: translateY(0);
     transition: all $trans1 0.3s 0.7s;
   }
+  .bottomNav--responsive {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all $trans1 0.3s 0.5s;
+  }
 }
 
 .responsiveMenu--return {
@@ -209,6 +264,11 @@ $demilogo: calc(50% + 50px);
   }
   .responsiveMenu__content__item:nth-child(3) {
     opacity: 0;
+    transform: translateY(0);
+    transition: all $trans1 0.3s 0.2s;
+  }
+  .bottomNav--responsive {
+    opacity: 1;
     transform: translateY(0);
     transition: all $trans1 0.3s 0.2s;
   }

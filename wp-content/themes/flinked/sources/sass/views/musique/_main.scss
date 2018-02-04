@@ -173,6 +173,20 @@
   width: 52px;
   height: auto;
   cursor: pointer;
+
+  &--play {
+    display: block;
+  }
+  &--pause {
+    display: none;
+  }
+}
+
+.musiquePage__content__songplay--active.musiquePage__content__songplay--play {
+    display: none;
+}
+.musiquePage__content__songplay--active.musiquePage__content__songplay--pause {
+    display: block;
 }
 
 .musiquePage__content__general {

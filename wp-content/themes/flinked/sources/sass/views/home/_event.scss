@@ -3,6 +3,15 @@
   width: 100%;
   margin-top: 55px;
   @include flex($justify: flex-start)
+  @include medium {
+    width: 90%;
+  }
+  @include mob {
+    margin-top: 10px;
+  }
+  @include small {
+    margin-top: 55px;
+  }
 }
 
 .homePage__sortie,
@@ -21,6 +30,10 @@
   font-size: em(48);
   letter-spacing: 13px;
   opacity: 0.6;
+  @include mob {
+    font-size: em(25);
+    letter-spacing: 5px;
+  }
   @include small {
     font-size: em(28);
     letter-spacing: 5px;
@@ -31,7 +44,11 @@
   font-size: em(45);
   letter-spacing: 10px;
   opacity: 0.6;
-  @include small {
+  @include mob {
+    font-size: em(25);
+    letter-spacing: 5px;
+  }
+  @include mob {
     font-size: em(28);
     letter-spacing: 5px;
   }
@@ -44,13 +61,30 @@
   margin-top: 20px;
   width: 600px;
 
-  @include small {
+  @include medium {
     width: 100%;
+  }
+  @include mob {
+    margin-top: 10px;
+    font-size: em(13);
+  }
+  @include mob {
+    margin-top: 20px;
+    font-size: em(14);
   }
 }
 
 .homePage__event__info {
   margin-top: 17px;
+  @include mob {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  @include small {
+    margin-top: 17px;
+    display: block;
+  }
 }
 
 .homePage__eventInfo__text {

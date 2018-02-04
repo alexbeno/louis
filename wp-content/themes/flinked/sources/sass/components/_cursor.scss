@@ -5,7 +5,7 @@
   z-index: 99999;
   user-select: none;
   pointer-events: none;
-  @include medium {
+  @include large {
     display: none;
   }
 }

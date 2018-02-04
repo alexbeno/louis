@@ -1,6 +1,6 @@
 .navigation {
   @include flex($align: flex-start, $direction: column);
-  @include medium {
+  @include large {
     display: none;
   }
 }

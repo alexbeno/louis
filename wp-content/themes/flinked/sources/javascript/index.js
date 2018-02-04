@@ -5,6 +5,7 @@ import ScrollLethargy from './ScrollLethargy.js'
 import Cursor from './Cursor.js'
 import Drag from './Drag.js'
 import ResponsiveNav from './ResponsiveNav.js'
+import Sound from './Sound.js'
 
 var mobil = 800;
 var screen = window.innerWidth;
@@ -61,6 +62,14 @@ function init() {
 
   let responsiveNav = new ResponsiveNav();
   responsiveNav.init();
+
+  /**
+   * Sound.js
+   * sound
+   */
+
+  let sound = new Sound();
+  sound.init();
 
 }
 

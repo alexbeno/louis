@@ -28,7 +28,6 @@ $galeriePage = get_field('option--galerie_page', 'option');
 
     if ( $query->have_posts() ) : ?>
       <?php while ( $query->have_posts() ) : $query->the_post(); ?>
-
         <!-- start musique drag view  -->
           <div class="musiquePage__drag">
             <div class="musiquePage__content">
@@ -37,7 +36,9 @@ $galeriePage = get_field('option--galerie_page', 'option');
                 <p class="musiquePage__content__descriptions"><?= get_field( "album--description" ); ?></p>
               </div>
               <div class="musiquePage__content__song">
-                <img src="<?= IMAGES_URL ?>/play.svg" alt="play" class="musiquePage__content__songplay">
+                <img src="<?= IMAGES_URL ?>/play.svg" alt="play" class="musiquePage__content__songplay musiquePage__content__songplay--play" data-class="musiquePage__audio__<?= get_field( "album--nom" ); ?>">
+                <img src="<?= IMAGES_URL ?>/pause.svg" alt="play" class="musiquePage__content__songplay musiquePage__content__songplay--pause" data-class="musiquePage__audio__<?= get_field( "album--nom" ); ?>">
+                <audio src="<?= get_field( "album--musique" ); ?>" class="musiquePage__audio musiquePage__audio__<?= get_field( "album--nom" ); ?>"></audio>
                 <div class="musiquePage__content__songPlatform">
                   <div class="musiquePage__content__songPlatform__single">
                     <p class="musiquePage__content__songPlatform__singlePref">On</p>

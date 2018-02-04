@@ -5,13 +5,20 @@
   padding-left: 15%;
   @include flex($direction: column, $justify: center, $align: flex-start);
   user-select: none;
+  @include mob {
+    padding-top: 5%;
+  }
   @include small {
+    padding-top: 0;
     margin-top: -16px;
   }
 }
 
 .homePage__name {
   letter-spacing: 12px;
+  @include mob {
+    font-size: em(51);
+  }
   @include small {
     font-size: em(65);
   }
