@@ -118,10 +118,15 @@ function AjaxLoading(url, trans) {
 
             instaSlider = new _InstaSlider2.default();
             instaSlider.init();
+
+            var nav = document.querySelector('.responsiveMenu');
+            nav.classList.add('responsiveMenu--galerie');
         }
 
         function loadHomeScript() {
             // silence
+            var nav = document.querySelector('.responsiveMenu');
+            nav.classList.remove('responsiveMenu--galerie');
         }
 
         function loadMusiqueScript() {
@@ -131,6 +136,8 @@ function AjaxLoading(url, trans) {
             drag.init();
             sound = new _Sound2.default();
             sound.init();
+            var nav = document.querySelector('.responsiveMenu');
+            nav.classList.remove('responsiveMenu--galerie');
         }
 
         /**

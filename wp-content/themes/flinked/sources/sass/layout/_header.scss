@@ -4,8 +4,8 @@
 */
 
 
-$sizelogo: 100px;
-$demilogo: calc(50% + 50px);
+$sizelogo: 60px;
+$demilogo: calc(50% + 30px);
 
 /*
 * top navigation
@@ -140,25 +140,47 @@ $demilogo: calc(50% + 50px);
   @include large {
     display: block;
   }
+  @include mob {
+    background: $black;
+    transition: all $trans1 0.3s;
+  }
 }
 
 .responsiveMenu__nav {
   width: 100vw;
   padding-right: 20px;
   padding-top: 20px;
-  padding-left: calc(50% - 40px);
+  padding-left: calc(50% - 25px);
   @include flex($justify: space-between);
   @include large {
-    padding-left: calc(50% - 50px);
+    padding-left: calc(50% - 30px);
     padding-right: 50px;
+  }
+  @include mob {
+    padding-left: calc(50% - 20px);
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  @include small {
+    padding-left: calc(50% - 25px);
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 }
 
 .responsiveMenu__logo__img {
-  width: 80px;
+  width: 50px;
   height: auto;
   @include large {
-    width: 100px;
+    width: 60px;
+  }
+  @include mob {
+    width: 40px;
+  }
+  @include small {
+    width: 50px;
   }
 }
 
@@ -215,7 +237,15 @@ $demilogo: calc(50% + 50px);
   transition: all $trans1 0.2s;
 }
 
+.responsiveMenu--galerie {
+  background: transparent;
+}
+
 .responsiveMenu--active {
+  @include mob {
+    background: transparent;
+    transition: all $trans1 0.3s;
+  }
   .responsiveMenu__icones {
     display: none;
   }

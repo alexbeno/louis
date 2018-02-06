@@ -102,10 +102,15 @@ export default function AjaxLoading (url, trans)  {
 
         instaSlider = new InstaSlider();
         instaSlider.init();
+
+        let nav = document.querySelector('.responsiveMenu');
+        nav.classList.add('responsiveMenu--galerie')
       }
 
       function loadHomeScript() {
         // silence
+        let nav = document.querySelector('.responsiveMenu');
+        nav.classList.remove('responsiveMenu--galerie')
       }
 
       function loadMusiqueScript() {
@@ -115,6 +120,8 @@ export default function AjaxLoading (url, trans)  {
         drag.init();
         sound = new Sound();
         sound.init();
+        let nav = document.querySelector('.responsiveMenu');
+        nav.classList.remove('responsiveMenu--galerie')
       }
 
       /**

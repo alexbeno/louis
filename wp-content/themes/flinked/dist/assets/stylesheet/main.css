@@ -64,17 +64,17 @@
 */
 @font-face {
   font-family: 'greycliff';
-  src: url("../../../../dist/assets/font/greycliff/otf/greycliffCF-Heavy.otf"), url("../../../../dist/assets/font/greycliff/woff/greycliffCF-Heavy.woff"), url("../../../../dist/assets/font/greycliff/eot/greycliffCF-Heavy.eot");
+  src: url("../../../../dist/assets/font/greycliff/otf/GreycliffCF-Heavy.otf"), url("../../../../dist/assets/font/greycliff/woff/GreycliffCF-Heavy.woff"), url("../../../../dist/assets/font/greycliff/eot/GreycliffCF-Heavy.eot");
   font-weight: 900; }
 
 @font-face {
   font-family: 'greycliff';
-  src: url("../../../../dist/assets/font/greycliff/otf/GreycliffCF-Extrabold.otf"), url("../../../../dist/assets/font/greycliff/woff/GreycliffCF-Extrabold.woff"), url("../../../../dist/assets/font/greycliff/eot/GreycliffCF-Extrabold.eot");
+  src: url("../../../../dist/assets/font/greycliff/otf/GreycliffCF-ExtraBold.otf"), url("../../../../dist/assets/font/greycliff/woff/GreycliffCF-ExtraBold.woff"), url("../../../../dist/assets/font/greycliff/eot/GreycliffCF-ExtraBold.eot");
   font-weight: 800; }
 
 @font-face {
   font-family: 'greycliff';
-  src: url("../../../../dist/assets/font/greycliff/otf/GreycliffCF-bold.otf"), url("../../../../dist/assets/font/greycliff/woff/GreycliffCF-bold.woff"), url("../../../../dist/assets/font/greycliff/eot/GreycliffCF-bold.eot");
+  src: url("../../../../dist/assets/font/greycliff/otf/GreycliffCF-Bold.otf"), url("../../../../dist/assets/font/greycliff/woff/GreycliffCF-Bold.woff"), url("../../../../dist/assets/font/greycliff/eot/GreycliffCF-Bold.eot");
   font-weight: 700; }
 
 @font-face {
@@ -486,7 +486,7 @@ a {
   transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
 
 .trans__logo__img {
-  width: 180px;
+  width: 150px;
   height: auto; }
 
 .trans__single {
@@ -584,7 +584,7 @@ body {
 * top navigation
 */
 .topNav {
-  width: calc(50% + 50px);
+  width: calc(50% + 30px);
   position: fixed;
   right: 0;
   top: 0;
@@ -600,7 +600,7 @@ body {
       display: none; } }
 
 .topNav-logo__img {
-  width: 100px;
+  width: 60px;
   height: auto; }
 
 .topNav__about {
@@ -703,27 +703,49 @@ body {
   @media (max-width: 1024px) {
     .responsiveMenu {
       display: block; } }
+  @media (max-width: 670px) {
+    .responsiveMenu {
+      background: #121315;
+      transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s; } }
 
 .responsiveMenu__nav {
   width: 100vw;
   padding-right: 20px;
   padding-top: 20px;
-  padding-left: calc(50% - 40px);
+  padding-left: calc(50% - 25px);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center; }
   @media (max-width: 1024px) {
     .responsiveMenu__nav {
-      padding-left: calc(50% - 50px);
+      padding-left: calc(50% - 30px);
       padding-right: 50px; } }
+  @media (max-width: 670px) {
+    .responsiveMenu__nav {
+      padding-left: calc(50% - 20px);
+      padding-right: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px; } }
+  @media (max-width: 450px) {
+    .responsiveMenu__nav {
+      padding-left: calc(50% - 25px);
+      padding-right: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px; } }
 
 .responsiveMenu__logo__img {
-  width: 80px;
+  width: 50px;
   height: auto; }
   @media (max-width: 1024px) {
     .responsiveMenu__logo__img {
-      width: 100px; } }
+      width: 60px; } }
+  @media (max-width: 670px) {
+    .responsiveMenu__logo__img {
+      width: 40px; } }
+  @media (max-width: 450px) {
+    .responsiveMenu__logo__img {
+      width: 50px; } }
 
 .responsiveMenu__icones {
   width: 35px;
@@ -776,6 +798,14 @@ body {
   opacity: 0;
   transform: translateY(20px);
   transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.2s; }
+
+.responsiveMenu--galerie {
+  background: transparent; }
+
+@media (max-width: 670px) {
+  .responsiveMenu--active {
+    background: transparent;
+    transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s; } }
 
 .responsiveMenu--active .responsiveMenu__icones {
   display: none; }
