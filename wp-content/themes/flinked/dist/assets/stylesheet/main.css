@@ -650,6 +650,7 @@ body {
 .bottomNav--responsive {
   width: 80%;
   left: 10%;
+  bottom: 10vh;
   padding-left: 0;
   opacity: 0;
   transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }

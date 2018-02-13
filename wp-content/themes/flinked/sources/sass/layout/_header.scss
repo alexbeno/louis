@@ -79,6 +79,7 @@ $demilogo: calc(50% + 30px);
 .bottomNav--responsive {
   width: 80%;
   left: 10%;
+  bottom: 10vh;
   padding-left: 0;
   opacity: 0;
   transition: all $trans1 0.3s;
