@@ -410,7 +410,8 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start; }
+  align-items: flex-start;
+  cursor: pointer; }
   @media (max-width: 1024px) {
     .navigation {
       display: none; } }
@@ -565,7 +566,8 @@ a {
   width: 50px;
   height: auto;
   user-select: none;
-  pointer-events: none; }
+  pointer-events: none;
+  transform: rotate(90deg); }
 
 /*
 * layout
@@ -895,7 +897,10 @@ body {
   @media (max-width: 450px) {
     .homePage {
       padding-top: 0;
-      margin-top: -16px; } }
+      position: fixed;
+      TOP: 0;
+      left: 0;
+      overflow: hidden; } }
 
 .homePage__name {
   letter-spacing: 12px; }
@@ -1128,9 +1133,10 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding-left: 15vw;
+  padding-right: 15vw;
   transition: padding cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
   @media (max-width: 800px) {
     .musiquePage__dragMover {
@@ -1329,7 +1335,8 @@ body {
   transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
 
 .musiquePage__rightNavigation {
-  transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
+  transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+  cursor: initial; }
   @media (max-width: 800px) {
     .musiquePage__rightNavigation {
       display: flex;

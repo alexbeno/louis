@@ -21,11 +21,12 @@ class Drag
         this.mainTransition = new MainTransition();
         this.audio = document.querySelectorAll('.musiquePage__audio');
         this.buttons = document.querySelectorAll('.musiquePage__content__songplay');
+        this.inListe = true;
     }
 
     setMoverSize() {
       this.numberOfAlbum = this.single.length;
-      this.size = 70 * this.numberOfAlbum + 10;
+      this.size = 70 * this.numberOfAlbum + 30;
       this.mover.style.width = this.size + 'vw';
     }
 
@@ -103,11 +104,14 @@ class Drag
           this.exit.style.cursor="initial"
           this.navText.innerText = this.navText.getAttribute('data-text');
           this.navSubText.innerText = this.navSubText.getAttribute('data-text');
+          this.activeAlbum = document.querySelector('active-album');
           this.unshowAlbum();
           let dragCursor = this.image.getAttribute('data-drag');
           this.image.setAttribute('src', dragCursor)
           this.exit.style.opacity ="0";
           this.canDrag = true;
+          this.inListe = true;
+          this.activeAlbum.classList.remove('active-album');
         }
       })
     }
@@ -115,51 +119,59 @@ class Drag
     clickEvent() {
       for (const [index, single ] of this.single.entries()) {
         single.setAttribute('data-index', index);
-        single.childNodes[3].addEventListener('click', (e) => {
+        single.addEventListener('click', (e) => {
+          if(this.active === false) {
+            this.inListe = false;
 
-          this.transitions()
+            this.transitions()
 
-          setTimeout( () => {
-            for (const singleBis of this.single) {
-              singleBis.classList.add('musiquePage__drag--none');
-            }
-            single.classList.remove('musiquePage__drag--none');
-            this.canDrag = false;
-            this.active = true;
-            single.classList.add('active-album');
-          }, 700);
-
-          setTimeout( () => {
-            single.childNodes[1].classList.add('musiquePage__content--block')
             setTimeout( () => {
-              // this.centerScreen(index)
-              single.classList.add('musiquePage__drag--active')
-              single.childNodes[1].classList.add('musiquePage__content--active')
-              single.childNodes[5].classList.add('musiquePage__drag__title--active')
-              this.mover.classList.add('musiquePage__dragMover--active')
-            }, 100);
-          }, 800);
+              for (const singleBis of this.single) {
+                singleBis.classList.add('musiquePage__drag--none');
+              }
+              single.classList.remove('musiquePage__drag--none');
+              this.canDrag = false;
+              this.active = true;
+              single.classList.add('active-album');
+            }, 700);
 
-          setTimeout(() => {
-              this.transitionsReturn()
-          }, 1000);
+            setTimeout( () => {
+              single.childNodes[1].classList.add('musiquePage__content--block')
+              setTimeout( () => {
+                // this.centerScreen(index)
+                single.classList.add('musiquePage__drag--active')
+                single.childNodes[1].classList.add('musiquePage__content--active')
+                single.childNodes[5].classList.add('musiquePage__drag__title--active')
+                this.mover.classList.add('musiquePage__dragMover--active')
+              }, 100);
+            }, 800);
+
+            setTimeout(() => {
+                this.transitionsReturn()
+            }, 1000);
+          }
         })
       }
     }
 
     Inversescroll() {
       let scrolling = 0;
-      let prevY = 0;
-      let prevX = 0;
       var scroll = (event) => {
-
-        if(event.deltaY !== 0) {
-          scrolling += event.deltaY;
-          this.page.scrollTo(scrolling, 0);
+        if(this.inListe === true && window.innerWidth > 800) {
+          if(event.deltaY !== 0) {
+            if (this.page.scrollLeft < 0) {
+              // scrolling = event.deltaY;
+              // this.page.scrollTo(scrolling, 0);
+            }
+            else {
+              scrolling += event.deltaY;
+              this.page.scrollTo(scrolling, 0);
+            }
+          }
+          else {
+            this.page.scrollTo(0, 0);
+          }
         }
-
-        prevX = event.deltaX;
-        prevY = event.deltaY;
       }
 
       this.page.addEventListener('mousewheel', scroll);
@@ -174,6 +186,7 @@ class Drag
         this.image.setAttribute('src', dragCursor)
         this.setMoverSize();
         this.clickEvent();
+        this.Inversescroll();
       }
     }
 }

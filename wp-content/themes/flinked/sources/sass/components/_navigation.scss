@@ -1,5 +1,6 @@
 .navigation {
   @include flex($align: flex-start, $direction: column);
+  cursor: pointer;
   @include large {
     display: none;
   }

@@ -96,6 +96,24 @@ export default function AjaxLoading (url, trans)  {
         }
       }
 
+    function clickGalerie() {
+        let linkGalerie = document.querySelector('.goToGalerie')
+        linkGalerie.addEventListener('click', (e) => {
+            e.preventDefault()
+            let url = linkGalerie.getAttribute( 'data-galeriePage' )
+            perform_ajax_request( url )
+        })
+    }
+
+    function clickHome() {
+        let linkGalerie = document.querySelector('.goToHome')
+        linkGalerie.addEventListener('click', (e) => {
+            e.preventDefault()
+            let url = linkGalerie.getAttribute( 'data-homepage' )
+            perform_ajax_request( url )
+        })
+    }
+
       function loadGalerieScript() {
 
         let instaSlider = null;
@@ -103,14 +121,15 @@ export default function AjaxLoading (url, trans)  {
         instaSlider = new InstaSlider();
         instaSlider.init();
 
-        let nav = document.querySelector('.responsiveMenu');
-        nav.classList.add('responsiveMenu--galerie')
+        clickHome()
       }
 
       function loadHomeScript() {
         // silence
         let nav = document.querySelector('.responsiveMenu');
         nav.classList.remove('responsiveMenu--galerie')
+
+        clickGalerie()
       }
 
       function loadMusiqueScript() {

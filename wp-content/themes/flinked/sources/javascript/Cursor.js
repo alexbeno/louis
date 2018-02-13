@@ -26,12 +26,6 @@ class Cursor
     }
 
     dragCursor () {
-        window.addEventListener('mousedown', () => {
-            if(document.querySelector('.homePage') !== null) {
-                let dragCursor = this.image.getAttribute('data-drag');
-                this.image.setAttribute('src', dragCursor)
-            }
-        });
         window.addEventListener('mouseup', () => {
             if(document.querySelector('.homePage') !== null) {
                 let dragCursor = this.image.getAttribute('data-normal');

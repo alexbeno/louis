@@ -7,17 +7,6 @@ $dragNav = get_field('option--drag', 'option');
 $scrollNav = get_field('option--scroll', 'option');
 $galeriePage = get_field('option--galerie_page', 'option');
 
-// //album content global
-// $title = get_field( "album--nom" );
-// $description = get_field( "album--description" );
-// $pochet = get_field( "album--pochette" );
-// $musique = get_field( "album--musique" );
-
-// //network link
-// $appleMusique = get_field( "album--apple_musique" );
-// $spotify = get_field( "album--spotify" );
-// $deezer = get_field( "album--deezer" );
-
 ?>
 
 <main>

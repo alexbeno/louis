@@ -112,6 +112,24 @@ function AjaxLoading(url, trans) {
             }
         }
 
+        function clickGalerie() {
+            var linkGalerie = document.querySelector('.goToGalerie');
+            linkGalerie.addEventListener('click', function (e) {
+                e.preventDefault();
+                var url = linkGalerie.getAttribute('data-galeriePage');
+                perform_ajax_request(url);
+            });
+        }
+
+        function clickHome() {
+            var linkGalerie = document.querySelector('.goToHome');
+            linkGalerie.addEventListener('click', function (e) {
+                e.preventDefault();
+                var url = linkGalerie.getAttribute('data-homepage');
+                perform_ajax_request(url);
+            });
+        }
+
         function loadGalerieScript() {
 
             var instaSlider = null;
@@ -119,14 +137,15 @@ function AjaxLoading(url, trans) {
             instaSlider = new _InstaSlider2.default();
             instaSlider.init();
 
-            var nav = document.querySelector('.responsiveMenu');
-            nav.classList.add('responsiveMenu--galerie');
+            clickHome();
         }
 
         function loadHomeScript() {
             // silence
             var nav = document.querySelector('.responsiveMenu');
             nav.classList.remove('responsiveMenu--galerie');
+
+            clickGalerie();
         }
 
         function loadMusiqueScript() {
@@ -199,12 +218,6 @@ var Cursor = function () {
         value: function dragCursor() {
             var _this2 = this;
 
-            window.addEventListener('mousedown', function () {
-                if (document.querySelector('.homePage') !== null) {
-                    var dragCursor = _this2.image.getAttribute('data-drag');
-                    _this2.image.setAttribute('src', dragCursor);
-                }
-            });
             window.addEventListener('mouseup', function () {
                 if (document.querySelector('.homePage') !== null) {
                     var dragCursor = _this2.image.getAttribute('data-normal');
@@ -266,13 +279,14 @@ var Drag = function () {
     this.mainTransition = new _MainTransition2.default();
     this.audio = document.querySelectorAll('.musiquePage__audio');
     this.buttons = document.querySelectorAll('.musiquePage__content__songplay');
+    this.inListe = true;
   }
 
   _createClass(Drag, [{
     key: 'setMoverSize',
     value: function setMoverSize() {
       this.numberOfAlbum = this.single.length;
-      this.size = 70 * this.numberOfAlbum + 10;
+      this.size = 70 * this.numberOfAlbum + 30;
       this.mover.style.width = this.size + 'vw';
     }
   }, {
@@ -421,11 +435,14 @@ var Drag = function () {
           _this3.exit.style.cursor = "initial";
           _this3.navText.innerText = _this3.navText.getAttribute('data-text');
           _this3.navSubText.innerText = _this3.navSubText.getAttribute('data-text');
+          _this3.activeAlbum = document.querySelector('active-album');
           _this3.unshowAlbum();
           var dragCursor = _this3.image.getAttribute('data-drag');
           _this3.image.setAttribute('src', dragCursor);
           _this3.exit.style.opacity = "0";
           _this3.canDrag = true;
+          _this3.inListe = true;
+          _this3.activeAlbum.classList.remove('active-album');
         }
       });
     }
@@ -445,56 +462,59 @@ var Drag = function () {
               single = _step4$value[1];
 
           single.setAttribute('data-index', index);
-          single.childNodes[3].addEventListener('click', function (e) {
+          single.addEventListener('click', function (e) {
+            if (_this4.active === false) {
+              _this4.inListe = false;
 
-            _this4.transitions();
+              _this4.transitions();
 
-            setTimeout(function () {
-              var _iteratorNormalCompletion5 = true;
-              var _didIteratorError5 = false;
-              var _iteratorError5 = undefined;
-
-              try {
-                for (var _iterator5 = _this4.single[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
-                  var singleBis = _step5.value;
-
-                  singleBis.classList.add('musiquePage__drag--none');
-                }
-              } catch (err) {
-                _didIteratorError5 = true;
-                _iteratorError5 = err;
-              } finally {
-                try {
-                  if (!_iteratorNormalCompletion5 && _iterator5.return) {
-                    _iterator5.return();
-                  }
-                } finally {
-                  if (_didIteratorError5) {
-                    throw _iteratorError5;
-                  }
-                }
-              }
-
-              single.classList.remove('musiquePage__drag--none');
-              _this4.canDrag = false;
-              _this4.active = true;
-              single.classList.add('active-album');
-            }, 700);
-
-            setTimeout(function () {
-              single.childNodes[1].classList.add('musiquePage__content--block');
               setTimeout(function () {
-                // this.centerScreen(index)
-                single.classList.add('musiquePage__drag--active');
-                single.childNodes[1].classList.add('musiquePage__content--active');
-                single.childNodes[5].classList.add('musiquePage__drag__title--active');
-                _this4.mover.classList.add('musiquePage__dragMover--active');
-              }, 100);
-            }, 800);
+                var _iteratorNormalCompletion5 = true;
+                var _didIteratorError5 = false;
+                var _iteratorError5 = undefined;
 
-            setTimeout(function () {
-              _this4.transitionsReturn();
-            }, 1000);
+                try {
+                  for (var _iterator5 = _this4.single[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+                    var singleBis = _step5.value;
+
+                    singleBis.classList.add('musiquePage__drag--none');
+                  }
+                } catch (err) {
+                  _didIteratorError5 = true;
+                  _iteratorError5 = err;
+                } finally {
+                  try {
+                    if (!_iteratorNormalCompletion5 && _iterator5.return) {
+                      _iterator5.return();
+                    }
+                  } finally {
+                    if (_didIteratorError5) {
+                      throw _iteratorError5;
+                    }
+                  }
+                }
+
+                single.classList.remove('musiquePage__drag--none');
+                _this4.canDrag = false;
+                _this4.active = true;
+                single.classList.add('active-album');
+              }, 700);
+
+              setTimeout(function () {
+                single.childNodes[1].classList.add('musiquePage__content--block');
+                setTimeout(function () {
+                  // this.centerScreen(index)
+                  single.classList.add('musiquePage__drag--active');
+                  single.childNodes[1].classList.add('musiquePage__content--active');
+                  single.childNodes[5].classList.add('musiquePage__drag__title--active');
+                  _this4.mover.classList.add('musiquePage__dragMover--active');
+                }, 100);
+              }, 800);
+
+              setTimeout(function () {
+                _this4.transitionsReturn();
+              }, 1000);
+            }
           });
         };
 
@@ -522,17 +542,20 @@ var Drag = function () {
       var _this5 = this;
 
       var scrolling = 0;
-      var prevY = 0;
-      var prevX = 0;
       var scroll = function scroll(event) {
-
-        if (event.deltaY !== 0) {
-          scrolling += event.deltaY;
-          _this5.page.scrollTo(scrolling, 0);
+        if (_this5.inListe === true && window.innerWidth > 800) {
+          if (event.deltaY !== 0) {
+            if (_this5.page.scrollLeft < 0) {
+              // scrolling = event.deltaY;
+              // this.page.scrollTo(scrolling, 0);
+            } else {
+              scrolling += event.deltaY;
+              _this5.page.scrollTo(scrolling, 0);
+            }
+          } else {
+            _this5.page.scrollTo(0, 0);
+          }
         }
-
-        prevX = event.deltaX;
-        prevY = event.deltaY;
       };
 
       this.page.addEventListener('mousewheel', scroll);
@@ -548,6 +571,7 @@ var Drag = function () {
         this.image.setAttribute('src', dragCursor);
         this.setMoverSize();
         this.clickEvent();
+        this.Inversescroll();
       }
     }
   }]);
@@ -877,20 +901,18 @@ var LinkNavigation = function () {
                 (0, _AjaxLoading2.default)(url);
             });
         }
-
-        /**
-         * event on Galerie link for trigger ajax callback
-         * FIXME: LinkNavigation.js:55 Uncaught TypeError: Cannot read property 'addEventListener' of null at LinkNavigation.clickGalerie
-         */
-
     }, {
         key: 'clickGalerie',
-        value: function clickGalerie() {}
-        // this.linkGalerie.addEventListener('click', (e) => {
-        //     e.preventDefault()
-        //     let url = this.linkGalerie.getAttribute( 'data-galeriePage' )
-        //     AjaxLoading(url)
-        // })
+        value: function clickGalerie() {
+            if (document.querySelector('.homePage') !== null) {
+                var linkGalerie = document.querySelector('.goToGalerie');
+                linkGalerie.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    var url = linkGalerie.getAttribute('data-galeriePage');
+                    (0, _AjaxLoading2.default)(url);
+                });
+            }
+        }
 
         /**
          * event on history API for trigger ajax callback
@@ -902,8 +924,6 @@ var LinkNavigation = function () {
             window.addEventListener('popstate', function (e) {
                 e.preventDefault();
                 var url = window.location.href;
-                // console.log(url)
-                // console.log(history.state)
                 (0, _AjaxLoading2.default)(url);
             });
         }
@@ -912,8 +932,8 @@ var LinkNavigation = function () {
         value: function init() {
             this.clickAbout();
             this.clickHome();
-            this.clickGalerie();
             this.history();
+            this.clickGalerie();
         }
     }]);
 

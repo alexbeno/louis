@@ -4,7 +4,6 @@
         <meta charset="<?php bloginfo( 'charset' ); ?>" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <title><?php the_field('option--titre_de_site', 'option'); ?> </title>
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500|Open+Sans:300,400,600" rel="stylesheet">
         <!-- Execution de la fonction wp_head() obligatoire ! -->
         <?php wp_head(); ?>
     </head>
@@ -69,11 +68,11 @@
                 <a href="<?= get_home_url()."/musique" ?>" class="responsiveMenu__content__item">Musique</a>
                 <a href="<?= get_home_url()."/galerie" ?>" class="responsiveMenu__content__item">Galerie</a>
                 <div class="bottomNav bottomNav--responsive">
-                    <a href="<?php the_field('option--apple_musique', 'option'); ?>" class="bottomNav__link">Apple music</a>
-                    <a href="<?php the_field('option--deezer', 'option'); ?>" class="bottomNav__link">Deezer</a>
-                    <a href="<?php the_field('option--apple_musique', 'option'); ?>" class="bottomNav__link">Spotify</a>
-                    <a href="<?php the_field('option--facebook', 'option'); ?>" class="bottomNav__link">Facebook</a>
-                    <a href="<?php the_field('option--instagram', 'option'); ?>" class="bottomNav__link">Instagram</a>
+                    <a href="<?php the_field('option--apple_musique', 'option'); ?>" target="_blank" class="bottomNav__link">Apple music</a>
+                    <a href="<?php the_field('option--deezer', 'option'); ?>" target="_blank" class="bottomNav__link">Deezer</a>
+                    <a href="<?php the_field('option--apple_musique', 'option'); ?>" target="_blank" class="bottomNav__link">Spotify</a>
+                    <a href="<?php the_field('option--facebook', 'option'); ?>" target="_blank" class="bottomNav__link">Facebook</a>
+                    <a href="<?php the_field('option--instagram', 'option'); ?>" target="_blank" class="bottomNav__link">Instagram</a>
                 </div>
             </div>
         </div>

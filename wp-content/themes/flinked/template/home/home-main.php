@@ -24,7 +24,6 @@ $sortie_description = get_field( "event--description" );
 $sortie_link = get_field( "event--lien_externe" );
 
 $isEvent = get_field( "event" );
-var_dump($isEvent);
 ?>
 
 <main>
@@ -43,7 +42,7 @@ if($isEvent ==="concert") {
           <p class="homePage__eventInfo__text"><span class="homePage__eventInfo__light">Lieu</span><?= $event_lieu  ?></p>
           <p class="homePage__eventInfo__text"><span class="homePage__eventInfo__light">Prix</span><?= $event_prix  ?></p>
         </div>
-        <a href="<?= $event_link ?>" class="homePage__event__link">Reserver votre place</a>
+        <a href="<?= $event_link ?>" target="_blank" class="homePage__event__link">Reserver votre place</a>
       </div>
     </div>
     <!-- start event part -->

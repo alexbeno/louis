@@ -13,8 +13,9 @@
 .musiquePage__dragMover {
   width: 200vw;
   height: 100vh;
-  @include flex($justify: center);
+  @include flex($justify: space-between);
   padding-left: 15vw;
+  padding-right: 15vw;
   transition: padding $trans1 0.3s;
   @include medium {
     width: 100vw !important;
@@ -239,6 +240,7 @@
 
 .musiquePage__rightNavigation {
   transition: all $trans1 0.3s;
+  cursor: initial;
   @include medium {
     display: flex;
     width: 100%;
